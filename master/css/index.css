@@ -1,0 +1,104 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: 'Courier', sans-serif;
+  background: url("../assets/img/bricks.jpg") no-repeat fixed;
+  background-position: center;
+  box-shadow: inset 0 0 500px 250px rgba(22, 22, 22, 0.3);
+  overflow: hidden;
+}
+
+#container {
+  top: 0;
+  padding: 5rem;
+  min-height: 50rem;
+}
+
+#container>div {
+  background-color: #c5e1a5;
+  min-height: 20rem;
+  padding: 2rem;
+  margin-top: 18rem;
+  border-radius: 1rem .5rem;
+  border: 1px solid #212121a1;
+  box-shadow: -4px 7px 15px 2px #212121a1;
+}
+
+#container>div>h1 {
+  margin-top: 7rem;
+}
+
+#container>div>div.img-container {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #212121;
+  top: 10rem;
+  left: 22.5%;
+  right: 22.5%;
+  height: 20rem;
+  width: 20rem;
+  box-shadow: 0 5px 6px 1px #212121a1;
+}
+
+#container>div>div.img-container>img {
+  width: 20rem;
+  height: 20rem;
+}
+
+a {
+  color: #827717;
+  text-decoration-line: none;
+  -webkit-transition: all ease-in-out .23s;
+  -moz-transition: all ease-in-out .23s;
+  -o-transition: all ease-in-out .23s;
+  transition: all ease-in-out .23s;
+}
+
+a:hover {
+  color: #9e9d24;
+}
+
+a:after {
+  color: #afb42b;
+}
+
+@media (max-width: 870px) {
+  body {
+    overflow: auto;
+  }
+}
+
+@media (max-width: 470px) {
+  #container>div>div.img-container {
+    top: 2.5rem;
+    align-content: center;
+    height: 12rem;
+    width: 12rem;
+  }
+  
+  #container>div>div.img-container>img {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  #container {
+    top: 0;
+    padding: 0;
+    min-height: 40rem;
+  }
+
+  #container>div {
+    width: 80%;
+    left: 0;
+    padding: 2rem;
+    margin-top: 8rem;
+    
+  }
+}
