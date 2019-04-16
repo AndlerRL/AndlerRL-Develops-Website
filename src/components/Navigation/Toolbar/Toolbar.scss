@@ -4,7 +4,7 @@ $bg: #212121;
   background-color: $bg;
   border-bottom: 2px solid #2121216a;
   padding: 0 1rem;
-  height: 62px;
+  height: 64px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -19,11 +19,15 @@ $bg: #212121;
     height: 100%;
     background-color: transparent !important;
     box-shadow: none !important;
-    width: auto;
+    width: 100%;
   }
 
   .Menu {
     cursor: pointer;
+    width: 100%;
+    margin-left: calc(100% - 33px);
+    color: #eee;
+    padding: 8px;
 
     @media (min-width: 500px) {
       display: none;

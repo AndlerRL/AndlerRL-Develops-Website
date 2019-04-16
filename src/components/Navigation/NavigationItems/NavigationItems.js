@@ -18,7 +18,8 @@ const navigationItems = props => (
     </NavigationItem>
     <NavigationItem
       exact link="#contact-me"
-      clicked={props.clicked}>
+      clicked={props.clicked}
+      id="contact-me">
       Contact
     </NavigationItem>
   </ul>

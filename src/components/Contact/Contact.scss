@@ -1,0 +1,128 @@
+$active: #ffc740;
+$visited: #ffe57f;
+$font-color: #eee;
+
+.Contact {
+  width: 100%;
+  min-height: 5rem;
+  margin: 0 auto;
+  padding: 16px;
+  color: #fdfdfd;
+  background-color: #212121;
+  border-top: 2px solid #424242;
+
+  .Info,
+  .Links {
+    padding: 8px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  .Info {
+    width: 55%;
+    text-align: left;
+    float: left;
+
+    ul {
+      text-align: left;
+      align-content: flex-start !important;
+      margin: 1rem 0 0;
+      line-height: 1.5;
+
+      @media (min-width: 600px) {
+        margin: 2rem 0 0;
+      }
+
+      li {
+        margin: 1rem 0;
+        list-style: none;
+        &:first-of-type {
+          i {
+            padding-left: 4px
+          }
+        }
+
+        a,
+        span {
+          color: $font-color;
+          &:hover {
+            color: $active;
+          }
+
+          i {
+            font-size: 1.8rem;
+            width: 1.5rem;
+            vertical-align: middle;
+            padding: 0 auto;
+            margin-right: 1rem;
+            color: $font-color;
+            &:hover {
+              color: $active !important;
+            }
+          }
+        }
+
+        a {
+          &:visited {
+            color: $visited !important;
+          }
+        }
+      }
+    }
+  }
+
+  .Links {
+    width: 45%;
+    text-align: right;
+    
+    ul {
+      align-content: flex-end !important;
+      margin: 1rem 0 0;
+      line-height: 1.5;
+
+      @media (min-width: 600px) {
+        margin-right: -0.5rem !important;
+        margin: 2rem 0 0;
+      }
+
+      li {
+        margin: 1rem 0;
+        list-style: none;
+
+        a {
+          color: $font-color;
+          &:hover {
+            color: $active;
+          }
+          &:visited {
+            color: $visited !important;
+          }
+
+          i {
+            font-size: 2rem;
+            text-align: center;
+            padding: 0 8px;
+            margin-left: 1rem;
+            color: $font-color;
+            &:hover {
+              color: $active !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .Copyright {
+    opacity: 0.66;
+    font-weight: 200;
+    display: flex;
+    bottom: 0;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+}

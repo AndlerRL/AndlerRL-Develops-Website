@@ -1,0 +1,48 @@
+$lead-dark: #0091ea;
+
+.MainInfo {
+  margin: 0 auto 2.5rem;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+
+  .LeadIn {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.75;
+    margin-right: 6px;
+    color: $lead-dark;
+  }
+
+  .WithImg {
+    display: inline-flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+
+    p {
+      position: relative;
+      width: 100%;
+      padding: 1.5rem 1rem 0 0;
+      line-height: 1.8;
+    }
+
+    .Right {
+      padding: 1.5rem 0 0 1rem;
+    }
+
+    img {
+      display: none;
+
+      @media (min-width: 600px) {
+        display: initial;
+      }
+    }
+  }
+
+  p {
+    width: 100%;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+}

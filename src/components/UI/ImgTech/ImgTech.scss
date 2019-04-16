@@ -1,0 +1,18 @@
+$bg-dark-light: #01579b;
+
+.ImgTech {
+  text-align: center;
+  padding: 0;
+  margin: 1rem 1.5rem;
+  height: 10rem;
+  box-sizing: border-box;
+  position: static;
+
+  img {
+    background-color: transparent;
+    opacity: .6;
+    vertical-align: middle;
+    align-content: center;
+    width: 100%;
+  }
+}

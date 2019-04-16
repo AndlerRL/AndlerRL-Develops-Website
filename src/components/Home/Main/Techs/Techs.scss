@@ -1,0 +1,23 @@
+$bg-dark-light: #ffe57f;
+
+.Techs {
+  background-color: $bg-dark-light;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 3rem -2.5rem -2.5rem;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  div {
+    margin-left: auto;
+    float: left;
+    left: auto;
+    right: auto;
+    min-height: 1px;
+  }
+}
