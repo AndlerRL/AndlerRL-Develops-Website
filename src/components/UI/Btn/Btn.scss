@@ -1,14 +1,18 @@
-$btn-primary: #ff8f00;
+$btn-primary: #ff6f00;
+$btn-text-primary: #212121;
 $btn-secundary: #039be5;
+$btn-text-secundary: #eee;
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
 
-.Button {
+.Btn {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  background-color: transparent;
+  background-color: transparent !important;
   border: none;
-  color: #f5f5f5;
+  color: #f5f5f5 !important;
   cursor: pointer;
   font: inherit;
   outline: none;
@@ -16,9 +20,9 @@ $btn-secundary: #039be5;
   min-height: 3.4rem;
   min-width: 6rem;
   margin: 1rem;
-  font-weight: 300;
+  font-weight: 600;
   box-shadow: none;
-  transition: all .25s ease-in-out 200ms;
+  transition: all .25s $fast-out-linear-in 100ms;
 
   &:first-of-type {
     margin-left: 0;
@@ -35,12 +39,11 @@ $btn-secundary: #039be5;
 }
 
 .Primary {
-  color: $btn-primary;
-  font-weight: 200;
-
+  color: $btn-text-primary !important;
+  background-color: $btn-primary !important;
   &:hover {
-    background-color: #ff6f00 !important;
-    color: #eee !important;
+    background-color: #ffb300 !important;
+    font-weight: 500;
   }
 }
 

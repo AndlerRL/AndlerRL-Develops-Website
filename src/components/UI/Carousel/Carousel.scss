@@ -1,0 +1,15 @@
+.Carousel {
+  height: 215px;
+
+  @media (min-width: 600px) and (max-width: 799px) {
+    height: 200px;
+  }
+
+  @media (min-width: 600px) {
+    height: 400px;
+  }
+
+  @media (min-width: 800px) {
+    height: 350px;
+  }
+}

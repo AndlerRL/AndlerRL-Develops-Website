@@ -1,4 +1,7 @@
 $bg-dark-light: #01579b;
+$text-dark-light: #ffecb3;
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
 
 .ImgTech {
   text-align: center;
@@ -14,5 +17,46 @@ $bg-dark-light: #01579b;
     vertical-align: middle;
     align-content: center;
     width: 100%;
+  }
+}
+
+.Tooltip {
+  position: relative;
+  display: inline-block;
+  &:hover {
+    .TooltipText {
+      opacity: 1;
+    }
+  }
+
+  .TooltipText {
+    transition: all $fast-out-linear-in 0.25s 150ms;
+    opacity: 0;
+    width: 120px;
+    background-color: $bg-dark-light;
+    color: $text-dark-light;
+    text-align: center;
+    font-weight: 600;
+    padding: 6px 6px 2px;
+    border-radius: 3px;
+    position: absolute;
+    top: -2rem;
+    z-index: 1;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: $bg-dark-light transparent transparent transparent;
+    }
+
+    .TooltipTop {
+      bottom: 125%;
+      left: 50%;
+      margin-left: -60px;
+    }
   }
 }

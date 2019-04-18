@@ -14,7 +14,7 @@ $lead-light: #ff6f00;
   height: 50rem;
   margin: 0;
   padding: 0;
-  top: 0;
+  margin-top: 64px;
   left: 0;
   z-index: 0;
 
@@ -48,7 +48,7 @@ $lead-light: #ff6f00;
 .HomeHead {
   position: relative;
   z-index: 10;
-  top: -15.5rem;
+  top: -20rem;
   width: 100vw;
   min-height: 100vh;
   padding: 18rem 16px;
@@ -70,8 +70,6 @@ $lead-light: #ff6f00;
 
   h1 {
     text-transform: uppercase;
-    line-height: 1;
-    font-family: 'Righteous', cursive;
   }
 
   p {
@@ -86,26 +84,22 @@ $lead-light: #ff6f00;
   font-size: 1.2rem;
   position: relative;
   font-weight: 100;
-  margin: -20rem auto 0;
+  margin: -24rem auto 0;
   color: $text-dark;
   background-color: $bg-dark;
-  padding: 6rem 1.5rem;
-  clip-path: polygon(100% 160px, 100% 0, 100% 100%, -33% 99%, 0 0);
+  clip-path: polygon(100% 142px, 100% 0, 100% 100%, -1000px 7000px, 0 0);
 
   @media (min-width: 600px) {
     width: 75%;
-    padding: 6rem 2.5rem 2.5rem;
-    clip-path: polygon(100% 115px, 100% 0, 100% 100%, -33% 99%, 0 0);
+    padding: 0;
+    clip-path: polygon(100% 90px, 100% 0, 100% 100%, -1000px 7000px, 0 0);
   }
 
   h2 {
-    font-family: 'Righteous', cursive;
-    line-height: 1.5;
+    padding: 9rem 2rem 1rem;
   }
 
   h3 {
-    font-family: 'Righteous', cursive;
-    line-height: 1.5;
     color: $bg-dark;
   }
 }

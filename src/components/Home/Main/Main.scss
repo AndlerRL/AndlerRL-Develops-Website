@@ -2,6 +2,7 @@ $lead-dark: #0091ea;
 
 .MainInfo {
   margin: 0 auto 2.5rem;
+  padding: 2rem;
   display: inline-block;
   box-sizing: border-box;
   width: 100%;
@@ -16,19 +17,26 @@ $lead-dark: #0091ea;
   }
 
   .WithImg {
-    display: inline-flex;
-    box-sizing: border-box;
-    justify-content: space-between;
+    @media (min-width: 600px) {
+      display: inline-flex;
+      box-sizing: border-box;
+      justify-content: space-between;
+    }
 
     p {
       position: relative;
       width: 100%;
       padding: 1.5rem 1rem 0 0;
       line-height: 1.8;
+      font-size: 1.33rem;
     }
 
     .Right {
-      padding: 1.5rem 0 0 1rem;
+      padding: 1.5rem 0;
+
+      @media (min-width: 600px) {
+        padding: 1.5rem 0 0 1rem;
+      }
     }
 
     img {
@@ -44,5 +52,6 @@ $lead-dark: #0091ea;
     width: 100%;
     margin: 0 auto;
     line-height: 1.8;
+    font-size: 1.33rem;
   }
 }

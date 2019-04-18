@@ -1,7 +1,9 @@
 import React from 'react';
+import AOS from 'aos';
 
 import { MainLeft, MainRight } from './Main/Main';
 import Techs from './Main/Techs/Techs';
+import Projects from './Main/Projects/Projects';
 import imgHtml from '../../assets/images/icons/html5_logo.png';
 import imgJs from '../../assets/images/icons/js_logo.png';
 import imgCss from '../../assets/images/icons/css3_logo.png';
@@ -9,6 +11,17 @@ import imgCss from '../../assets/images/icons/css3_logo.png';
 import scss from './Home.scss';
 
 class Home extends React.Component {
+  componentDidMount () {
+    AOS.init({
+      duration: 750,
+      offset: 300
+    })
+  }
+
+  componentDidUpdate () {
+    AOS.refresh()
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -22,7 +35,7 @@ class Home extends React.Component {
           <p className={scss.LeadIn}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis optio, non consectetur minima, sed culpa eligendi quos maxime ab cupiditate excepturi odio iste architecto enim? Facere in velit atque delectus! Illo fugiat suscipit aliquam, fuga vero earum et sunt cum eos ducimus minus distinctio omnis in incidunt, alias eligendi soluta, quis fugit.</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo fugiat suscipit aliquam, fuga vero earum et sunt cum eos ducimus minus distinctio omnis in incidunt, alias eligendi soluta, quis fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-        <div className={'z-depth-5 ' + scss.HomeMain}>
+        <div className={'z-depth-5 ' + scss.HomeMain} data-aos="zoom-in-right" >
           <h2>What I can bring into the table.</h2>
           <MainLeft img={imgJs}
             tech="javascript"
@@ -71,6 +84,7 @@ class Home extends React.Component {
             adipisicing elit." />
           <Techs />
         </div>
+        <Projects />
       </React.Fragment>
     );
   }

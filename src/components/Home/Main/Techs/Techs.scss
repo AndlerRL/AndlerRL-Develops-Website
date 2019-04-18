@@ -2,10 +2,10 @@ $bg-dark-light: #ffe57f;
 
 .Techs {
   background-color: $bg-dark-light;
-  justify-content: center;
+  position: relative;
   box-sizing: border-box;
-  margin: 3rem -2.5rem -2.5rem;
-  padding: 2rem 2.5rem;
+  margin: 3rem 0;
+  padding: 2rem 1.66rem;
   text-align: center;
   &::after {
     content: "";
@@ -13,11 +13,17 @@ $bg-dark-light: #ffe57f;
     display: table;
   }
 
+  @media (min-width: 600px) {
+    margin: 3rem 0;
+    padding: 2.5rem 1rem;
+  }
+
   div {
-    margin-left: auto;
+    margin-right: auto;
     float: left;
     left: auto;
     right: auto;
     min-height: 1px;
+    width: auto;
   }
 }
