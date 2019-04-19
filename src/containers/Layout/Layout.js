@@ -29,7 +29,7 @@ class Layout extends React.Component {
           closed={this.sideDrawerToggleHandler}
           back={this.sideDrawerToggleHandler} />
 
-        <main className={scss.Main}>
+        <main className={['z-depth-1', scss.Main].join(' ')}>
           {this.props.children}
         </main>
 

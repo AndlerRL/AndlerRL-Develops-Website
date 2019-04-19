@@ -4,25 +4,40 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 import scss from './NavigationItems.scss';
 
-const navigationItems = props => (
+const navigationItems = props => {
+  const contactRef = React.createRef();
+  const projectRef = React.createRef();
+  const contact = document.querySelector('#contact-me');
+  const project = document.querySelector('#projects');
+  contactRef.current = contact
+  projectRef.current = project
+  
+  const refCallbackP = () => {
+    projectRef.current.focus()
+  }
+
+  const refCallbackC = () => {
+    contactRef.current.focus();
+  }
+
+  return (
   <ul className={scss.NavigationItems}>
     <NavigationItem
-      exact link="/home"
-      clicked={props.clicked}>
+      exact link="/home">
       Home
     </NavigationItem>
     <NavigationItem
       exact link="#projects"
-      clicked={props.clicked}>
+      clicked={() => this.projectRef.current.refCallbackP()} >
       Projects
     </NavigationItem>
     <NavigationItem
       exact link="#contact-me"
-      clicked={props.clicked}
-      id="contact-me">
+      clicked={() => this.contactRef.current.refCallbackC()} >
       Contact
     </NavigationItem>
   </ul>
-);
+  )
+};
 
 export default navigationItems;

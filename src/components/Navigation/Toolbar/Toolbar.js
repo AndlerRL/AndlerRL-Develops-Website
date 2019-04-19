@@ -5,7 +5,8 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 
 import scss from './Toolbar.scss';
 
-const toolbar = props => (
+const toolbar = props => {
+  return (
   <header className={'z-depth-2 ' + scss.Toolbar}>
     <div
       onClick={props.toggleMenu}
@@ -16,6 +17,7 @@ const toolbar = props => (
       <NavigationItems />
     </nav>
   </header>
-);
+  )
+};
 
 export default toolbar;

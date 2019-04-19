@@ -96,14 +96,13 @@ class techs extends React.Component {
   render () {
     let techs = [];
     for (let keys in this.state.technologies) {
-      console.log(keys, this.state.technologies[keys])
       const logo = this.state.technologies[keys].logo;
       const tech = this.state.technologies[keys].tech;
       techs.push(
         <ImgTech 
           img={logo}
           title={tech}
-          key={this.state.technologies[keys]}
+          key={keys}
           alt={tech}
           height="100%"
           width="10rem"

@@ -1,10 +1,14 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import IconFA from '../UI/Icons/IconsFA.js';
 import scss from './Contact.scss';
 
-const contact = props => (
-  <div className={scss.Contact} id="contact-me">
+const contact = props => {
+  const contact = React.createRef();
+   
+  return (
+  <div className={scss.Contact} id="contact-me" ref={contact}>
     <div className={scss.Info}>
       Contact Information
 
@@ -51,6 +55,7 @@ const contact = props => (
       Website made with love by Andler Develops. © 2019 ® All rights reserved.
     </div>
   </div>
-);
+  )
+};
 
-export default contact;
+export default withRouter(contact);

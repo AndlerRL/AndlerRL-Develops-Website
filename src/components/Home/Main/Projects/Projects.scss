@@ -24,18 +24,13 @@ $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
 
     .Card {
       width: 83.333%;
-      height: 30rem;
+      height: 35rem;
       border-radius: 3px;
       margin: 5rem auto;
       background-color: $bg-dark;
       padding: 16px;
       color: $text-dark;
       text-align: center;
-      &:first-of-type{
-        h3 {
-          height: 28%;
-        }
-      }
       &:last-child {
         .Carousel {
           @media (min-width: 800px) {
@@ -46,21 +41,37 @@ $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
 
       @media (min-width: 600px) {
         width: 500px;
-        height: 375px;
+        height: 475px;
       }
 
       @media (min-width: 800px) {
         width: 600px;
-        height: 590px;
+        height: 560px;
+
+        &:nth-child(2) {
+          button {
+            margin-top: 1rem;
+          }
+        }
       }
 
       @media (min-width: 1000px) {
         width: 800px;
-        height: 625px;
+        height: 600px;
+
+        &:nth-child(2) {
+          button {
+            margin-top: 1.3rem;
+          }
+        }
       }
 
       h3 {
         height: 25%;
+        
+        @media (min-width: 600px) and (max-width: 799px) {
+          height: 20%;
+        }
       }
 
       .Carousel {
@@ -72,7 +83,7 @@ $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
         color: $text-light;
 
         @media (min-width: 600px) and (max-width: 799px) {
-          height: 50% !important;
+          height: 40% !important;
         }
 
         @media (min-width: 600px) {
@@ -86,7 +97,45 @@ $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
       }
 
       button {
-        margin: 0 auto;
+        margin: 1.75rem auto 0;
+
+        @media (min-width: 600px) {
+          margin-top: 0;
+          &:nth-child(2) {
+            margin-top: 6rem;
+          }
+        }
+      }
+    }
+
+    .ZoomImg {
+      margin: 0 auto;
+
+      h2 {
+        position: absolute;
+        width: 100%;
+        margin: 4% auto 0;
+        text-align: center;
+      }
+
+      img {
+        margin-top: 1.45rem;
+
+        @media (min-width: 600px) {
+          margin-top: 1.45rem;
+        }
+
+        @media (min-width: 800px) {
+          margin-top: 1.75rem;
+        }
+
+        @media (min-width: 1000px) {
+          margin-top: 0;
+        }
+
+        @media (min-width: 1200px) {
+          margin-top: -6.7rem;
+        }
       }
     }
   }

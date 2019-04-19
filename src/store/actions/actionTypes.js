@@ -1,0 +1,2 @@
+export const WEBSITES_ITEMS = 'WEBSITES_ITEMS';
+export const GAMES_ITEMS = 'GAMES_ITEMS';

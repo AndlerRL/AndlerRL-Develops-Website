@@ -3,6 +3,7 @@ import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 
 import Home from '../../components/Home/Home';
 import Contact from '../../components/Contact/Contact';
+import Projects from '../../components/Home/Main/Projects/Projects';
 import Layout from '../Layout/Layout';
 
 import './App.css';
@@ -13,6 +14,7 @@ class App extends Component {
       <Switch>
         <Route path="/home" component={Home} />
         <Route path="#contact-me" component={Contact} />
+        <Route path="#projects" component={Projects} />
         <Redirect to="/home" />
       </Switch>
     )
@@ -25,4 +27,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
