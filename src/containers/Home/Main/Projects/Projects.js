@@ -5,16 +5,16 @@ import AOS from 'aos';
 import M from 'materialize-css';
 
 import { updateObject } from '../../../../shared/utility';
-import Modal from '../../../UI/Modal/Modal';
-import CarouselItem from '../../../UI/Carousel/CarouselItem/CarouselItem';
-import Carousel from '../../../UI/Carousel/Carousel';
-import Btn from '../../../UI/Btn/Btn';
+import Modal from '../../../../components/UI/Modal/Modal';
+import CarouselItem from '../../../../components/UI/Carousel/CarouselItem/CarouselItem';
+import Carousel from '../../../../components/UI/Carousel/Carousel';
+import Btn from '../../../../components/UI/Btn/Btn';
 import scss from './Projects.scss';
 
 class projects extends React.Component {
   state = {
-    zoomImgWeb: false,
-    zoomImgGame: false
+    zoomImg: false,
+    modalImg: ''
   }
 
   projects = React.createRef();
@@ -40,31 +40,21 @@ class projects extends React.Component {
     AOS.refresh();
   }
 
-  toggleZoomImgWeb = (e, image) => {
+  toggleZoomImg = (e, image) => {
     const imgUpdate = updateObject(this.props.websiteImgs[image], {
-      [image]: image
+      image: image
     })
+
     this.setState({
-      zoomImgWeb: true
+      zoomImg: true,
+      modalImg: imgUpdate.image
     })
-    console.log(imgUpdate);
-    return imgUpdate
   }
 
-  toggleZoomImgGame = (e, image) => {
-    const imgUpdate = updateObject(this.props.gameImgs[image], {
-      [image]: image
-    })
+  closeImg = () => {
     this.setState({
-      zoomImgWeb: true
-    })
-    console.log(imgUpdate);
-    return imgUpdate
-  }
-
-  closeImgWeb = () => {
-    this.setState({
-      zoomImgWeb: false
+      zoomImg: false,
+      modalImg: ''
     })
   }
 
@@ -74,7 +64,7 @@ class projects extends React.Component {
         <CarouselItem
           img={img}
           key={key}
-          zoom={e => this.toggleZoomImgWeb(e, img)} />
+          zoom={e => this.toggleZoomImg(e, img)} />
       )
     });
     const carouselGame = this.props.gameImgs.map((img, key) => {
@@ -82,31 +72,18 @@ class projects extends React.Component {
         <CarouselItem
           img={img}
           key={key}
-          zoom={e => this.toggleZoomImgGame(e, img)} />
+          zoom={e => this.toggleZoomImg(e, img)} />
       )
     });
-    const modalWeb = (
+    const modal = (
       <Modal 
-        modalClosed={this.closeImgWeb}
-        show={this.state.zoomImgWeb}>
+        modalClosed={this.closeImg}
+        show={this.state.zoomImg}>
         <div className={'carousel carousel-slider z-depth-2'}>
           <span className={['carousel-item', scss.ZoomImg].join(' ')}>
           <img
-            src={this.toggleZoomImgWeb}
+            src={this.state.modalImg}
             alt="zoomImgWeb" />
-          </span>
-        </div>
-      </Modal>
-    )
-    const modalGame = (
-      <Modal 
-        modalClosed={this.toggleZoomImgGame}
-        show={this.state.zoomImgGame}>
-        <div className={'carousel carousel-slider z-depth-2'}>
-          <span className={['carousel-item', scss.ZoomImg].join(' ')}>
-            <img
-              src={this.toggleZoomImgGame}
-              alt="zoomImgGame" />
           </span>
         </div>
       </Modal>
@@ -115,7 +92,7 @@ class projects extends React.Component {
     return (
       <div className={scss.Projects} id="projects" ref={this.projects}>
         <div className={scss.BgOverlay}>
-          { this.state.zoomImgWeb ? modalWeb : modalGame }
+          { modal }
           <div className={['z-depth-3', scss.Card].join(' ')} data-aos="zoom-out-up">
             <h3>Websites && Designs</h3>
             <div className={scss.Carousel}>

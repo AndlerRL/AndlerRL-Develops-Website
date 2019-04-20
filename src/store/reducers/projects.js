@@ -7,6 +7,7 @@ import cuisineFraiche from '../../assets/images/projects_ss/cuisine-fraiche.png'
 import tribute from '../../assets/images/projects_ss/tribute.png';
 import travelerBlog from '../../assets/images/projects_ss/Traveler-blog.png';
 import spaceInv from '../../assets/images/projects_ss/space-invaders.png';
+import chekers from '../../assets/images/projects_ss/chekers.png';
 
 const initState = {
   websiteImgs: [
@@ -17,7 +18,8 @@ const initState = {
     tribute
   ],
   gameImgs: [
-    spaceInv
+    spaceInv,
+    chekers
   ]
 };
 

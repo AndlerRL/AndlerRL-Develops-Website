@@ -19,7 +19,7 @@ import imgBootstrap from '../../../../assets/images/icons/bootstrap_logo.png';
 import imgFoundation from '../../../../assets/images/icons/foundation_logo.png';
 import imgAxios from '../../../../assets/images/icons/axios_logo.png';
 import imgCreatejs from '../../../../assets/images/icons/createjs_logo.png'
-import ImgTech from '../../../UI/ImgTech/ImgTech';
+import ImgTech from '../../../../components/UI/ImgTech/ImgTech';
 
 import scss from './Techs.scss';
 

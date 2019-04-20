@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ImgMain from '../../UI/ImgMain/ImgMain';
+import ImgMain from '../../../components/UI/ImgMain/ImgMain';
 
 import scss from './Main.scss';
 
