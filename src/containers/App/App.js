@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 
-import Home from '../../components/Home/Home';
+import Home from '../Home/Home';
 import Contact from '../../components/Contact/Contact';
-import Projects from '../../components/Home/Main/Projects/Projects';
+import Projects from '../Home/Main/Projects/Projects';
 import Layout from '../Layout/Layout';
 
 import './App.css';
