@@ -6,7 +6,7 @@ import Contact from '../Contact/Contact';
 import Projects from '../Home/Main/Projects/Projects';
 import Layout from '../Layout/Layout';
 
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {
