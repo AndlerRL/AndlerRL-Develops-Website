@@ -2,7 +2,7 @@ import React from 'react';
 
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
-import Contact from '../../components/Contact/Contact';
+import Contact from '../Contact/Contact';
 
 import scss from './Layout.scss';
 

@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Righteous-Regular";
+  src: url('./assets/fonts/Righteous/Righteous-Regular.ttf');
+}
+@font-face {
+  font-family: "Tajawal-medium";
+    src: url('./assets/fonts/Tajawal/Tajawal-Medium.ttf');
+}
+@font-face {
+  font-family: "Tajawal-light";
+  src: url('./assets/fonts/Tajawal/Tajawal-Light.ttf');
+}
+@font-face {
+  font-family: "Tajawal-regular";
+  src: url('./assets/fonts/Tajawal/Tajawal-Medium.ttf');
+}
+@font-face {
+  font-family: "Tajawal-bold";
+  src: url('./assets/fonts/Tajawal//Tajawal-Bold.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Tajawal-light", "Tajawal-regular", "Tajawal-medium", "Tajawal-bold", 'Tajawal', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-base-color: beige;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Righteous-regular", 'Righteous', cursive;
+  line-height: 1.5;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

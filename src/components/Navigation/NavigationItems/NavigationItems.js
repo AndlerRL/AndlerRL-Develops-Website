@@ -12,11 +12,11 @@ const navigationItems = props => {
   contactRef.current = contact
   projectRef.current = project
   
-  const refCallbackP = () => {
+  const ref_cb_p = () => {
     projectRef.current.focus()
   }
 
-  const refCallbackC = () => {
+  const ref_cb_c = () => {
     contactRef.current.focus();
   }
 
@@ -28,12 +28,12 @@ const navigationItems = props => {
     </NavigationItem>
     <NavigationItem
       exact link="#projects"
-      clicked={() => this.projectRef.current.refCallbackP()} >
+      clicked={() => this.projectRef.current.ref_cb_p()} >
       Projects
     </NavigationItem>
     <NavigationItem
       exact link="#contact-me"
-      clicked={() => this.contactRef.current.refCallbackC()} >
+      clicked={() => this.contactRef.current.ref_cb_c()} >
       Contact
     </NavigationItem>
   </ul>

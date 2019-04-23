@@ -1,4 +1,7 @@
 export {
   websiteItems,
   gamesItems
-} from './projects.js'
+} from './projects'
+export {
+  contactRequest
+} from './contact';
