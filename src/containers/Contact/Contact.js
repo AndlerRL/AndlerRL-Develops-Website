@@ -79,8 +79,9 @@ class Contact extends React.Component {
     e.preventDefault();
     const formData = {};
 
-    for (let formEleId in this.state.contactForm)
-      formData[formEleId] = this.state.orderForm[formEleId].value;
+    for (let formEleId in this.state.contactForm) {
+      formData[formEleId] = this.state.contactForm[formEleId].value;
+    }
 
     const contactReq = {
       contactData: formData
@@ -155,7 +156,9 @@ class Contact extends React.Component {
           show={this.props.contactComplete}>
           { complete }
         </Modal>
-        <ContactData>
+        <ContactData
+          submit={this.contactReqHandler}
+          disabled={!this.state.formIsValid}>
           { form }
         </ContactData>
       </React.Fragment>
@@ -173,7 +176,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onContactReq: contactData => dispatch(action)
+    onContactReq: contactData => dispatch(action.contactRequest(contactData))
   }
 }
 

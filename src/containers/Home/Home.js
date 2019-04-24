@@ -1,7 +1,7 @@
 import React from 'react';
 import AOS from 'aos';
 
-import Projects from './Main/Projects/Projects';
+import Projects from './Projects/Projects';
 import HomePage from '../../components/Home/Home';
 
 class Home extends React.Component {

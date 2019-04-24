@@ -19,7 +19,7 @@ const projectCards = props => {
               { props.carouselWeb }
             </Carousel>
           </div>
-          <Btn type="Primary"> Show More </Btn>
+          <Btn type="Primary" disabled={true}> Show More </Btn>
         </div>
 
         <div className={['z-depth-3', scss.Card].join(' ')} data-aos={props.dataAos}>
@@ -29,7 +29,7 @@ const projectCards = props => {
               { props.carouselGame }
             </Carousel>
           </div>
-          <Btn type="Primary"> Show More </Btn>
+          <Btn type="Primary" disabled={true}> Show More </Btn>
         </div>
       </div>
     </div>

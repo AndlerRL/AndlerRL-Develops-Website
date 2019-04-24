@@ -23,7 +23,7 @@ export const contactRequestStart = () => {
 export const contactRequest = contactData => {
   return dispatch => {
     dispatch(contactRequestStart());
-    Axios.post(Axios.instace, contactData)
+    Axios.post(null , contactData)
       .then(res => {
         dispatch(contactRequestSuccess(createHash('sha1').update(res.data.name).digest('hex'), contactData));
       })

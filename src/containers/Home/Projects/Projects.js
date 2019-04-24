@@ -4,9 +4,9 @@ import React from 'react';
 import AOS from 'aos';
 import M from 'materialize-css';
 
-import { updateObject } from '../../../../shared/utility';
-import Modal from '../../../../components/UI/Modal/Modal';
-import CarouselItem from '../../../../components/UI/Carousel/CarouselItem/CarouselItem';
+import { updateObject } from '../../../shared/utility';
+import Modal from '../../../components/UI/Modal/Modal';
+import CarouselItem from '../../../components/UI/Carousel/CarouselItem/CarouselItem';
 import ProjectCards from '../../../components/Home/ProjectCards/ProjectCards';
 
 import scss from './Projects.scss';

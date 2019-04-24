@@ -3,7 +3,7 @@ import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 
 import Home from '../Home/Home';
 import Contact from '../Contact/Contact';
-import Projects from '../Home/Main/Projects/Projects';
+import Projects from '../Home/Projects/Projects';
 import Layout from '../Layout/Layout';
 
 import './App.scss';

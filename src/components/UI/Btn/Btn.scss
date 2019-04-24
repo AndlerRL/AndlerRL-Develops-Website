@@ -2,6 +2,9 @@ $btn-primary: #ff6f00;
 $btn-text-primary: #212121;
 $btn-secundary: #039be5;
 $btn-text-secundary: #eee;
+$btn-primary-disabled: #ffecb3;
+$btn-secundary-disabled: #e1f5fe;
+$btn-text-disabled: #bdbdbd;
 $ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
 
@@ -20,10 +23,9 @@ $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
   min-height: 3.4rem;
   min-width: 6rem;
   margin: 1rem;
-  font-weight: 600;
+  font-family: "Tajawal-bold";
   box-shadow: none;
   transition: all .25s $fast-out-linear-in 100ms;
-
   &:first-of-type {
     margin-left: 0;
   }
@@ -41,6 +43,11 @@ $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
 .Primary {
   color: $btn-text-primary !important;
   background-color: $btn-primary !important;
+  &:disabled {
+    background-color: $btn-primary-disabled !important;
+    color: $btn-text-disabled !important;
+    cursor: not-allowed !important;
+  }
   &:hover {
     background-color: #ffb300 !important;
     font-weight: 500;
@@ -50,9 +57,14 @@ $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
 .Secondary {
   color: $btn-secundary;
   font-weight: 200;
-
+  &:disabled {
+    background-color: $btn-secundary-disabled !important;
+    color: $btn-text-disabled !important;
+    cursor: not-allowed !important;
+  }
   &:hover {
     background-color: #434343 !important;
     color: #eee
   }
+
 }

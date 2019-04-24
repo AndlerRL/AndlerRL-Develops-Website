@@ -14,9 +14,14 @@ const contact = props => {
         <h4>Like what you see?</h4>
         <h6>Send me your request so we can talk about bussiness</h6>
 
-        <form >
+        <form
+          action="mailto:info@andlerrl.co"
+          method="POST"
+          onSubmit={props.submit}>
           { props.children }
-          <Btn type="Secondary"> Send Request </Btn>            
+          <Btn
+            type="Secondary"
+            disabled={props.disabled}> Send Request </Btn>            
         </form>
       </div>
 

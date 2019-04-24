@@ -7,7 +7,7 @@ $ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
 
 .Projects {
-  background: url('../../../../assets/images/projects_bg.jpg') no-repeat fixed;
+  background: url('../../../assets/images/projects_bg.jpg') no-repeat fixed;
   background-size: cover;
   background-position: center center;
   margin: 12rem auto -15rem;
@@ -106,37 +106,6 @@ $fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1);
           &:nth-child(2) {
             margin-top: 6rem;
           }
-        }
-      }
-    }
-
-    .ZoomImg {
-      margin: 0 auto;
-
-      h2 {
-        position: absolute;
-        width: 100%;
-        margin: 4% auto 0;
-        text-align: center;
-      }
-
-      img {
-        margin-top: 1.45rem;
-
-        @media (min-width: 600px) {
-          margin-top: 1.45rem;
-        }
-
-        @media (min-width: 800px) {
-          margin-top: 1.75rem;
-        }
-
-        @media (min-width: 1000px) {
-          margin-top: 0;
-        }
-
-        @media (min-width: 1200px) {
-          margin-top: -6.7rem;
         }
       }
     }
