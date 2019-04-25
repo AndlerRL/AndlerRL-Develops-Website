@@ -3,8 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initState = {
   isLoading: false,
-  contactComplete: false,
-  contacts: []
+  contactComplete: false
 };
 
 const failure = (state, action) => {
@@ -19,15 +18,16 @@ const started = (state, action) => {
   })
 };
 const contactRequestSuccess = (state, action) => {
-  const newContact = updateObject(action.contactData, {
-    id: action.contactId    
-  })
   return updateObject(state, {
     isLoading: false,
-    contactComplete: true,
-    contacts: state.contacts.concat(newContact)
+    contactComplete: true
   })
 };
+const contactCompleteClose = (state, action) => {
+  return updateObject(state, {
+    contactComplete: false
+  })
+}
 
 const contactReducer = (state = initState, action) => {
   switch (action.type) {
@@ -37,6 +37,8 @@ const contactReducer = (state = initState, action) => {
       return contactRequestSuccess(state, action);
     case actionTypes.CONTACT_REQUEST_FAIL:
       return failure(state, action);
+    case actionTypes.CONTACT_REQUEST_CLOSE:
+      return contactCompleteClose(state, action);
     default:
       return state;
   }

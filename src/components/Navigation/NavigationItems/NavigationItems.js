@@ -23,16 +23,16 @@ const navigationItems = props => {
   return (
   <ul className={scss.NavigationItems}>
     <NavigationItem
-      exact link="/home">
+      exact link="/">
       Home
     </NavigationItem>
     <NavigationItem
-      exact link="#projects"
+      link="#projects"
       clicked={() => this.projectRef.current.ref_cb_p()} >
       Projects
     </NavigationItem>
     <NavigationItem
-      exact link="#contact-me"
+      link="#contact-me"
       clicked={() => this.contactRef.current.ref_cb_c()} >
       Contact
     </NavigationItem>

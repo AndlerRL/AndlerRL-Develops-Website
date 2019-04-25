@@ -38,7 +38,9 @@ const input = props => {
         className={invalid}
         {...props.elementConfig}
         value={props.value}
-        onChange={ props.changed} />
+        id={props.id}
+        name={props.name}
+        onChange={props.changed} />
         break;
     case ('email'):
       inputEle = <input
@@ -46,7 +48,9 @@ const input = props => {
         className={invalid}
         {...props.elementConfig}
         value={props.value}
-        onChange={ props.changed} />
+        id={props.id}
+        name={props.name}
+        onChange={props.changed} />
       break;
     case ('textarea'):
       inputEle = <textarea
@@ -54,7 +58,8 @@ const input = props => {
         className={"materialize-textarea " + invalid}
         {...props.elementConfig}
         value={props.value}
-        onChange={ props.changed} />
+        name={props.name}
+        onChange={props.changed} />
         break;
     default:
       inputEle = <input
@@ -62,6 +67,8 @@ const input = props => {
         ref={props.inputRef}
         {...props.elementConfig}
         value={props.value}
+        id={props.id}
+        name={props.name}
         onChange={props.changed} />
   }
 

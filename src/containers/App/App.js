@@ -12,10 +12,10 @@ class App extends Component {
   render() {
     const routes = ( 
       <Switch>
-        <Route path="/home" component={Home} />
+        <Route path="/" component={Home} />
         <Route path="#contact-me" component={Contact} />
         <Route path="#projects" component={Projects} />
-        <Redirect to="/home" />
+        <Redirect to="/" />
       </Switch>
     )
 

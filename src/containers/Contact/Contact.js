@@ -8,6 +8,7 @@ import * as action from '../../store/actions/index';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Modal from '../../components/UI/Modal/Modal';
 import Input from '../../components/UI/Input/Input';
+import IconFA from '../../components/UI/Icons/IconsFA';
 import ContactData from '../../components/Contact/Contact';
 import Loader from '../../components/UI/Loader/Loader';
 
@@ -86,7 +87,7 @@ class Contact extends React.Component {
     const contactReq = {
       contactData: formData
     }
-
+    console.log(contactReq);
     this.props.onContactReq(contactReq);
   }
 
@@ -111,8 +112,18 @@ class Contact extends React.Component {
       formIsValid: formIsValid
     })
   }
+
+  completeCloseHandler = () => {
+    this.props.onContactReqClose(false)
+  }
   
   render () {
+    const success = {
+      backgroundColor: 'transparent',
+      padding: '64px',
+      height: '100%',
+      textAlign: 'center'
+    }
     const formElementsArray = [];
 
     for (let key in this.state.contactForm)
@@ -132,6 +143,8 @@ class Contact extends React.Component {
         elementConfig={formEle.config.elementConfig}
         value={formEle.config.value}
         label={formEle.config.label}
+        id={formEle.id}
+        name={formEle.id}
         for={formEle.id}
         changed={e => this.inputChangedHandler(e, formEle.id)} />
     ))
@@ -143,9 +156,9 @@ class Contact extends React.Component {
 
     if (this.props.contactComplete)
       complete = (
-        <div>
-          <h1>Thank you to make contact with me!</h1>
-          <p>Soon enough I will reach you via email, staty tuned!</p>
+        <div style={success}>
+          <h1>Thank you! <IconFA type="fas" icon="heart" size="6rem" margin="0 2rem"></IconFA></h1>
+          <p style={{fontSize: '1.5rem'}}>I received your submission. Soon enough I will reach you via email – stay tuned!</p>
         </div>
       )
 
@@ -176,7 +189,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onContactReq: contactData => dispatch(action.contactRequest(contactData))
+    onContactReq: contactData => dispatch(action.contactRequest(contactData)),
+    onContactReqClose: close => dispatch(action.contactCompleteClose(close))
   }
 }
 

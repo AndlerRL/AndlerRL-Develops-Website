@@ -15,8 +15,8 @@ const contact = props => {
         <h6>Send me your request so we can talk about bussiness</h6>
 
         <form
-          action="mailto:info@andlerrl.co"
-          method="POST"
+          action={props.action}
+          method={props.method}
           onSubmit={props.submit}>
           { props.children }
           <Btn

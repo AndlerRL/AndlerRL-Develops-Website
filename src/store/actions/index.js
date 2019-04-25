@@ -3,5 +3,6 @@ export {
   gamesItems
 } from './projects'
 export {
-  contactRequest
+  contactRequest,
+  contactCompleteClose
 } from './contact';
