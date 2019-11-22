@@ -8,8 +8,8 @@ $lead-light: #ff6f00;
   background: url('../../assets/images/Love-Coding.gif') no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-position: -10px -275px;
-  width: 100vw;
+  background-position: center -275px;
+  width: 100%;
   height: 75vh;
   margin: 0;
   padding: 0;
@@ -18,14 +18,14 @@ $lead-light: #ff6f00;
   z-index: 0;
 
   @media (min-width: 600px) {
-    background-position: -100px -200px;
+    background-position: center -200px;
   }
 }
 
 .Logo {
   width: 22.5rem;
   height: 22.5rem;
-  top: 28rem;
+  top: 22.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +37,7 @@ $lead-light: #ff6f00;
   z-index: 11;
 
   @media (min-width: 600px) {
-    top: 27rem;
+    top: 26rem;
     width: 30rem;
     height: 30rem;
     left: calc(50% - 15rem);
@@ -48,9 +48,9 @@ $lead-light: #ff6f00;
   position: relative;
   z-index: 10;
   top: -20rem;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
-  padding: 18rem 16px;
+  padding: 13rem 16px;
   text-align: center;
   background-color: $bg-clear;
   clip-path: polygon(-700px 350px, 100% 0, 100% 100%, -2060px 1000px, 0 0);
@@ -63,7 +63,7 @@ $lead-light: #ff6f00;
   }
 
   @media (min-width: 600px) {
-    padding: 20rem 5rem;
+    padding: 20.5rem 5rem;
     clip-path: polygon(-700px 350px, 100% 0, 100% 100%, -1300px 965px, 0 0);
   }
 
