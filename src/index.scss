@@ -72,6 +72,13 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'Tajawal', "Tajawal-light", sans-serif;
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Righteous', "Righteous-regular", cursive;
+    line-height: 1.5;
+  }
 }
 
 code {
