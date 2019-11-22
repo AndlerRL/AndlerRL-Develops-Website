@@ -13,21 +13,47 @@ $bg: #212121;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  z-index: 100;
+  z-index: 1500;
+
+  .Andler {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    user-select: none;
+
+    h3 {
+      text-transform: uppercase;
+      font-size: 24px;
+      text-shadow: -1px 1px #777,
+      -2px 2px #777,
+      -3px 3px #777,
+      -4px 4px #777,
+      -5px 5px #777;
+      letter-spacing: 2px;
+    }
+  }
 
   nav {
     height: 100%;
     background-color: transparent !important;
     box-shadow: none !important;
     width: 100%;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
   }
 
   .Menu {
     cursor: pointer;
     width: 100%;
-    margin-left: calc(100% - 33px);
     color: #eee;
     padding: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 
     @media (min-width: 500px) {
       display: none;

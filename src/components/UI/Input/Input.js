@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Icon from '../Icons/Icons';
-import IconFA from '../Icons/IconsFA';
+//import IconFA from '../Icons/IconsFA';
 
 import scss from './Input.scss';
 

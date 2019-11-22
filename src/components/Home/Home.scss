@@ -5,12 +5,12 @@ $text-dark: #ffca28;
 $lead-light: #ff6f00;
 
 .Bg {
-  background: url('../../assets/images/Love-Coding.gif');
+  background: url('../../assets/images/Love-Coding.gif') no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: -10px -275px;
   width: 100vw;
-  height: 50rem;
+  height: 75vh;
   margin: 0;
   padding: 0;
   margin-top: 64px;
@@ -18,29 +18,29 @@ $lead-light: #ff6f00;
   z-index: 0;
 
   @media (min-width: 600px) {
-    background-position: -100px -300px;
+    background-position: -100px -200px;
   }
 }
 
 .Logo {
-  background: url('../../assets/images/logo-lg.png') no-repeat;
-  background-position: center center;
-  background-size: 100%; 
-  width: 20rem;
-  height: 20rem;
-  top: 30rem;
+  width: 22.5rem;
+  height: 22.5rem;
+  top: 28rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   margin: 0 auto;
   position: absolute;
   text-align: center;
-  left: calc(50% - 10rem);
-  border: 2px solid;
+  left: calc(50% - 11.25rem);
   z-index: 11;
 
   @media (min-width: 600px) {
-    width: 25rem;
-    height: 25rem;
-    left: calc(50% - 12.5rem);
+    top: 27rem;
+    width: 30rem;
+    height: 30rem;
+    left: calc(50% - 15rem);
   }
 }
 
@@ -53,7 +53,7 @@ $lead-light: #ff6f00;
   padding: 18rem 16px;
   text-align: center;
   background-color: $bg-clear;
-  clip-path: polygon(-700px 350px, 100% 0, 100% 100%, -1000px 1000px, 0 0);
+  clip-path: polygon(-700px 350px, 100% 0, 100% 100%, -2060px 1000px, 0 0);
 
   .LeadIn::first-letter {
     font-size: 4rem;
@@ -64,7 +64,7 @@ $lead-light: #ff6f00;
 
   @media (min-width: 600px) {
     padding: 20rem 5rem;
-    clip-path: polygon(-700px 350px, 100% 0, 100% 100%, -1000px 965px, 0 0);
+    clip-path: polygon(-700px 350px, 100% 0, 100% 100%, -1300px 965px, 0 0);
   }
 
   h1 {

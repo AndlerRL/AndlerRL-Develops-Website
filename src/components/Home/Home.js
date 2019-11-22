@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Logo from '../UI/Logo/LogoImg/LogoImg';
 import { MainLeft, MainRight } from './Main/Main';
 import Techs from './Techs/Techs';
 import imgHtml from '../../assets/images/icons/html5_logo.png';
@@ -11,7 +12,8 @@ import scss from './Home.scss';
 const home = props => (
   <React.Fragment>
     <div className={scss.Bg}></div>
-    <div className={'z-depth-1-half ' + scss.Logo}></div>
+    <Logo class={scss.Logo}
+      height="95%" />
     <div className={'z-depth-5 ' + scss.HomeHead}>
       <h1>Andler Develops</h1>
 

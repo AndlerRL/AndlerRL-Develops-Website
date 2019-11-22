@@ -9,11 +9,18 @@ const toolbar = props => {
   return (
   <header className={'z-depth-2 ' + scss.Toolbar}>
     <div
-      onClick={props.toggleMenu}
       className={scss.Menu}>
-      <Icon size="small">menu</Icon>
+      <div className={scss.Andler} onClick={props.goHome}>
+        <h3>andler devs</h3>
+      </div>
+      <Icon 
+        size="small"
+        clicked={props.toggleMenu}>menu</Icon>
     </div>
     <nav className={scss.DesktopOnly}>
+      <div className={scss.Andler} onClick={props.goHome}>
+        <h3>andler devs</h3>
+      </div>
       <NavigationItems />
     </nav>
   </header>

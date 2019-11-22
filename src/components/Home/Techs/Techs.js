@@ -19,6 +19,7 @@ import imgBootstrap from '../../../assets/images/icons/bootstrap_logo.png';
 import imgFoundation from '../../../assets/images/icons/foundation_logo.png';
 import imgAxios from '../../../assets/images/icons/axios_logo.png';
 import imgCreatejs from '../../../assets/images/icons/createjs_logo.png'
+import imgGatsby from '../../../assets/images/icons/gatsby.png'
 import ImgTech from '../../UI/ImgTech/ImgTech';
 
 import scss from './Techs.scss';
@@ -34,6 +35,9 @@ class techs extends React.Component {
     },{
       logo: imgRedux,
       tech: 'Redux'
+    },{
+      logo: imgGatsby,
+      tech: 'Gatsby.js'
     },{
       logo: imgAngular,
       tech: 'Angular 1.x'
@@ -85,7 +89,7 @@ class techs extends React.Component {
   componentDidMount () {
     AOS.init({
       duration: 1000,
-      offset: 400
+      offset: 100
     })
   }
 

@@ -23,7 +23,8 @@ class Layout extends React.Component {
     return (
       <React.Fragment>
         <Toolbar 
-          toggleMenu={this.sideDrawerToggleHandler} />
+          toggleMenu={this.sideDrawerToggleHandler}
+          goHome={this.props.goHome} />
         <SideDrawer 
           open={this.state.showSideDrawer}
           closed={this.sideDrawerToggleHandler}
