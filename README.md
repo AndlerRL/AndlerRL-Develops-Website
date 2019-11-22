@@ -3,7 +3,7 @@
 <strong><code>v0.0.1</code></strong>
 
 <p>
-  A website porfolio made by <code>AndlerRL Develops</code> that showsup all the repositories that I (will, in some cases) made. It will be not only the portfolio, also shall be as a web curriculum vitae.
+A website porfolio made by <code>AndlerRL Develops</code> that showsup all the repositories that I (will, in some cases) made. It will be not only the portfolio, also shall be as a web curriculum vitae.
 </p>
 
 <strong><code>v0.0.780c</code></strong>
