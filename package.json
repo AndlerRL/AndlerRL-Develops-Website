@@ -1,5 +1,5 @@
 {
-  "name": "andlerrl-dev-website",
+  "name": "andlerrl-develops",
   "version": "0.6.21",
   "private": true,
   "dependencies": {
@@ -79,7 +79,6 @@
     "watch-components": "npm run scss-compile-components",
     "watch-containers": "npm run scss-compile-containers",
     "watch-ui": "npm run scss-compile-ui"
-    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
