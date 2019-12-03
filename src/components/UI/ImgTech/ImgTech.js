@@ -1,6 +1,6 @@
 import React from 'react';
 
-import scss from './ImgTech.scss';
+import scss from 'components/UI/scss/ImgTech.scss';
 
 const imgTech = props => (
   <div
