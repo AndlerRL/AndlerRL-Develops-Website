@@ -79,6 +79,7 @@
     "watch-components": "npm run scss-compile-components",
     "watch-containers": "npm run scss-compile-containers",
     "watch-ui": "npm run scss-compile-ui"
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
