@@ -1,0 +1,30 @@
+.ZoomImg {
+  margin: 0 auto;
+
+  h2 {
+    position: absolute;
+    width: 100%;
+    margin: 4% auto 0;
+    text-align: center;
+  }
+
+  img {
+    margin-top: 1.45rem;
+
+    @media (min-width: 600px) {
+      margin-top: 1.45rem;
+    }
+
+    @media (min-width: 800px) {
+      margin-top: 1.75rem;
+    }
+
+    @media (min-width: 1000px) {
+      margin-top: 0;
+    }
+
+    @media (min-width: 1200px) {
+      margin-top: -6.7rem;
+    }
+  }
+}

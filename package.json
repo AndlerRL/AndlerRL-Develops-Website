@@ -50,6 +50,7 @@
     "react-app-polyfill": "^0.2.2",
     "react-dev-utils": "^8.0.0",
     "react-dom": "^16.8.6",
+    "react-images": "^1.0.0",
     "react-konva": "^16.8.6",
     "react-reconciler": "^0.20.4",
     "react-redux": "^7.0.2",
@@ -71,6 +72,13 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "scss-compile-components": "node-sass -rw src/components/scss/ -o src/components/css/",
+    "scss-compile-containers": "node-sass -rw src/containers/scss/ -o src/containers/css/",
+    "scss-compile-ui": "node-sass -rw src/components/UI/scss/ -o src/components/UI/css/",
+    "watch-components": "npm run scss-compile-components",
+    "watch-containers": "npm run scss-compile-containers",
+    "watch-ui": "npm run scss-compile-ui"
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
