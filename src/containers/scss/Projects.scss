@@ -11,19 +11,20 @@
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     background-color: #222;
-    height: 33.333%;
     width: 100%;
     margin: 0;
+    height: 33.333%;
 
     img {
       height: auto;
-      width: auto;
+      width: 100%;
     }
 
     @media screen and (min-width: 650px) {
       height: 41.666%;
 
       img {
+        width: auto;
         height: 100%;
       }
     }
@@ -72,8 +73,8 @@
 
   .ZoomSiteItemDescription {
     height: 33.333%;
-    width: 83.333%;
-    padding: 16px 0;
+    width: 100%;
+    padding: 16px 8.333%;
     white-space: pre-line;
     font-size: 16px;
     overflow-y: auto;

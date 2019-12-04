@@ -62,7 +62,6 @@ const projects = (props) => {
   }, [entries, observer])
 
   const toggleZoomImg = (e, site) => {
-    console.log(site)
     const imgUpdate = updateObject(props.websites[site], {
       site
     })
@@ -109,8 +108,7 @@ const projects = (props) => {
           fallbackSrc={fallbackImage}
           isLazy
           alt="zoomImgWeb"
-          style={{borderRadius: 0}}
-          height="100%" />
+          style={{borderRadius: 0}} />
         { 
           modalSite ? (
             <React.Fragment>
