@@ -15,8 +15,8 @@ import ProjectCards from 'components/Home/ProjectCards';
 import scss from 'containers/scss/Projects.scss';
 
 const projects = (props) => {
-  const [zoomImg, setZoomImg] = useState(false)
-  const [modalImg, setModalImg] = useState(fallbackImage)
+  const [zoomSite, setZoomSite] = useState(false)
+  const [modalSite, setModalSite] = useState(fallbackImage)
 
   useEffect(() => {
     AOS.init({
@@ -44,7 +44,7 @@ const projects = (props) => {
   })
 
   useEffect(() => {
-    if (props.websiteImgs.length || props.gameImgs) {
+    if (props.websites.length || props.games) {
       let img = Array.from(document.getElementsByClassName('LazyImg'));
       setElements(img)
     }
@@ -61,54 +61,80 @@ const projects = (props) => {
     })
   }, [entries, observer])
 
-  const toggleZoomImg = (e, image) => {
-    const imgUpdate = updateObject(props.websiteImgs[image], {
-      image
+  const toggleZoomImg = (e, site) => {
+    console.log(site)
+    const imgUpdate = updateObject(props.websites[site], {
+      site
     })
 
-    setZoomImg(true)
-    setModalImg(imgUpdate.image)
+    setZoomSite(true)
+    setModalSite(imgUpdate.site)
   }
 
   const closeImg = () => {
-    setZoomImg(false)
-    setModalImg(fallbackImage)
+    setZoomSite(false)
   }
   
-  const carouselWeb = props.websiteImgs.map((img, key) => (
+  const carouselWeb = props.websites.map((w, key) => (
     <CarouselItem
-      src={img}
+      src={w.img}
       key={key}
       fallbackSrc={fallbackImage}
       isLazy
       alt="web_projects"
-      zoom={e => toggleZoomImg(e, img)} />
+      zoom={e => toggleZoomImg(e, w)} />
   ));
 
-  const carouselGame = props.gameImgs.map((img, key) => (
+  const carouselGame = props.games.map((g, key) => (
     <CarouselItem
-      src={img}
+      src={g}
       key={key}
       fallbackSrc={fallbackImage}
       isLazy
       alt="game_projects"
-      zoom={e => toggleZoomImg(e, img)} />
+      zoom={e => toggleZoomImg(e, g)} />
   ));
+  
+  const siteCheck = modalSite.url &&
+    modalSite.url.indexOf(/www.behance.net/g) === -1 ?
+      'Website' : 'On Behance'
 
   const modal = (
     <Modal 
       modalClosed={closeImg}
-      show={zoomImg}>
-      <div className={'carousel carousel-slider z-depth-2'}>
-        <span className={['carousel-item', scss.ZoomImg].join(' ')}>
+      show={zoomSite}>
+      <div className={scss.ZoomSiteItem}>
         <Img
-          src={modalImg}
+          src={modalSite ? modalSite.img : fallbackImage}
           fallbackSrc={fallbackImage}
           isLazy
           alt="zoomImgWeb"
           style={{borderRadius: 0}}
           height="100%" />
-        </span>
+        { 
+          modalSite ? (
+            <React.Fragment>
+              <div className={scss.ZoomSiteItemTitle}>
+                <h4>{modalSite.title}</h4>
+                <a href={modalSite.url} target="_blank" rel="noopener noreferrer">
+                  {`${modalSite.title} – ${siteCheck}`}
+                </a>
+              </div>
+              <div className={scss.ZoomSiteItemDescription}>
+                {modalSite.description}
+              </div>
+              <div className={scss.ZoomSiteItemTechsContainer}>
+                {
+                  modalSite.techs && modalSite.techs.map((tech, i) => (
+                    <div className={scss.TechsItem} key={i}>
+                      {tech}
+                    </div>
+                  ))
+                }
+              </div>
+            </React.Fragment>
+          ) : null
+        }
       </div>
     </Modal>
   )
@@ -124,8 +150,8 @@ const projects = (props) => {
 
 const mapStateToProps = state => {
   return {
-    websiteImgs: state.projects.websiteImgs,
-    gameImgs: state.projects.gameImgs
+    websites: state.projects.websites,
+    games: state.projects.games
   }
 }
 

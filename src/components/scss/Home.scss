@@ -36,12 +36,11 @@ $lead-light: #ff6f00;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    box-shadow: 3px 3px 20px #2223;
+    box-shadow: 0px 0px 30px 15px #2223;
     border: 1px solid #2223;
-    background-color: #212121;
-    clip-path: polygon(-16.666vh 16.666vh, 100% 50%, 150% 100%, 0% 125%, 0% 0%);
-    background-clip: content-box;
-    transform: scaleX(-1);
+    background: linear-gradient(45deg, #444 33.333%, #000 100%);
+    clip-path: ellipse(100rem 35% at 149% 21%);
+    transform: scaleY(-1);
   }
 
   @media (min-width: 600px) {

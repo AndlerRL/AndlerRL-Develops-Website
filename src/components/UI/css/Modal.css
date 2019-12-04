@@ -1,16 +1,22 @@
 .Modal {
   position: fixed;
   z-index: 1500;
-  background-color: #ff8f00;
-  width: 83.33vw;
+  background-color: #ffc107;
+  width: 91.66vw;
+  max-width: 1200px;
   border: 2px solid #b2dfdb3a;
   border-radius: 3px;
-  padding: 16px;
-  left: 8.333vw;
-  top: 16vh;
+  left: calc(50% - 45.833vw);
+  top: 12vh;
   box-sizing: border-box;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.16);
-  transition-delay: 200ms; }
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.16) 200ms;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start; }
+  @media screen and (min-width: 1200px) {
+    .Modal {
+      left: calc(50% - 600px); } }
   .Modal > span {
     position: absolute;
     color: #f5f5f5;
@@ -19,49 +25,13 @@
     z-index: 1500;
     border: 2px solid #f5f5f5;
     border-radius: 50%;
+    box-shadow: 0 0 3px 1px #2223;
     width: 46px;
     height: 46px;
     display: flex;
     align-items: center;
-    justify-content: center; }
-  @media (max-width: 500px) {
-    .Modal {
-      display: none; } }
-  @media (min-width: 750px) {
-    .Modal {
-      width: 600px;
-      left: calc(50% - 300px); } }
-  @media (min-width: 900px) {
-    .Modal {
-      width: 750px;
-      left: calc(50% - 375px); } }
-  @media (min-width: 1000px) {
-    .Modal {
-      width: 900px;
-      left: calc(50% - 450px); } }
-  @media (min-width: 1200px) {
-    .Modal {
-      width: 1000px;
-      left: calc(50% - 500px); } }
-  @media (min-width: 1280px) {
-    .Modal {
-      width: 1200px;
-      left: calc(50% - 600px); } }
-  .Modal div {
-    height: 361px;
-    background-color: #e0e0e0; }
-    @media (min-width: 750px) {
-      .Modal div {
-        height: 361px; } }
-    @media (min-width: 900px) {
-      .Modal div {
-        height: 446px; } }
-    @media (min-width: 1000px) {
-      .Modal div {
-        height: 540px; } }
-    @media (min-width: 1200px) {
-      .Modal div {
-        height: 603px; } }
-    @media (min-width: 1280px) {
-      .Modal div {
-        height: 728px; } }
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 50ms; }
+    .Modal > span:hover {
+      transform: scale(1.05); }
