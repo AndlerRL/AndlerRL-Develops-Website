@@ -1,6 +1,7 @@
 import React from 'react';
 
 import scss from 'components/UI/scss/CarouselItem.scss';
+import imgMain from 'components/UI/scss/ImgMain.scss';
 
 const carouselItem = ({
   src,
@@ -18,8 +19,14 @@ const carouselItem = ({
       data-srcset={srcSet}
       data-src={src}
       style={style}
-      className={isLazy ? 'LazyImg' : ''}
+      className={isLazy ? imgMain.LazyImg : null }
       alt={alt} />
+    { isLazy
+      ? <div className={imgMain.LazyImg}>
+        <div></div>  
+        <div></div>  
+        <div></div>  
+      </div> : null }
   </span>
 );
 

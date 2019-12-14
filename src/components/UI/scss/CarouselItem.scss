@@ -2,6 +2,7 @@ span.CarouselItem {
   width: 260px !important;
   height: 100% !important;
   user-select: none !important;
+  position: relative;
 
   @media (min-width: 600px) and (max-width: 799px) {
     width: 200px !important;

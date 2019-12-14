@@ -22,9 +22,15 @@ const imgMain = ({
       data-srcset={srcSet}
       data-src={src}
       style={style}
-      className={isLazy ? 'LazyImg' : ''}
+      className={isLazy ? scss.LazyImg : ''}
       height={height}
       width={width} />
+    { isLazy
+      ? <span className={scss.LazyImg}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </span> : null }
   </div>
 );
 

@@ -13,6 +13,7 @@ import CarouselItem from 'components/UI/Carousel/CarouselItem';
 import ProjectCards from 'components/Home/ProjectCards';
 
 import scss from 'containers/scss/Projects.scss';
+import imgMain from 'components/UI/scss/ImgMain.scss';
 
 const projects = (props) => {
   const [zoomSite, setZoomSite] = useState(false)
@@ -45,7 +46,7 @@ const projects = (props) => {
 
   useEffect(() => {
     if (props.websites.length || props.games) {
-      let img = Array.from(document.getElementsByClassName('LazyImg'));
+      let img = Array.from(document.getElementsByClassName(imgMain.LazyImg));
       setElements(img)
     }
   }, [props.websiteImgs, props.gameImgs, setElements])
@@ -55,7 +56,7 @@ const projects = (props) => {
       if (entry.isIntersecting) {
         let lazyImage = entry.target;
         lazyImage.src = lazyImage.dataset.src;
-        lazyImage.classList.remove('LazyImg');
+        lazyImage.classList.remove(imgMain.LazyImg);
         observer.unobserve(lazyImage);
       }
     })
@@ -108,7 +109,7 @@ const projects = (props) => {
           fallbackSrc={fallbackImage}
           isLazy
           alt="zoomImgWeb"
-          style={{borderRadius: 0}} />
+          style={{ borderRadius: 0 }} />
         { 
           modalSite ? (
             <React.Fragment>

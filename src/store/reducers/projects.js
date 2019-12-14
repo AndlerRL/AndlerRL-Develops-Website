@@ -1,11 +1,11 @@
 import { updateObject } from 'shared/utility';
 import * as actionTypes from '../actions/actionTypes';
 
-import shopaholic from 'assets/images/projects_ss/shopaholic.png';
-import sleepland from 'assets/images/projects_ss/sleepland.png';
-import clicMed from 'assets/images/projects_ss/clicmedicamentos.png';
-import burgerBuilder from 'assets/images/projects_ss/leburgerbuilder.png';
-import pokedex from 'assets/images/projects_ss/pokedex.png';
+import shopaholic from 'assets/images/projects_ss/shopaholic.jpg';
+import sleepland from 'assets/images/projects_ss/sleepland.jpg';
+import clicMed from 'assets/images/projects_ss/clicmedicamentos.jpg';
+import burgerBuilder from 'assets/images/projects_ss/leburgerbuilder.jpg';
+import pokedex from 'assets/images/projects_ss/pokedex.jpg';
 import cuisineFraiche from 'assets/images/projects_ss/cuisine-fraiche.png';
 import tribute from 'assets/images/projects_ss/tribute.png';
 import travelerBlog from 'assets/images/projects_ss/Traveler-blog.png';

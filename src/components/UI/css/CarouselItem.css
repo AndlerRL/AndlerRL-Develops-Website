@@ -1,1 +1,12 @@
-span.CarouselItem{width:260px !important;height:100% !important;user-select:none !important}@media (min-width: 600px) and (max-width: 799px){span.CarouselItem{width:200px !important}}@media (min-width: 600px){span.CarouselItem{width:400px !important;height:100% !important}}
+span.CarouselItem {
+  width: 260px !important;
+  height: 100% !important;
+  user-select: none !important;
+  position: relative; }
+  @media (min-width: 600px) and (max-width: 799px) {
+    span.CarouselItem {
+      width: 200px !important; } }
+  @media (min-width: 600px) {
+    span.CarouselItem {
+      width: 400px !important;
+      height: 100% !important; } }
