@@ -89,7 +89,7 @@ class techs extends React.Component {
   componentDidMount () {
     AOS.init({
       duration: 1000,
-      offset: 100
+      offset: -100
     })
   }
 
@@ -117,7 +117,9 @@ class techs extends React.Component {
     return (
       <div className={scss.Techs}>
         <h3>Techs that I work with.</h3>
-        { techs }
+        <div>
+          { techs }
+        </div>
       </div>
     )
   }

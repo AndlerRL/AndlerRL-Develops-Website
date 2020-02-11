@@ -5,25 +5,21 @@ $bg-dark-light: #ffe57f;
   position: relative;
   box-sizing: border-box;
   margin: 3rem 0;
-  padding: 2rem 1.66rem;
+  padding: 2rem 0;
   text-align: center;
-  &::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
+  display: flex;
+  flex-direction: column;
 
-  @media (min-width: 600px) {
+  @media screen and (min-width: 600px) {
     margin: 3rem 0;
     padding: 2.5rem 1rem;
   }
 
-  div {
-    margin-right: auto;
-    float: left;
-    left: auto;
-    right: auto;
-    min-height: 1px;
-    width: auto;
+  > div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 }

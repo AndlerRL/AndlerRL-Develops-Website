@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; }
+  justify-content: space-between; }
   .ZoomSiteItem > div:first-child {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
@@ -55,7 +55,7 @@
         position: absolute;
         content: '\f35d'; }
   .ZoomSiteItem .ZoomSiteItemDescription {
-    height: 33.333%;
+    height: 41.666%;
     width: 100%;
     padding: 16px 8.333%;
     white-space: pre-line;
@@ -66,12 +66,12 @@
         height: 24.999%; } }
   .ZoomSiteItem .ZoomSiteItemTechsContainer {
     width: 83.333%;
-    height: 8.333%;
-    margin: 0 auto; }
-    .ZoomSiteItem .ZoomSiteItemTechsContainer::after {
-      content: " ";
-      display: table;
-      clear: both; }
+    height: 16.666%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto; }
     .ZoomSiteItem .ZoomSiteItemTechsContainer .TechsItem {
       background-color: #ffe082;
       border-radius: 6px;
@@ -79,7 +79,6 @@
       padding: 4px 8px;
       height: auto;
       width: auto;
-      float: left;
       margin: 1.5% 0.5%;
       display: flex;
       align-items: center;

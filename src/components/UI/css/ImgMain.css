@@ -17,16 +17,16 @@
 
 img.LazyImg {
   width: auto !important;
-  max-width: 100% !important;
+  max-width: 50% !important;
   height: auto !important;
-  max-height: 83.333% !important;
+  max-height: 50% !important;
   animation: beat 2s cubic-bezier(0.86, 0, 0.07, 1) infinite; }
 
 span.LazyImg {
-  top: calc(25% - 32px); }
+  top: calc(21.666% - 32px); }
 
 div.LazyImg {
-  top: calc(50% - 32px); }
+  top: calc(25% - 32px); }
 
 div.LazyImg,
 span.LazyImg {

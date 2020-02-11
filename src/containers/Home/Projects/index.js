@@ -11,6 +11,7 @@ import { updateObject } from 'shared/utility';
 import Modal from 'components/UI/Modal';
 import CarouselItem from 'components/UI/Carousel/CarouselItem';
 import ProjectCards from 'components/Home/ProjectCards';
+import SEO from 'components/SEO';
 
 import scss from 'containers/scss/Projects.scss';
 import imgMain from 'components/UI/scss/ImgMain.scss';
@@ -87,7 +88,7 @@ const projects = (props) => {
 
   const carouselGame = props.games.map((g, key) => (
     <CarouselItem
-      src={g}
+      src={g.img}
       key={key}
       fallbackSrc={fallbackImage}
       isLazy
@@ -137,13 +138,16 @@ const projects = (props) => {
       </div>
     </Modal>
   )
-
+    
   return (
-    <ProjectCards
-      modal={modal}
-      carouselGame={carouselGame}
-      carouselWeb={carouselWeb}
-      dataAos="zoom-out-up" />
+    <React.Fragment>
+      { zoomSite && <SEO modalView="Projects" /> }
+      <ProjectCards
+        modal={modal}
+        carouselGame={carouselGame}
+        carouselWeb={carouselWeb}
+        dataAos="zoom-out-up" />
+    </React.Fragment>
   )
 };
 
