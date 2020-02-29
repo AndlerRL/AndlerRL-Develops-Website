@@ -1,158 +1,88 @@
-import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import ReactGA from 'react-ga';
-import logo from '../../assets/images/thumbnail.jpg';
+/**
+ * SEO component that queries for data with
+ *  Gatsby's useStaticQuery React hook
+ *
+ * See: https://www.gatsbyjs.org/docs/use-static-query/
+ */
 
-const SEO = ({ pageView, modalView }) => {
-  useEffect(() => {
-    ReactGA.initialize('UA-140783181-1', {
-      debug: false,
-      titleCase: false
-    });
-    pageView && ReactGA.pageview(pageView || '/');
-    modalView && ReactGA.modalview(modalView);
-    ReactGA.set({
-      userId: 121294,
-      dimension14: pageView ? 'Visiting' : 'Watching Projects'
-    })
-  }, []);
+import React from "react"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
 
-  const meta = {
-    siteUrl: `https://andler.netlify.com`,
-    siteTitle: `Andler Develops`,
-    siteTitleAlt: `High-end developer you may find.`,
-    siteTitleShort: `Andler Devs`,
-    siteDescription: `High-end developer, designed to use the latest technologies on the market with tons of creativity and aspirations.`,
-    manifest: {
-      themeColor: `#222`,
-      backgroundColor: `#111`,
-    },
-    keywords: ``,
-    googleAnalyticsId: `UA-XXXXX`,
-    facebook: `Your optional Facebook App ID`,
-    twitter: `Your Twitter username`,
-    schema: {
-      '@type': `Person`,
-      author: `Roberto Lucas`,
-    },
-  }
+function SEO({ description, lang, meta, title }) {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            author
+          }
+        }
+      }
+    `
+  )
 
-  const schemaOrg = [
-    {
-      '@context': `http://schema.org`,
-      '@type': `WebSite`,
-      url: meta.siteUrl,
-      name: meta.siteTitle,
-      description: meta.siteDescription,
-      alternateName: meta.siteTitleAlt ? meta.siteTitleAlt : '',
-      author: {
-        '@type': `Person`,
-        name: meta.schema.author,
-      },
-    },
-  ]
+  const metaDescription = description || site.siteMetadata.description
 
   return (
     <Helmet
       htmlAttributes={{
-        lang: 'en_GB'
+        lang,
       }}
-      title={meta.siteTitle}
-      titleTemplate={`${meta.siteTitle}`}
+      title={title}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
-          name: 'description',
-          content: meta.siteDescription,
+          name: `description`,
+          content: metaDescription,
         },
         {
-          property: 'og:title',
-          content: meta.siteTitle
+          property: `og:title`,
+          content: title,
         },
         {
-          property: 'og:description',
-          content: meta.siteDescription,
+          property: `og:description`,
+          content: metaDescription,
         },
         {
-          property: 'og:type',
-          content: 'website', 
+          property: `og:type`,
+          content: `website`,
         },
         {
-          property: 'og:url',
-          content: meta.siteUrl,
+          name: `twitter:card`,
+          content: `summary`,
         },
         {
-          property: 'og:image',
-          content: logo
+          name: `twitter:creator`,
+          content: site.siteMetadata.author,
         },
         {
-          property: 'og:image:type',
-          content: 'image/jpeg'
+          name: `twitter:title`,
+          content: title,
         },
         {
-          property: 'og:image:width',
-          content: '415'
+          name: `twitter:description`,
+          content: metaDescription,
         },
-        {
-          property: 'og:image:height',
-          content: '415'
-        },
-        {
-          property: 'og:image:alt',
-          content: 'Andler Develops Logo'
-        },
-        {
-          property: 'twitter:title',
-          content: meta.siteTitle
-        },
-        {
-          property: 'twitter:description',
-          content: meta.siteDescription,
-        },
-        {
-          property: 'twitter:type',
-          content: 'website', 
-        },
-        {
-          property: 'twitter:url',
-          content: meta.siteUrl,
-        },
-        {
-          property: 'twitter:image',
-          content: logo
-        },
-        {
-          property: 'twitter:image:type',
-          content: 'image/jpeg'
-        },
-        {
-          property: 'twitter:image:width',
-          content: '415'
-        },
-        {
-          property: 'twitter:image:height',
-          content: '415'
-        },
-        {
-          property: 'twitter:image:alt',
-          content: 'Andler Develops Logo'
-        },
-        {
-          name: 'keywords',
-          content: 'andlerrl develops,andlerrl dev,andlerrl, full-stack developer,fullstack developer,portfolio,web portfolio,freelance developer,andler devs,andler develops,andler,andler web'
-        },
-        {
-          name: 'google-site-verification',
-          content: '6c3Ga1g7xk1avVIXbJ_vdJjlp7UDuhiFxSmTjrJjPzw'
-        },
-        {
-          name: 'theme-color',
-          content: '#222'
-        }
       ].concat(meta)}
-    >
-      <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
-    </Helmet>
-  );
-} 
+    />
+  )
+}
 
-export default SEO;
+SEO.defaultProps = {
+  lang: `en`,
+  meta: [],
+  description: ``,
+}
+
+SEO.propTypes = {
+  description: PropTypes.string,
+  lang: PropTypes.string,
+  meta: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string.isRequired,
+}
+
+export default SEO
