@@ -5,13 +5,13 @@ import Image from "components/image"
 import { Wrapper } from "components/UI/wrappers"
 import SEO from "components/seo"
 
-const IndexPage = () => (
+const ContactMePage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Contact Me" />
     <Wrapper isMain >
-      Home Page
+      Contact Me Page
     </Wrapper>
   </Layout>
 )
 
-export default IndexPage
+export default ContactMePage
