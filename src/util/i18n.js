@@ -8,7 +8,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: localStorage.getItem('lng') || navigator.language,
+    lng: 'en',
     // Have a common namespace used around the full app
     ns: ['translations'],
     defaultNS: 'translations',

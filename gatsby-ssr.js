@@ -4,9 +4,9 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-import React from "react"
-import { renderToString } from "react-dom/server"
-import i18n from "./src/util/i18n"
+const React = require("react")
+const { renderToString } = require("react-dom/server")
+const i18n = require("./src/util/i18n")
 
 exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
   i18n.loadNamespaces(["common"], () => {

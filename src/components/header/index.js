@@ -5,23 +5,28 @@ import styled, { themeGet } from 'util/styles'
 import { Flex, Box } from 'rebass';
 
 const HeadTop = styled.header`
-  background-color: ${themeGet('colors.blackDepth.300')};
+  background-color: ${({ isMoved }) => isMoved ? 'transparent' : themeGet('colors.blackDepth.300')};
   position: fixed;
-  display: none;
   width: 100%;
   top: 0;
   padding: ${themeGet('space.3')}px;
   color: #f5f5f5;
   transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 50ms;
+  z-index: 1500;
 
   a {
     color: #f5f5f5;
     text-decoration: none;
   }
 
+  nav {
+    display: none;
+  }
+
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    background-color: ${({ isMoved }) => isMoved ? 'transparent' : themeGet('colors.blackDepth.300')};
-    display: initial;
+    nav {
+      display: flex;
+    }
   }
 `;
 
@@ -36,6 +41,7 @@ const HeadBottom = styled.header`
   align-items: center;
   justify-content: center;
   border-top: 2px solid ${themeGet('colors.blackDepth.200')};
+  z-index: 1500;
 
   a {
     color: #f5f5f5;

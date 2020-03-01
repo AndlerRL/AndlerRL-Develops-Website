@@ -2,8 +2,9 @@ import styled, { themeGet } from 'util/styles'
 
 export const Wrapper = styled.div`
   width: 91.666%;
-  max-width: 1000px;
+  max-width: 900px;
   padding-top: ${({ isMain }) => isMain ? themeGet('space.5') : 0}px;
+  position: relative;
 `
 
 export const Grid = styled.ul`
