@@ -21,6 +21,7 @@ import SEO from "components/seo"
 import styled, { themeGet } from 'util/styles'
 import { Btn } from 'components/UI/btn'
 import Link from "components/link"
+import Tech from "components/techs"
 
 const Logo = styled(motion.div)`
   background: url(${logo}) center center no-repeat;
@@ -83,11 +84,13 @@ const IndexPage = () => {
           <Logo
             initial={{
               opacity: 0,
-              y: -300
+              scale: 0.25,
+              y: -300,
             }}
             animate={{
               opacity: 1,
-              y: 0
+              scale: 1,
+              y: 0,
             }}
             transition={{
               ease: 'circOut',
@@ -200,6 +203,12 @@ const IndexPage = () => {
             </Flex>
             <LightBlueTriangleBottom bottom={-116} />
           </SecondaryCard>
+          <Box width={1}>
+            <Text as="h1" textAlign="center">
+              TECHS THAT I WORK WITH
+            </Text>
+          </Box>
+          <Tech />
         </Wrapper>
       </DescriptionContainer>
     </Layout>

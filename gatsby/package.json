@@ -31,7 +31,9 @@
     "react-helmet": "^5.2.1",
     "react-i18next": "^11.3.3",
     "react-icons": "^3.9.0",
+    "react-laag": "^1.7.3",
     "rebass": "^4.0.7",
+    "resize-observer-polyfill": "^1.5.1",
     "styled-components": "^5.0.1",
     "styled-system": "^5.1.5",
     "unstated-next": "^1.1.0"
