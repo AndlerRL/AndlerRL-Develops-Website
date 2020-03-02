@@ -1,9 +1,10 @@
-import { Text, Flex } from "rebass"
+import { Text, Flex, Box } from "rebass"
 import { Wrapper } from "components/UI/wrappers"
 import { motion } from 'framer-motion'
 import Image from "components/image"
 import Layout from "components/layout"
 import React from "react"
+import Img from 'gatsby-image'
 
 import { 
   PrimaryCard,
