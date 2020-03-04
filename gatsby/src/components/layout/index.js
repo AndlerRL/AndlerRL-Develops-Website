@@ -1,16 +1,10 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, navigate } from "gatsby"
 import styled, { ThemeProvider, theme, themeGet } from 'util/styles'
 import { Flex, Text } from 'rebass'
 import GlobalStyles from 'util/styles/GlobalStyles'
+import logo_alt from 'images/new_logo_alt.svg'
 
 import Header from "components/header"
 
@@ -21,12 +15,26 @@ const LayoutContainer = styled(Flex)`
 `
 
 const Footer = styled(Flex)`
+  position: relative;
+
+  .Logo__alt {
+    position: absolute;
+    width: 200px;
+    max-width: 33.33%;
+    left: 32px;
+    top: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
   min-height: 45vh;
   width: 100%;
   background-color: ${themeGet('colors.blackDepth.300')};
 `
 
-const Layout = ({ children }) => {
+const Layout = React.memo(({ children, location }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -36,6 +44,16 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const lang = localStorage.getItem('lang')
+    ? localStorage.getItem('lang')
+    : localStorage.setItem('lang', 'en')
+
+  useEffect(() => {
+    if (lang !== 'en' && !location.pathname.match('/es/'))
+      navigate(`/${lang}${location.pathname}`)
+    else if (location.pathname.match('/es/') && lang === 'en')
+      navigate(`/${(location.pathname).substr(3)}`)
+  }, [lang])
 
   return (
     <ThemeProvider theme={theme}>
@@ -45,15 +63,15 @@ const Layout = ({ children }) => {
         alignItems="center"
         justifyContent="flex-start"
       >
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <Flex
-        flexDirection="column"
-        justifyContent="flex-start"
-        alignItems="center"
-        width={1}
-      >
-        {children}
-      </Flex>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <Flex
+          flexDirection="column"
+          justifyContent="flex-start"
+          alignItems="center"
+          width={1}
+        >
+          {children}
+        </Flex>
       </LayoutContainer>
       <Footer
         alignItems="center"
@@ -61,6 +79,9 @@ const Layout = ({ children }) => {
         flexDirection="column"
         pb={[5, 3, 3]}
       >
+        <div className="Logo__alt">
+          <img src={logo_alt} />
+        </div>
         <Text as="p"
           fontWeight="light"
           color="#f5f5f5"
@@ -72,7 +93,7 @@ const Layout = ({ children }) => {
       </Footer>
     </ThemeProvider>
   )
-}
+})
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import styled from 'util/styles'
 
@@ -12,15 +12,28 @@ const LinkContainer = styled(Link)`
   }
 `
 
-const LinkComponent = ({ to, children }) => (
-  <LinkContainer
-    to={to}
-    activeStyle={{
-      color: '#bdbdbd'
-    }}
-  >
-    { children }
-  </LinkContainer>
-)
+const LinkComponent = ({ to, children }) => {
+  const [lang, setLang] = useState('en')
+
+  useEffect(() => {
+    const currentLang = localStorage.getItem('lang')
+      ? localStorage.getItem('lang')
+      : localStorage.setItem('lang', 'en')
+
+    if (lang !== currentLang)
+      setLang(currentLang)
+  }, [setLang])
+
+  return (
+    <LinkContainer
+      to={lang !== 'en' ? `/${lang}${to}` : to}
+      activeStyle={{
+        color: '#bdbdbd'
+      }}
+    >
+      { children }
+    </LinkContainer>
+  )
+}
 
 export default LinkComponent

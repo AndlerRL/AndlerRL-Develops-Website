@@ -3,8 +3,9 @@ import { Wrapper } from "components/UI/wrappers"
 import { motion } from 'framer-motion'
 import Image from "components/image"
 import Layout from "components/layout"
-import React from "react"
+import React, { useEffect } from "react"
 import Img from 'gatsby-image'
+import { useTranslate } from 'hooks/useTranslate'
 
 import { 
   PrimaryCard,
@@ -64,10 +65,21 @@ const DescriptionContainer = styled(Flex)`
   }
 `
 
-const IndexPage = () => {
-  
+const TechTitle = styled(Flex)`
+  position: relative;
+  width: 100%;
+
+  h1 {
+    position: absolute;
+    top: -77px;
+  }
+`
+
+const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
+  const { t, changeLang } = useTranslate(locale, 'index')
+
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Home" />
       <HomeHero />
       <Wrapper isMain >
@@ -101,12 +113,12 @@ const IndexPage = () => {
           <Text as="h1"
             mt={5}
             letterSpacing={3}
+            onClick={() => changeLang('en', location)}
           >
-            ANDLER DEVELOPS
+            {t('test')}
           </Text>
           <Text as="p"
             lineHeight={2}
-            fontSize={3}
             width={10/12}
             my={4}
           >
@@ -135,7 +147,6 @@ const IndexPage = () => {
             </Text>
             <Text as="p"
               lineHeight={2}
-              fontSize={3}
               width={10/12}
               my={4}
             >
@@ -143,7 +154,6 @@ const IndexPage = () => {
             </Text>
             <Text as="p"
               lineHeight={2}
-              fontSize={3}
               width={10/12}
               my={4}
             >
@@ -163,7 +173,6 @@ const IndexPage = () => {
             </Text>
             <Text as="p"
               lineHeight={2}
-              fontSize={3}
               width={10/12}
               my={4}
             >
@@ -171,7 +180,6 @@ const IndexPage = () => {
             </Text>
             <Text as="p"
               lineHeight={2}
-              fontSize={3}
               width={10/12}
               my={4}
             >
@@ -183,7 +191,7 @@ const IndexPage = () => {
               justifyContent="space-around"
             >
               <Btn
-                backgroundColor={['colors.secondary.300', 'colors.secondary.500']}
+                backgroundcolor={['colors.secondary.300', 'colors.secondary.500']}
                 size="large"
                 variant="contained"
               >
@@ -192,7 +200,7 @@ const IndexPage = () => {
                 </Link>
               </Btn>
               <Btn
-                backgroundColor={['colors.secondary.200', 'colors.secondary.400']}
+                backgroundcolor={['colors.secondary.200', 'colors.secondary.400']}
                 size="large"
                 variant="contained"
               >
@@ -203,16 +211,23 @@ const IndexPage = () => {
             </Flex>
             <LightBlueTriangleBottom bottom={-116} />
           </SecondaryCard>
-          <Box width={1}>
-            <Text as="h1" textAlign="center">
+          <TechTitle
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text
+              as="h1"
+              fontSize={7}
+              textAlign="center"
+            >
               TECHS THAT I WORK WITH
             </Text>
-          </Box>
+          </TechTitle>
           <Tech />
         </Wrapper>
       </DescriptionContainer>
     </Layout>
   )
-}
+})
 
 export default IndexPage

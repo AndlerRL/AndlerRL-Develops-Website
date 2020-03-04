@@ -3,16 +3,26 @@ import PropTypes from "prop-types"
 import React, { useEffect, useState, useCallback } from "react"
 import styled, { themeGet } from 'util/styles'
 import { Flex, Box } from 'rebass';
+import logo_alt from 'images/new_logo_alt.svg'
+import logo_alt_mobile from 'images/new_logo_alt-small.svg'
 
 const HeadTop = styled.header`
   background-color: ${({ isMoved }) => isMoved ? 'transparent' : themeGet('colors.blackDepth.300')};
   position: fixed;
   width: 100%;
   top: 0;
-  padding: ${themeGet('space.3')}px;
+  padding: ${themeGet('space.2')}px ${themeGet('space.3')}px;
   color: #f5f5f5;
   transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 50ms;
   z-index: 1500;
+  height: ${themeGet('space.5')}px;
+
+  .Logo__alt {
+    background: url(${logo_alt_mobile}) center center no-repeat;
+    background-size: contain;
+    height: 60%;
+    width: 200px;
+  }
 
   a {
     color: #f5f5f5;
@@ -26,6 +36,13 @@ const HeadTop = styled.header`
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
     nav {
       display: flex;
+    }
+
+    .Logo__alt {
+      background: url(${logo_alt}) center center no-repeat;
+      background-size: contain;
+      height: 83.33%;
+      width: 200px;
     }
   }
 `;
@@ -91,16 +108,11 @@ const Header = ({ siteTitle }) => {
         <Flex
           justifyContent="space-between"
           alignItems="center"
+          height="100%"
         >
-          <h4 style={{ margin: 0 }}>
-            <Link
-              to="/"
-            >
-              {siteTitle}
-            </Link>
-          </h4>
+          <div className="Logo__alt" />
           <Flex as="nav"
-            width={[1 / 2, 5 / 12, 4 / 12]}
+            width={[1 / 2, 5 / 12, 5 / 12]}
             justifyContent="flex-end"
             alignItems="center"
           >

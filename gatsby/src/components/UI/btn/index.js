@@ -4,11 +4,11 @@ import styled, { themeGet } from 'util/styles'
 
 /**
  * 
- * backgroundColor is an array,
+ * backgroundcolor is an array,
  * and goes from the lightest to the darkest.
  * usage:
  *    <Btn
- *      backgroundColor={['colors.primary.200', 'colors.primary.400']}
+ *      backgroundcolor={['colors.primary.200', 'colors.primary.400']}
  *      variant="contained"
  *    >
  *      Button Label
@@ -24,8 +24,7 @@ import styled, { themeGet } from 'util/styles'
 
 export const Btn = styled(Button)`
   font-weight: ${themeGet('fontWeights.regular')} !important;
-  letter-spacing: ${themeGet('letterSpacings.labels')} !important;
-  text-transform: capitalize !important;
+  letter-spacing: 1px !important;
   color: #212121 !important;
   padding: 8px 18px !important;
   border-radius: calc(${themeGet('radii.4')}px * 2) !important;
@@ -40,8 +39,8 @@ export const Btn = styled(Button)`
   &.MuiButton-contained {
     background: linear-gradient(
       45deg,
-      ${({ backgroundColor }) => themeGet(backgroundColor[0])} 8.333%, 
-      ${({ backgroundColor }) => themeGet(backgroundColor[1])} 83.333%
+      ${({ backgroundcolor }) => themeGet(backgroundcolor[0])} 8.333%, 
+      ${({ backgroundcolor }) => themeGet(backgroundcolor[1])} 83.333%
     ) !important;
   }
 

@@ -20,6 +20,17 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     color: #f5f5f5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: ${themeGet('fontWeights.regular')};
+    font-size: ${themeGet('fontSizes.2')}px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+  }
+
+  button {
+    font-family: 'Oswald', sans-serif !important;
   }
 
   @media only screen and (max-width: 480px) {
