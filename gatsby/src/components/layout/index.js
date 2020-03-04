@@ -34,16 +34,7 @@ const Footer = styled(Flex)`
   background-color: ${themeGet('colors.blackDepth.300')};
 `
 
-const Layout = React.memo(({ children, location }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const Layout = React.memo(({ children, location, changeLang }) => {
   const lang = localStorage.getItem('lang')
     ? localStorage.getItem('lang')
     : localStorage.setItem('lang', 'en')
@@ -63,7 +54,7 @@ const Layout = React.memo(({ children, location }) => {
         alignItems="center"
         justifyContent="flex-start"
       >
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header lang={changeLang} />
         <Flex
           flexDirection="column"
           justifyContent="flex-start"

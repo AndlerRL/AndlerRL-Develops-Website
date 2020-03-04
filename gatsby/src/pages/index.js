@@ -79,7 +79,7 @@ const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
   const { t, changeLang } = useTranslate(locale, 'index')
 
   return (
-    <Layout location={location}>
+    <Layout location={location} changeLang={changeLang}>
       <SEO title="Home" />
       <HomeHero />
       <Wrapper isMain >
@@ -113,7 +113,6 @@ const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
           <Text as="h1"
             mt={5}
             letterSpacing={3}
-            onClick={() => changeLang('en', location)}
           >
             {t('test')}
           </Text>

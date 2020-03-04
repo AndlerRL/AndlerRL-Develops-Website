@@ -39,8 +39,8 @@ export const Btn = styled(Button)`
   &.MuiButton-contained {
     background: linear-gradient(
       45deg,
-      ${({ backgroundcolor }) => themeGet(backgroundcolor[0])} 8.333%, 
-      ${({ backgroundcolor }) => themeGet(backgroundcolor[1])} 83.333%
+      ${({ backgroundcolor }) => backgroundcolor && themeGet(backgroundcolor[0])} 8.333%, 
+      ${({ backgroundcolor }) => backgroundcolor && themeGet(backgroundcolor[1])} 83.333%
     ) !important;
   }
 

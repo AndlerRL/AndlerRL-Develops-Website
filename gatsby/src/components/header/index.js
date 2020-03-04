@@ -5,6 +5,8 @@ import styled, { themeGet } from 'util/styles'
 import { Flex, Box } from 'rebass';
 import logo_alt from 'images/new_logo_alt.svg'
 import logo_alt_mobile from 'images/new_logo_alt-small.svg'
+import { Icon } from 'components/UI/icons'
+import { Btn } from 'components/UI/btn'
 
 const HeadTop = styled.header`
   background-color: ${({ isMoved }) => isMoved ? 'transparent' : themeGet('colors.blackDepth.300')};
@@ -76,7 +78,7 @@ const HeadBottom = styled.header`
   }
 `
 
-const Header = ({ siteTitle }) => {
+const Header = ({ lang }) => {
   const [height, setHeight] = useState(0);
 
   const checkPos = useCallback(
@@ -111,6 +113,14 @@ const Header = ({ siteTitle }) => {
           height="100%"
         >
           <div className="Logo__alt" />
+          <Btn
+            onClick={lang}
+          >
+            <Icon.lang 
+              color="#f5f5f5" 
+              size="42px"  
+            />
+          </Btn>
           <Flex as="nav"
             width={[1 / 2, 5 / 12, 5 / 12]}
             justifyContent="flex-end"

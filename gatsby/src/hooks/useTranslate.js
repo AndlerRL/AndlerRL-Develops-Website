@@ -48,18 +48,16 @@ export const useTranslate = (locale, page) => {
 
   const t = translate => current[translate]
 
-  const changeLang = (language, location) => {
-    if (language !== lang) {
-      lang = localStorage.setItem('lang', language)
+  const changeLang = location => {
+    console.log(lang)
+    const newLang = lang === 'en' ? 'es' : 'en'
+    lang = localStorage.setItem('lang', newLang)
 
-      dispatch({
-        type: 'CHANGE_LANG',
-        current: newCurrent,
-        lang
-      })
-
-      navigate(`/${lang !== 'en' && lang}${location.pathname}`)
-    }
+    dispatch({
+      type: 'CHANGE_LANG',
+      current: newCurrent,
+      lang
+    })
   }
   
   return {
