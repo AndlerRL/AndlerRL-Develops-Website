@@ -23,6 +23,8 @@ const Footer = styled(Flex)`
     max-width: 33.33%;
     left: 32px;
     top: 0;
+    filter: grayscale(25%);
+    opacity: 0.5;
 
     img {
       width: 100%;

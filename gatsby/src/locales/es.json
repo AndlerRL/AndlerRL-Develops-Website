@@ -1,6 +1,6 @@
 {
   "index": {
-    "test": "Hola Mundo desde Index!"
+    "test": ["test", "Hola Mundo desde Index!"]
   },
   "projects": {
     "test": "Hola Mundo desde Proyectos!"

@@ -1,7 +1,6 @@
-import { useReducer, useCallback } from 'react'
+import { useReducer } from 'react'
 import translateES from 'locales/es.json'
 import translateEN from 'locales/en.json'
-import { navigate } from 'gatsby'
 
 const lang = localStorage.getItem('lang')
 ? localStorage.getItem('lang')
@@ -12,7 +11,7 @@ const initState = {
     es: translateES,
     en: translateEN
   },
-  current: {},
+  current: null,
   lang
 }
 
@@ -46,10 +45,33 @@ export const useTranslate = (locale, page) => {
     })
   }
 
-  const t = translate => current[translate]
+  const t = t => {
+    const tIndex = t.indexOf('.')
 
-  const changeLang = location => {
-    console.log(lang)
+    if (current)
+      if (tIndex !== -1) {
+        const tSplit = t.split('.')
+        let tCurrent = current[tSplit[0]]
+        tCurrent = tCurrent[tSplit[1]]
+
+        if (tSplit.length > 2) {
+          tCurrent = tCurrent[tSplit[2]]
+
+          if (tSplit.length > 3) {
+            tCurrent = tCurrent[tSplit[3]]
+
+            if (tSplit.length > 4) {
+              tCurrent = tCurrent[tSplit[4]]
+            }
+          }
+        }
+
+        return tCurrent
+      } else
+        return current[t]
+  }
+
+  const changeLang = () => {
     const newLang = lang === 'en' ? 'es' : 'en'
     lang = localStorage.setItem('lang', newLang)
 

@@ -72,6 +72,10 @@ const TechTitle = styled(Flex)`
   h1 {
     position: absolute;
     top: -77px;
+    text-shadow: -1px 0 ${themeGet('colors.blackDepth.400')},
+      1px 0 ${themeGet('colors.blackDepth.400')},
+      0 1px ${themeGet('colors.blackDepth.400')},
+      0 -1px ${themeGet('colors.blackDepth.400')};
   }
 `
 
@@ -114,7 +118,7 @@ const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
             mt={5}
             letterSpacing={3}
           >
-            {t('test')}
+            {t('test.1')}
           </Text>
           <Text as="p"
             lineHeight={2}

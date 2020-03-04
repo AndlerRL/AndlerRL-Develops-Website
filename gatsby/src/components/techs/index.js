@@ -14,13 +14,20 @@ const CategoryTitle = styled(Text)`
   margin 0 auto;
   text-align: center;
   font-size: ${themeGet('fontSizes.6')}px;
+  color: ${themeGet('colors.primary.300')};
+  margin-bottom: ${themeGet('space.5')}px;
 `
 
 const TechContainer = styled(motion.div)`
-  width: ${({ stack }) => stack ? '300px' : '150px'};
-  height: 150px;
+  width: ${({ stack }) => stack ? '300px' : '125px'};
+  height: 125px;
   margin: 1rem;
   filter: grayscale(75%);
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    width: ${({ stack }) => stack ? '300px' : '150px'};
+    height: 150px;
+  }
 `
 
 const TechComponent = ({ fluid, title, stack }) => {
@@ -100,8 +107,6 @@ const Tech = () => {
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
-          color="#f5f5f5"
-          textAlign="center"
         >
           Front-end
         </CategoryTitle>
@@ -124,8 +129,6 @@ const Tech = () => {
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
-          color="#f5f5f5"
-          mt={6}
         >
           CMS
         </CategoryTitle>
@@ -148,8 +151,6 @@ const Tech = () => {
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
-          color="#f5f5f5"
-          mt={6}
         >
           Bundlers
         </CategoryTitle>
@@ -172,8 +173,6 @@ const Tech = () => {
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
-          color="#f5f5f5"
-          mt={6}
         >
           Back-end
         </CategoryTitle>
@@ -196,8 +195,6 @@ const Tech = () => {
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
-          color="#f5f5f5"
-          mt={6}
         >
           SaaS
         </CategoryTitle>
@@ -244,8 +241,6 @@ const Tech = () => {
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
-          color="#f5f5f5"
-          mt={6}
         >
           Unit Testing
         </CategoryTitle>
@@ -268,8 +263,6 @@ const Tech = () => {
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
-          color="#f5f5f5"
-          mt={6}
         >
           Stack Development
         </CategoryTitle>
