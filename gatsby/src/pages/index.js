@@ -3,9 +3,11 @@ import { Wrapper } from "components/UI/wrappers"
 import { motion } from 'framer-motion'
 import Image from "components/image"
 import Layout from "components/layout"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Img from 'gatsby-image'
 import { useTranslate } from 'hooks/useTranslate'
+import techTitleEN from 'images/techs-title_en.svg'
+import techTitleES from 'images/techs-title_es.svg'
 
 import { 
   PrimaryCard,
@@ -23,13 +25,14 @@ import styled, { themeGet } from 'util/styles'
 import { Btn } from 'components/UI/btn'
 import Link from "components/link"
 import Tech from "components/techs"
+import IntroAnim from 'components/UI/intro'
 
 const Logo = styled(motion.div)`
   background: url(${logo}) center center no-repeat;
-  width: 350px;
-  height: 300px;
+  width: 300px;
+  height: 270px;
   background-size: contain;
-  top: -232px;
+  top: -200px;
   position: absolute;
 `
 
@@ -65,26 +68,24 @@ const DescriptionContainer = styled(Flex)`
   }
 `
 
-const TechTitle = styled(Flex)`
+const TechTitle = styled.div`
   position: relative;
-  width: 100%;
-
-  h1 {
-    position: absolute;
-    top: -77px;
-    text-shadow: -1px 0 ${themeGet('colors.blackDepth.400')},
-      1px 0 ${themeGet('colors.blackDepth.400')},
-      0 1px ${themeGet('colors.blackDepth.400')},
-      0 -1px ${themeGet('colors.blackDepth.400')};
-  }
+  width: 83.333%;
+  background: url(${({ lang }) => lang === 'en' ? techTitleEN : techTitleES}) center center no-repeat;
+  background-size: contain;
+  height: 25vh;
+  top: -78px;
+  margin: auto;
 `
 
 const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
   const { t, changeLang } = useTranslate(locale, 'index')
+  const [intro, setIntro] = useState(true)
 
   return (
-    <Layout location={location} changeLang={changeLang}>
+    <Layout location={location} changeLang={changeLang} intro={intro}>
       <SEO title="Home" />
+      <IntroAnim animComplete={() => {setIntro(false)}} introEnd={!intro} />
       <HomeHero />
       <Wrapper isMain >
         <PrimaryCard
@@ -92,28 +93,12 @@ const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
           alignItems="center"
           justifyContent="center"
           style={{
-            marginTop: -125
+            marginTop: -150
           }}
-          mb={7}
+          mb={6}
         >
           <YellowTriangleTop top={-116} />
-          <Logo
-            initial={{
-              opacity: 0,
-              scale: 0.25,
-              y: -300,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            }}
-            transition={{
-              ease: 'circOut',
-              duration: 0.75,
-              delay: 0.15
-            }}
-          />
+          <Logo />
           <Text as="h1"
             mt={5}
             letterSpacing={3}
@@ -214,18 +199,7 @@ const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
             </Flex>
             <LightBlueTriangleBottom bottom={-116} />
           </SecondaryCard>
-          <TechTitle
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Text
-              as="h1"
-              fontSize={7}
-              textAlign="center"
-            >
-              TECHS THAT I WORK WITH
-            </Text>
-          </TechTitle>
+          <TechTitle lang={locale} />
           <Tech />
         </Wrapper>
       </DescriptionContainer>

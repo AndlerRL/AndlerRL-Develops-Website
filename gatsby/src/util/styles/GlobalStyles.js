@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     height: auto;
+    background-color: ${themeGet('colors.blacksDepth.500')};
   }
 
   body {
@@ -23,6 +24,9 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     font-weight: ${themeGet('fontWeights.regular')};
     font-size: ${themeGet('fontSizes.2')}px;
+    background-color: ${themeGet('colors.blacksDepth.500')};
+    transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 50ms;
+    overflow: ${({ intro }) => intro ? 'hidden' : 'auto'};
   }
 
   h1, h2, h3, h4, h5, h6 {

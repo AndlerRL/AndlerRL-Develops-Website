@@ -60,9 +60,8 @@ export const useTranslate = (locale, page) => {
           if (tSplit.length > 3) {
             tCurrent = tCurrent[tSplit[3]]
 
-            if (tSplit.length > 4) {
+            if (tSplit.length > 4)
               tCurrent = tCurrent[tSplit[4]]
-            }
           }
         }
 
