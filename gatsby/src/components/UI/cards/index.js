@@ -36,7 +36,7 @@ export const PrimaryCard = styled(Flex)`
   background-color: transparent;
   color: ${themeGet('colors.primary.A200')};
   position: relative;
-  padding: ${themeGet('space.4')}px;
+  padding: ${({ noP }) => !noP ? themeGet('space.4') : 0}px;
   font-weight: ${themeGet('fontWeights.light')};
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
@@ -73,7 +73,7 @@ export const SecondaryCard = styled(Flex)`
   background-color: transparent;
   color: ${themeGet('colors.secondary.A200')};
   position: relative;
-  padding: ${themeGet('space.4')}px;
+  padding: ${({ noP }) => !noP ? themeGet('space.4') : 0}px;
   font-weight: ${themeGet('fontWeights.light')};
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {

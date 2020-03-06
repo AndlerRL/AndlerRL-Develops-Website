@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   max-width: 900px;
   padding-top: ${({ isMain }) => isMain ? themeGet('space.5') : 0}px;
   position: relative;
+  margin-bottom: ${({ isMain }) => isMain ? themeGet('space.7') : 0}px;
 `
 
 export const Grid = styled.ul`

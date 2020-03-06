@@ -193,7 +193,7 @@ const IntroAnim = ({ animComplete, introEnd }) => (
           opacity: 0
         }}
         animate={{
-          width: 590,
+          width: 570,
           height: [24, 0],
           opacity: [1, 0],
           transition: {

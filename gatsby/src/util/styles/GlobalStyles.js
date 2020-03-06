@@ -25,7 +25,6 @@ const GlobalStyles = createGlobalStyle`
     font-weight: ${themeGet('fontWeights.regular')};
     font-size: ${themeGet('fontSizes.2')}px;
     background-color: ${themeGet('colors.blacksDepth.500')};
-    transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 50ms;
     overflow: ${({ intro }) => intro ? 'hidden' : 'auto'};
   }
 

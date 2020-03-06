@@ -17,7 +17,7 @@ const LayoutContainer = styled(Flex)`
 
 const Layout = ({ children, location, intro, locale }) => {
   const { t, changeLang } = useTranslate(locale, 'layout')
-  const [lang] = useLang()
+  const [ lang ] = useLang()
 
   useEffect(() => {
     if (lang && lang !== 'en' && !location.pathname.match('/es/')){
