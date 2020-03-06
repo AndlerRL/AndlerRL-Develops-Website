@@ -2,16 +2,23 @@ import { useReducer, useEffect, useState } from 'react'
 import translateES from 'locales/es.json'
 import translateEN from 'locales/en.json'
 
-const Lang = () => {
+let initLang = null;
+
+const useLang = () => {
   const [lang, setLang] = useState(null)
 
-  useEffect(() => 
-    setLang(localStorage.getItem('lang')
-    ? localStorage.getItem('lang')
-    : localStorage.setItem('lang', 'en'))
-  , [])
+  useEffect(() => {
+    initLang = localStorage.getItem('lang')
+      ? localStorage.getItem('lang')
+      : localStorage.setItem('lang', 'en')
 
-  return lang
+    setLang(localStorage.getItem('lang')
+      ? localStorage.getItem('lang')
+      : localStorage.setItem('lang', 'en')
+    )
+  }, [])
+
+  return [lang, setLang]
 }
 
 const initState = {
@@ -20,7 +27,7 @@ const initState = {
     en: translateEN
   },
   current: null,
-  lang: Lang
+  lang: initLang
 }
 
 const reducer = (state, action) => {
@@ -41,12 +48,14 @@ export const useTranslate = (locale, page) => {
   const { translations, current } = data
   const newLang = translations[locale]
   const newCurrent = newLang[page]
-  let lang = null;
+  const [lang, setLang] = useLang()
 
   useEffect(() => 
-    lang = localStorage.getItem('lang')
-    ? localStorage.getItem('lang')
-    : localStorage.setItem('lang', locale), [])
+    setLang(localStorage.getItem('lang')
+      ? localStorage.getItem('lang')
+      : localStorage.setItem('lang', locale)
+    )
+  , [])
 
   if (newCurrent !== current && lang) {
     dispatch({
