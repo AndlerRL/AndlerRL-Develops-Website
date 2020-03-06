@@ -18,16 +18,16 @@ const LayoutContainer = styled(Flex)`
 const Layout = React.memo(({ children, location, intro, locale }) => {
   const { t, changeLang } = useTranslate(locale, 'layout')
 
-  const lang = localStorage.getItem('lang')
-    ? localStorage.getItem('lang')
-    : localStorage.setItem('lang', 'en')
-
   useEffect(() => {
+    const lang = localStorage.getItem('lang')
+      ? localStorage.getItem('lang')
+      : localStorage.setItem('lang', 'en')
+
     if (lang !== 'en' && !location.pathname.match('/es/'))
       navigate(`/${lang}${location.pathname}`)
     else if (location.pathname.match('/es/') && lang === 'en')
       navigate(`/${(location.pathname).substr(3)}`)
-  }, [lang, location.pathname])
+  }, [location.pathname])
 
   return (
       <ThemeProvider theme={theme}>

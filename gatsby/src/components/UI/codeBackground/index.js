@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import styled, { themeGet } from 'util/styles'
 import homeHero from 'images/home_hero.gif'
 import Image from 'components/image';
@@ -21,17 +21,9 @@ const HomeHeroContainer = styled.div`
 ` 
 
 const HomeHero = () => (
-  <Suspense
-    fallback={
-      <div style={{ width: '100%', height: '66vh'}}>
-        <Image img="home_hero_fb.jpg" />
-      </div>
-    }
-  >
-    <HomeHeroContainer>
-      <div />
-    </HomeHeroContainer>
-  </Suspense>
+  <HomeHeroContainer>
+    <div />
+  </HomeHeroContainer>
 )
 
 export default HomeHero
