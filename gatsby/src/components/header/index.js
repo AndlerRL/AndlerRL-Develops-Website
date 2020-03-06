@@ -8,6 +8,7 @@ import logo_alt_mobile from 'images/new_logo_alt-small.svg'
 import { Icon } from 'components/UI/icons'
 import { Btn } from 'components/UI/btn'
 import Tooltip from 'components/UI/tooltip'
+import { Translate } from 'store'
 
 const HeadTop = styled.header`
   background-color: ${({ isMoved }) => isMoved ? 'transparent' : themeGet('colors.blackDepth.300')};
@@ -79,8 +80,17 @@ const HeadBottom = styled.header`
   }
 `
 
-const Header = ({ lang, t }) => {
+const Header = ({ locale }) => {
+  const { checkLang, changeLang, t } = Translate.useContainer()
   const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    checkLang(locale, 'layout')
+  }, [])
+
+  useEffect(() => {
+    // checkPath(locale)
+  }, [locale])
 
   const checkPos = useCallback(
     () => {
@@ -114,12 +124,14 @@ const Header = ({ lang, t }) => {
           height="100%"
         >
           <div className="Logo__alt" />
-          <Tooltip text={t('nav.lang')}>
+          <Tooltip 
+            text={t('nav.lang')}
+          >
             <Btn
-              onClick={lang}
+              onClick={() => changeLang(locale)}
             >
               <Icon.lang 
-                color="#f5f5f5" 
+                color="#f5f5f5"
                 size="42px"  
               />
             </Btn>
@@ -129,7 +141,8 @@ const Header = ({ lang, t }) => {
             justifyContent="flex-end"
             alignItems="center"
           >
-            <Link to="/" >
+            <Link to="/"  
+            >
               {t('nav.home')}
             </Link>
             <Box mx={2}>

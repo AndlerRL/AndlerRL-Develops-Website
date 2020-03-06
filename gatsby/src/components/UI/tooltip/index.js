@@ -159,7 +159,6 @@ const PopoverTooltip = forwardRef((props, ref) => (
         whileHover={props.whileHover && props.whileHover}
         transition={props.transition && props.transition}
         className={props.className}
-        onClick={props.clicked}
       >
         {props.children}
       </motion.div>

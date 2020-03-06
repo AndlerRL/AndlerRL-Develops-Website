@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import styled from 'util/styles'
+import { Translate } from 'store'
 
 const LinkContainer = styled(Link)`
   color: #f5f5f5;
@@ -13,20 +14,11 @@ const LinkContainer = styled(Link)`
 `
 
 const LinkComponent = ({ to, children }) => {
-  const [lang, setLang] = useState('en')
-
-  useEffect(() => {
-    const currentLang = localStorage.getItem('lang')
-      ? localStorage.getItem('lang')
-      : localStorage.setItem('lang', 'en')
-
-    if (lang !== currentLang)
-      setLang(currentLang)
-  }, [setLang])
-
+  const { lang } = Translate.useContainer()
+  
   return (
     <LinkContainer
-      to={lang !== 'en' ? `/${lang}${to}` : to}
+      to={lang && lang !== 'en' ? `/${lang}${to}` : to}
       activeStyle={{
         color: '#bdbdbd'
       }}
