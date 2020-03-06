@@ -10,5 +10,17 @@
   },
   "contact-me": {
     "test": "Hola Mundo desde Contácteme!"
+  },
+  "layout": {
+    "nav": {
+      "home": "Inicio",
+      "projects": "Proyectos",
+      "contact-me": "Contácteme",
+      "lang": "Cambiar a Inglés"
+    },
+    "footer": {
+      "copyright": " Todos los derechos reservados.",
+      "backTop": "Retornar a Inicio"
+    }
   }
 }

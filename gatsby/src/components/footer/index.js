@@ -57,7 +57,7 @@ const anim = {
   }
 }
 
-const Footer = () => (
+const Footer = ({ t }) => (
   <FooterContainer
     alignItems="center"
     justifyContent="flex-end"
@@ -84,7 +84,7 @@ const Footer = () => (
               whileHover={anim.linkHover}
               transition={anim.transition}
             >
-              home
+              {t('nav.home')}
             </motion.span>
           </Link>
         </Box>
@@ -94,7 +94,7 @@ const Footer = () => (
               whileHover={anim.linkHover}
               transition={anim.transition}
             >
-              projects
+              {t('nav.projects')}
             </motion.span>
           </Link>
         </Box>
@@ -104,7 +104,7 @@ const Footer = () => (
               whileHover={anim.linkHover}
               transition={anim.transition}
             >
-              contact me
+              {t('nav.contact-me')}
             </motion.span>
           </Link>
         </Box>
@@ -179,7 +179,7 @@ const Footer = () => (
       letterSpacing="0.5px"
       fontSize={1}
     >
-      Andler Develops © {new Date().getFullYear()}, ® All rights reserved.
+      Andler Develops © {new Date().getFullYear()}, ®{t('footer.copyright')}
     </Text>
   </FooterContainer>
 )

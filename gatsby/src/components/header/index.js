@@ -7,6 +7,7 @@ import logo_alt from 'images/new_logo_alt.svg'
 import logo_alt_mobile from 'images/new_logo_alt-small.svg'
 import { Icon } from 'components/UI/icons'
 import { Btn } from 'components/UI/btn'
+import Tooltip from 'components/UI/tooltip'
 
 const HeadTop = styled.header`
   background-color: ${({ isMoved }) => isMoved ? 'transparent' : themeGet('colors.blackDepth.300')};
@@ -78,7 +79,7 @@ const HeadBottom = styled.header`
   }
 `
 
-const Header = ({ lang }) => {
+const Header = ({ lang, t }) => {
   const [height, setHeight] = useState(0);
 
   const checkPos = useCallback(
@@ -113,33 +114,35 @@ const Header = ({ lang }) => {
           height="100%"
         >
           <div className="Logo__alt" />
-          <Btn
-            onClick={lang}
-          >
-            <Icon.lang 
-              color="#f5f5f5" 
-              size="42px"  
-            />
-          </Btn>
+          <Tooltip text={t('nav.lang')}>
+            <Btn
+              onClick={lang}
+            >
+              <Icon.lang 
+                color="#f5f5f5" 
+                size="42px"  
+              />
+            </Btn>
+          </Tooltip>
           <Flex as="nav"
             width={[1 / 2, 5 / 12, 5 / 12]}
             justifyContent="flex-end"
             alignItems="center"
           >
             <Link to="/" >
-              Home
+              {t('nav.home')}
             </Link>
             <Box mx={2}>
               |
             </Box>
             <Link to="/projects" >
-              Projects
+              {t('nav.projects')}
             </Link>
             <Box mx={2}>
               |
             </Box>
             <Link to="/contact-me" >
-              Contact me
+              {t('nav.contact-me')}
             </Link>
           </Flex>
         </Flex>
@@ -151,13 +154,13 @@ const Header = ({ lang }) => {
           alignItems="center"
         >
           <Link to="/" >
-            Home
+            {t('nav.home')}
           </Link>
           <Link to="/projects" >
-            Projects
+            {t('nav.projects')}
           </Link>
           <Link to="/contact-me" >
-            Contact me
+            {t('nav.contact-me')}
           </Link>
         </Flex>
       </HeadBottom>

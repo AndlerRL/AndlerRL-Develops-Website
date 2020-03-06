@@ -6,10 +6,10 @@ import { Wrapper } from "components/UI/wrappers"
 import SEO from "components/seo"
 
 const ProjectsPage = ({ pathContext: { locale }, location  }) => {
-  const { t, changeLang } = useTranslate(locale, 'projects')
+  const { t } = useTranslate(locale, 'projects')
   
   return (
-    <Layout location={location} changeLang={changeLang}>
+    <Layout location={location} locale={locale}>
       <SEO title="Projects" />
       <Wrapper isMain >
         {t('test')}

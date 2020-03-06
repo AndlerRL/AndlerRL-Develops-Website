@@ -10,5 +10,17 @@
   },
   "contact-me": {
     "test": "Hello World from Contact Me!"
+  },
+  "layout": {
+    "nav": {
+      "home": "Home",
+      "projects": "Projects",
+      "contact-me": "Contact Me",
+      "lang": "Change to Spanish"
+    },
+    "footer": {
+      "copyright": " All rights reserved.",
+      "backTop": "Back to top"
+    }
   }
 }

@@ -42,7 +42,7 @@ const IntroAnimContainer = styled(motion.div)`
       transform-origin: bottom;
     }
 
-    img:nth-child(5) {
+    img:nth-child(6) {
       transform-origin: top;
     }
   }
@@ -111,18 +111,22 @@ const braketRAnim = {
 
 const andlerAnim = {
   hidden: {
+    scale: 0.80,
     rotateX: '90deg',
   },
   visible: {
+    scale: 1,
     rotateX: 0,
   }
 }
 
 const devsAnim = {
   hidden: {
+    scale: 0.80,
     rotateX: '-90deg',
   },
   visible: {
+    scale: 1,
     rotateX: 0,
   }
 }
@@ -176,16 +180,17 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         animate="visible"
         variants={andlerAnim}
         transition={{
-          delay: 0.83333,
-          duration: 2,
+          delay: 0.9,
+          duration: 1.15,
         }}
       />
+      <div style={{width: 590}} />
       <motion.div
         style={{backgroundColor: '#f5f5f5'}}
         initial={{
-          width: 590,
+          width: 0,
           height: 0,
-          opacity: 1
+          opacity: 0
         }}
         animate={{
           width: 590,
@@ -193,8 +198,8 @@ const IntroAnim = ({ animComplete, introEnd }) => (
           opacity: [1, 0],
           transition: {
             duration: 1,
-            times: [0.83333, 1],
-            delay: 0.75
+            times: [0.75, 1],
+            delay: 0.5
           },
         }}
       />
@@ -203,8 +208,8 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         animate="visible"
         variants={devsAnim}
         transition={{
-          delay: 0.83333,
-          duration: 2,
+          delay: 0.9,
+          duration: 1.15,
         }}
       />
     </motion.div>
