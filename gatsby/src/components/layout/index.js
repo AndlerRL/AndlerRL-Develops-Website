@@ -4,7 +4,7 @@ import { navigate } from "gatsby"
 import styled, { ThemeProvider, theme, themeGet } from 'util/styles'
 import { Flex } from 'rebass'
 import GlobalStyles from 'util/styles/GlobalStyles'
-import { useTranslate } from 'hooks/useTranslate'
+import { useTranslate, useLang } from 'hooks/useTranslate'
 
 import Header from "components/header"
 import Footer from "components/footer"
@@ -15,17 +15,16 @@ const LayoutContainer = styled(Flex)`
   width: 100%;
 `
 
-const Layout = React.memo(({ children, location, intro, locale }) => {
+const Layout = ({ children, location, intro, locale }) => {
   const { t, changeLang } = useTranslate(locale, 'layout')
+  const [lang] = useLang()
 
   useEffect(() => {
-    const lang = localStorage.getItem('lang')
-      ? localStorage.getItem('lang')
-      : localStorage.setItem('lang', 'en')
-
-    if (lang !== 'en' && !location.pathname.match('/es/'))
+    if (lang && lang !== 'en' && !location.pathname.match('/es/')){
+      console.log(lang)
       navigate(`/${lang}${location.pathname}`)
-    else if (location.pathname.match('/es/') && lang === 'en')
+    }
+    else if (lang && location.pathname.match('/es/') && lang === 'en')
       navigate(`/${(location.pathname).substr(3)}`)
   }, [location.pathname])
 
@@ -50,7 +49,7 @@ const Layout = React.memo(({ children, location, intro, locale }) => {
         <Footer t={t} />
       </ThemeProvider>
   )
-})
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

@@ -1,22 +1,25 @@
 import { useReducer, useEffect, useState } from 'react'
 import translateES from 'locales/es.json'
 import translateEN from 'locales/en.json'
+import { navigate } from 'gatsby'
 
 let initLang = null;
 
-const useLang = () => {
+export const useLang = () => {
   const [lang, setLang] = useState(null)
 
   useEffect(() => {
-    initLang = localStorage.getItem('lang')
-      ? localStorage.getItem('lang')
-      : localStorage.setItem('lang', 'en')
+    if (!initLang)
+      initLang = localStorage.getItem('lang')
+        ? localStorage.getItem('lang')
+        : localStorage.setItem('lang', 'en')
 
-    setLang(localStorage.getItem('lang')
-      ? localStorage.getItem('lang')
-      : localStorage.setItem('lang', 'en')
-    )
-  }, [])
+    if (!lang)
+      setLang(localStorage.getItem('lang')
+        ? localStorage.getItem('lang')
+        : localStorage.setItem('lang', 'en')
+      )
+  }, [setLang, initLang])
 
   return [lang, setLang]
 }
@@ -49,13 +52,16 @@ export const useTranslate = (locale, page) => {
   const newLang = translations[locale]
   const newCurrent = newLang[page]
   const [lang, setLang] = useLang()
+  const [win, setWin] = useState(null)
 
-  useEffect(() => 
-    setLang(localStorage.getItem('lang')
-      ? localStorage.getItem('lang')
-      : localStorage.setItem('lang', locale)
-    )
-  , [])
+  useEffect(() => {
+    setWin(window)
+    if (lang)
+      setLang(localStorage.getItem('lang')
+        ? localStorage.getItem('lang')
+        : localStorage.setItem('lang', locale)
+      )
+  }, [])
 
   if (newCurrent !== current && lang) {
     dispatch({
@@ -91,14 +97,23 @@ export const useTranslate = (locale, page) => {
   }
 
   const changeLang = () => {
-    const newLang = lang === 'en' ? 'es' : 'en'
-    lang = localStorage.setItem('lang', newLang)
-
-    dispatch({
-      type: 'CHANGE_LANG',
-      current: newCurrent,
-      lang
-    })
+    if (lang) {
+      const newLang = lang === 'en' ? 'es' : 'en'
+      const { location } = win
+  
+      setLang(localStorage.setItem('lang', newLang))
+  
+      dispatch({
+        type: 'CHANGE_LANG',
+        current: newCurrent,
+        lang
+      })
+      
+      if (lang !== 'en' && !location.pathname.match('/es/'))
+        navigate(`/${lang}${location.pathname}`)
+      else if (location.pathname.match('/es/') && lang === 'en')
+        navigate(`/${(location.pathname).substr(3)}`)
+    }
   }
   
   return {
