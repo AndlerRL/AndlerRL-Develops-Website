@@ -1,23 +1,13 @@
 import translateES from 'locales/es.json'
 import translateEN from 'locales/en.json'
-import React, { useEffect, useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
-import styled, { ThemeProvider, theme, themeGet } from 'util/styles'
-import { Flex } from 'rebass'
+import { ThemeProvider, theme } from 'util/styles'
 import GlobalStyles from 'util/styles/GlobalStyles'
-
-import Header from "components/header"
-import Footer from "components/footer"
+import LayoutComponent from './layoutComponent'
 import { Translate } from "store"
 
-const LayoutContainer = styled(Flex)`
-  background: linear-gradient(to top, ${themeGet('colors.blackDepth.300')} 1vh, ${themeGet('colors.blackDepth.500')} 33.33vh);
-  min-height: 100vh;
-  width: 100%;
-`
-
-const Layout = React.memo(({ children, location, intro, locale }) => {
-
+const Layout = React.memo(({ children, intro, locale }) => {
   return (
       <ThemeProvider theme={theme}>
         <GlobalStyles intro={intro} />
@@ -28,26 +18,10 @@ const Layout = React.memo(({ children, location, intro, locale }) => {
               en: translateEN
             },
             current: null,
-            lang: 'en',
-            page: 'layout'
+            lang: 'en'
           }}
         >
-          <LayoutContainer
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="flex-start"
-          >
-            <Header locale={locale} />
-            <Flex
-              flexDirection="column"
-              justifyContent="flex-start"
-              alignItems="center"
-              width={1}
-            >
-              {children}
-            </Flex>
-          </LayoutContainer>
-          <Footer locale={locale} />
+          <LayoutComponent locale={locale} children={children} />
         </Translate.Provider>
       </ThemeProvider>
   )

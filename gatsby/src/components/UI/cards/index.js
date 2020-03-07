@@ -33,8 +33,8 @@ import { Flex, Box, Text } from 'rebass'
  */
 
 export const PrimaryCard = styled(Flex)`
-  background-color: transparent;
-  color: ${themeGet('colors.primary.A200')};
+  background-color: ${({ contact }) => contact ? themeGet('colors.primary.A200') : 'transparent'};
+  color: ${({ contact }) => contact ? '#212121' : themeGet('colors.primary.A200')};
   position: relative;
   padding: ${({ noP }) => !noP ? themeGet('space.4') : 0}px;
   font-weight: ${themeGet('fontWeights.light')};
@@ -70,8 +70,8 @@ export const YellowTriangleBottom = styled.div`
   }
 `
 export const SecondaryCard = styled(Flex)`
-  background-color: transparent;
-  color: ${themeGet('colors.secondary.A200')};
+  background-color: ${({ contact }) => contact ? themeGet('colors.secondary.A200') : 'transparent'};
+  color: ${({ contact }) => contact ? '#212121' : themeGet('colors.secondary.A200')};
   position: relative;
   padding: ${({ noP }) => !noP ? themeGet('space.4') : 0}px;
   font-weight: ${themeGet('fontWeights.light')};

@@ -11,17 +11,7 @@ const ContactMePage = ({ pathContext: { locale }, location }) => {
   return (
     <Layout location={location} locale={locale}>
       <SEO title="Contact Me" />
-      <Translate.Provider
-        initialState={{
-          translations: {
-            es: translateES,
-            en: translateEN
-          },
-          current: null,
-          lang: 'en',
-          page: 'contact-me'
-        }}
-      >
+      <Translate.Provider>
         <ContactMe locale={locale} />
       </Translate.Provider>
     </Layout>

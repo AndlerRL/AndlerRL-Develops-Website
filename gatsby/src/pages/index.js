@@ -1,5 +1,3 @@
-import translateES from 'locales/es.json'
-import translateEN from 'locales/en.json'
 import Layout from "components/layout"
 import React, { useEffect, useState } from "react"
 import { Translate } from 'store'
@@ -14,17 +12,7 @@ const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
     <Layout location={location} locale={locale} intro={intro}>
       <SEO title="Home" />
       <IntroAnim animComplete={() => {setIntro(false)}} introEnd={!intro} />
-      <Translate.Provider
-        initialState={{
-          translations: {
-            es: translateES,
-            en: translateEN
-          },
-          current: null,
-          lang: 'en',
-          page: 'index'
-        }}
-      >
+      <Translate.Provider>
         <Home locale={locale} />
       </Translate.Provider>
     </Layout>

@@ -14,10 +14,11 @@ const HeadTop = styled.header`
   background-color: ${({ isMoved }) => isMoved ? 'transparent' : themeGet('colors.blackDepth.300')};
   position: fixed;
   width: 100%;
-  top: 0;
+  top: ${({ top }) => top !== 0 ? top : 0}px;
   padding: ${themeGet('space.2')}px ${themeGet('space.3')}px;
   color: #f5f5f5;
-  transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 50ms;
+  transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 50ms,
+    top 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 100ms;
   z-index: 1500;
   height: ${themeGet('space.5')}px;
 
@@ -46,7 +47,6 @@ const HeadTop = styled.header`
       background: url(${logo_alt}) center center no-repeat;
       background-size: contain;
       height: 83.33%;
-      width: 200px;
     }
   }
 `;
@@ -55,7 +55,7 @@ const HeadBottom = styled.header`
   background-color: ${themeGet('colors.blackDepth.300')};
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: ${({ bottom }) => bottom !== 0 ? bottom : 0}px;
   padding: ${themeGet('space.3')}px;
   color: #f5f5f5;
   display: flex;
@@ -63,6 +63,8 @@ const HeadBottom = styled.header`
   justify-content: center;
   border-top: 2px solid ${themeGet('colors.blackDepth.200')};
   z-index: 1500;
+  transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 50ms,
+    bottom 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 100ms;
 
   a {
     color: #f5f5f5;
@@ -81,31 +83,43 @@ const HeadBottom = styled.header`
 `
 
 const Header = ({ locale }) => {
-  const { checkLang, changeLang, t } = Translate.useContainer()
+  const { changeLang, t } = Translate.useContainer()
   const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    checkLang(locale, 'layout')
-  }, [])
-
-  useEffect(() => {
-    // checkPath(locale)
-  }, [locale])
+  const [yOffset, setYOffset] = useState(0);
+  const [headPos, setHeadPos] = useState({
+    top: 0,
+    bottom: -53
+  })
 
   const checkPos = useCallback(
     () => {
-      const { scrollY } = window;
+      const { scrollY, pageYOffset } = window;
 
       if (height !== scrollY)
         setHeight(scrollY)
+
+      if (yOffset > pageYOffset) {
+        setHeadPos({
+          top: 0,
+          bottom: -53
+        })
+      } else {
+        setHeadPos({
+          top: -64,
+          bottom: 0
+        })
+      }
+
+      setYOffset(pageYOffset)
     },
     [setHeight, height]
   )
 
   useEffect(() => {
-    const { scrollY } = window;
+    const { scrollY, pageYOffset } = window;
     
     setHeight(scrollY)
+    setYOffset(pageYOffset)
     window.addEventListener('scroll', checkPos)
 
     return () => {
@@ -117,6 +131,7 @@ const Header = ({ locale }) => {
     <React.Fragment>
       <HeadTop
         isMoved={height <= 48}
+        top={headPos.top}
       >
         <Flex
           justifyContent="space-between"
@@ -124,12 +139,8 @@ const Header = ({ locale }) => {
           height="100%"
         >
           <div className="Logo__alt" />
-          <Tooltip 
-            text={t('nav.lang')}
-          >
-            <Btn
-              onClick={() => changeLang(locale)}
-            >
+          <Tooltip text={t('nav.lang')} >
+            <Btn onClick={() => changeLang(locale)} >
               <Icon.lang 
                 color="#f5f5f5"
                 size="42px"  
@@ -160,7 +171,7 @@ const Header = ({ locale }) => {
           </Flex>
         </Flex>
       </HeadTop>
-      <HeadBottom>
+      <HeadBottom bottom={headPos.bottom}>
         <Flex as="nav"
           width={10 / 12}
           justifyContent="space-between"

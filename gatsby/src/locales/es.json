@@ -3,24 +3,35 @@
     "test": ["test", "Hola Mundo desde Index!"]
   },
   "projects": {
-    "test": "Hola Mundo desde Proyectos!"
+    "title": ["Sobre todo lo que he sido", "Sobre todo lo que he construido", "yace aquí."],
+    "btn": "Ver más"
   },
   "project": {
     "test": "Hola Mundo desde Proyecto!"
   },
   "contact-me": {
-    "test": "Hola Mundo desde Contácteme!"
+    "form": {
+      "name": "Nombre",
+      "company": "Compañía",
+      "email": "Correo Electrónico",
+      "message": "Mensaje",
+      "submit": "Enviar",
+      "error": ["Por favor, introduzca el ", " correctamente.\n", "Longitud mínima: "]
+    },
+    "title": ["espero que en adelante", "pueda conocerte", "y hacer negocios.", "contigo"]
   },
   "layout": {
     "nav": {
       "home": "Inicio",
       "projects": "Proyectos",
       "contact-me": "Contácteme",
-      "lang": "Cambiar a Inglés"
+      "lang": "Cambiar a Inglés",
+      "tnc": "Términos y Condiciones"
     },
     "footer": {
       "copyright": " Todos los derechos reservados.",
       "backTop": "Retornar a Inicio"
     }
-  }
+  },
+  "404": ["404 – Página no encontrada, lo lamento", "Regresar a Inicio"]
 }

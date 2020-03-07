@@ -111,22 +111,26 @@ const braketRAnim = {
 
 const andlerAnim = {
   hidden: {
-    scale: 0.80,
-    rotateX: '90deg',
+    y: 24,
+    opacity: 0,
+    rotateX: '-90deg',
   },
   visible: {
-    scale: 1,
+    y: 0,
+    opacity: 1,
     rotateX: 0,
   }
 }
 
 const devsAnim = {
   hidden: {
-    scale: 0.80,
-    rotateX: '-90deg',
+    y: -24,
+    opacity: 0,
+    rotateX: '90deg',
   },
   visible: {
-    scale: 1,
+    y: 0,
+    opacity: 1,
     rotateX: 0,
   }
 }
@@ -152,7 +156,7 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         x: '-19.15vh',
         position: 'absolute',
         transition: {
-          delay: 3.25,
+          delay: 4.5,
           duration: 1.15,
           ease: 'backIn'
         }
@@ -164,7 +168,7 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         animate="visible"
         variants={braketLAnim}
         transition={{
-          duration: 1
+          duration: 1.5
         }}
       />
       <BraketR src={braketRight} 
@@ -172,7 +176,7 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         animate="visible"
         variants={braketRAnim}
         transition={{
-          duration: 1
+          duration: 1.5
         }}
       />
       <Andler src={andler} 
@@ -180,8 +184,8 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         animate="visible"
         variants={andlerAnim}
         transition={{
-          delay: 0.9,
-          duration: 1.15,
+          delay: 1.9,
+          duration: 1.5,
         }}
       />
       <div style={{width: 590}} />
@@ -193,13 +197,13 @@ const IntroAnim = ({ animComplete, introEnd }) => (
           opacity: 0
         }}
         animate={{
-          width: 570,
-          height: [24, 0],
+          width: 590,
+          height: 24,
           opacity: [1, 0],
           transition: {
-            duration: 1,
-            times: [0.75, 1],
-            delay: 0.5
+            duration: 1.5,
+            times: [0.90, 1],
+            delay: 1
           },
         }}
       />
@@ -208,8 +212,8 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         animate="visible"
         variants={devsAnim}
         transition={{
-          delay: 0.9,
-          duration: 1.15,
+          delay: 1.9,
+          duration: 1.5,
         }}
       />
     </motion.div>

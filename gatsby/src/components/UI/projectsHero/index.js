@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { themeGet } from 'util/styles'
-import Image from "components/image"
 import portrait from 'images/portrait2.jpg'
 
 const ProjectsHeroContainer = styled.div`

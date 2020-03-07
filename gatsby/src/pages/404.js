@@ -1,14 +1,18 @@
 import React from "react"
-
+import { Translate } from 'store'
 import Layout from "components/layout"
 import SEO from "components/seo"
+import NoContent from 'components/404'
 
-const NotFoundPage = ({ pathContext: { locale }, location }) => (
-  <Layout locale={locale} location={location} >
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
+const NotFoundPage = ({ pathContext: { locale }, location }) => {
+  return (
+    <Layout locale={locale} location={location} >
+      <SEO title="404: Not found" />
+      <Translate.Provider>
+        <NoContent locale={locale} />
+      </Translate.Provider>
+    </Layout>
+  )
+}
 
 export default NotFoundPage

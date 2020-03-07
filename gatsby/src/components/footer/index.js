@@ -59,16 +59,7 @@ const anim = {
 }
 
 const Footer = ({ locale }) => {
-  const { lang, checkLang, t, checkPath } = Translate.useContainer()
-
-  useEffect(() => {
-    checkLang(locale, 'layout')
-  }, [])
-
-  useEffect(() => {
-    if (lang !== locale)
-      checkPath(locale)
-  }, [lang])
+  const { t } = Translate.useContainer()
 
   return (
     <FooterContainer
@@ -118,6 +109,16 @@ const Footer = ({ locale }) => {
                 transition={anim.transition}
               >
                 {t('nav.contact-me')}
+              </motion.span>
+            </Link>
+          </Box>
+          <Box my={2}>
+            <Link to="/terms-n-conditions">
+              <motion.span
+                whileHover={anim.linkHover}
+                transition={anim.transition}
+              >
+                {t('nav.tnc')}
               </motion.span>
             </Link>
           </Box>

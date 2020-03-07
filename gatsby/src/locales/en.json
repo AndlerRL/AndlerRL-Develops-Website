@@ -3,24 +3,35 @@
     "test": ["test", "Hello World from Index!"]
   },
   "projects": {
-    "test": "Hello World from Projects!"
+    "title": ["Above all that I have been", "Above all that I have built", "lies here."],
+    "btn": "See more"
   },
   "project": {
     "test": "Hello World from Project!"
   },
   "contact-me": {
-    "test": "Hello World from Contact Me!"
+    "form": {
+      "name": "Name",
+      "company": "Company",
+      "email": "E-mail",
+      "message": "Message",
+      "submit": "Submit",
+      "error": ["Please, input the ", " correctly.\n", "Minimun length: "]
+    },
+    "title": ["hope looking forward", "to meet you", "and do business.", "with you"]
   },
   "layout": {
     "nav": {
       "home": "Home",
       "projects": "Projects",
       "contact-me": "Contact Me",
-      "lang": "Change to Spanish"
+      "lang": "Change to Spanish",
+      "tnc": "Terms and Conditions"
     },
     "footer": {
       "copyright": " All rights reserved.",
       "backTop": "Back to top"
     }
-  }
+  },
+  "404": ["404 – Page not found, sorry", "Back to Home"]
 }

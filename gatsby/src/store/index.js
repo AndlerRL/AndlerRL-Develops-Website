@@ -10,8 +10,7 @@ const initState = {
     en: translateEN
   },
   current: null,
-  lang: 'en',
-  page: 'index'
+  lang: 'en'
 }
 
 const reducer = (state, action) => {
@@ -20,7 +19,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         current: action.current,
-        page: action.page,
         lang: action.lang
       }
     case 'CHANGE_LANG': 
@@ -65,7 +63,6 @@ const useTranslate = () => {
     dispatch({
       type: 'SET_LANG',
       current: newCurrent,
-      page: p,
       lang: localStorage.getItem('lang')
         ? localStorage.getItem('lang')
         : localStorage.setItem('lang', locale)

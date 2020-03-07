@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   padding-top: ${({ isMain }) => isMain ? themeGet('space.5') : 0}px;
   position: relative;
   margin-bottom: ${({ isMain }) => isMain ? themeGet('space.7') : 0}px;
+
+  @media screen and (min-width: ${themeGet('breakpoints.1')}) {
+    max-width: 1366px;
+  }
 `
 
 export const Grid = styled.ul`

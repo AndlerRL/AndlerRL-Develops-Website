@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import styled, { themeGet } from 'util/styles'
 import { Flex, Box, Text} from 'rebass'
 import { Btn } from 'components/UI/btn'
 import { Icon } from 'components/UI/icons'
 import Image from 'components/image'
 import { SecondaryCard } from 'components/UI/cards'
+import { Translate } from 'store'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -42,28 +43,47 @@ const ContentContainer = styled(Flex)`
 `
 
 const ProjectCard = ({  }) => {
+  const { t } = Translate.useContainer()
+  const [innerWidth, setInnerWidth] = useState(0)
+
+  const checkWidth = useCallback(
+    () => {
+      const { innerWidth } = window
+
+      setInnerWidth(innerWidth)
+    },
+    [setInnerWidth]
+  )
+
   useEffect(() => {
+    const { innerWidth } = window
+    
     AOS.init()
+    setInnerWidth(innerWidth)
+    window.addEventListener('resize', checkWidth)
 
     return () => {
       AOS.refresh()
+      window.removeEventListener('resize', checkWidth)
     }
-  }, [])
+  }, [checkWidth])
   
   return (
     <SecondaryCard
+      flexDirection={["column", "row", "row"]}
       alignItems="center"
       justifyContent="space-between"
-      height="350px"
+      height={["600px", "400px", "350px"]}
       mb={6}
-      data-aos="fade-left"
+      data-aos={innerWidth <= 640 ? "fade-up" : "fade-left"}
+      data-aos-offset="400"
       noP
     >
       <ContentContainer
         flexDirection="column"
         alignItems="center"
         justifyContent="space-between"
-        width={1 / 2}
+        width={[1, 1 / 2, 1 / 2]}
         height="100%"
       >
         <Box as="figure"
@@ -85,7 +105,7 @@ const ProjectCard = ({  }) => {
         flexDirection="column"
         alignItems="center"
         justifyContent="space-between"
-        width={1 / 2}
+        width={[1, 1 / 2, 1 / 2]}
         height="100%"
       >
         <Flex
@@ -109,7 +129,7 @@ const ProjectCard = ({  }) => {
             variant="contained"
             style={{ width: '33.33%' }}
           >
-            Action btn
+            {t('btn')}
           </Btn>
         </Flex>
       </ContentContainer>
