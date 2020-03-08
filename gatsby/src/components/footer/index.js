@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled, { themeGet } from 'util/styles'
 import { Flex, Box, Text } from 'rebass'
-import { Icon } from 'components/UI/icons'
+import { SocialIcons } from 'components/UI/icons'
 import Link from 'components/link'
 import { motion } from 'framer-motion'
 import BackToTop from 'components/UI/backTop'
@@ -9,13 +9,9 @@ import logo_alt from 'images/new_logo_alt.svg'
 import logo_dark from 'images/new_logo-dark.svg'
 import { Translate } from 'store'
 
-const SocialLink = styled(motion.a)`
-  filter: grayscale(75%);
-  cursor: pointer;
-`
-
 const FooterContainer = styled(Flex)`
   position: relative;
+  z-index: 2;
 
   .Logo__alt {
     background: url(${logo_dark}) center center no-repeat;
@@ -125,68 +121,7 @@ const Footer = ({ locale }) => {
         </Flex>
         <BackToTop />
       </Flex>
-      <Flex
-        width={[10 / 12, 6 / 12, 1 / 2]}
-        alignItems="center"
-        justifyContent="space-around"
-        my={4}
-      >
-        <SocialLink
-          href="https://github.com/AndlerRL"
-          target="__blank"
-          transition={anim.transition}
-          whileHover={anim.whileHover}
-        >
-          <Icon.github
-            size="24px"
-            color="#F4CBB2" 
-          />
-        </SocialLink>
-        <SocialLink
-          href="https://stackoverflow.com/users/9221863/m-lucas"
-          target="__blank"
-          transition={anim.transition}
-          whileHover={anim.whileHover}
-        >
-          <Icon.stackOverflow
-            size="24px"
-            color="#F47F24" 
-          />
-        </SocialLink>
-        <SocialLink
-          href="https://linkedin.com/in/roberto-romero-lucas-147078138"
-          target="__blank"
-          transition={anim.transition}
-          whileHover={anim.whileHover}
-        >
-          <Icon.linkedIn
-            size="24px"
-            color="#006192" 
-          />
-        </SocialLink>
-        <SocialLink
-          href="https://twitter.com/AndlerRL"
-          target="__blank"
-          transition={anim.transition}
-          whileHover={anim.whileHover}
-        >
-          <Icon.twitter
-            size="24px"
-            color="#55ACEE" 
-          />
-        </SocialLink>
-        <SocialLink
-          href="https://fb.me/Megalife1294"
-          target="__blank"
-          transition={anim.transition}
-          whileHover={anim.whileHover}
-        >
-          <Icon.facebook
-            size="24px"
-            color="#1778F2" 
-          />
-        </SocialLink>
-      </Flex>
+      <SocialIcons mb={4} />
       <Text as="p"
         fontWeight="light"
         color="#f5f5f5"

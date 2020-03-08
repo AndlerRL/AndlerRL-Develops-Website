@@ -184,7 +184,7 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         animate="visible"
         variants={andlerAnim}
         transition={{
-          delay: 1.9,
+          delay: 1.75,
           duration: 1.5,
         }}
       />
@@ -192,19 +192,19 @@ const IntroAnim = ({ animComplete, introEnd }) => (
       <motion.div
         style={{backgroundColor: '#f5f5f5'}}
         initial={{
-          width: 0,
+          width: 590,
           height: 0,
           opacity: 0
         }}
         animate={{
           width: 590,
-          height: 24,
+          height: 28,
           opacity: [1, 0],
           transition: {
-            duration: 1.5,
+            duration: 1.25,
             times: [0.90, 1],
-            delay: 1
-          },
+            delay: 1,
+          }
         }}
       />
       <Devs src={devs}
@@ -212,7 +212,7 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         animate="visible"
         variants={devsAnim}
         transition={{
-          delay: 1.9,
+          delay: 1.75,
           duration: 1.5,
         }}
       />

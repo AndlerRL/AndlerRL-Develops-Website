@@ -70,6 +70,7 @@ const ProjectCard = ({  }) => {
   
   return (
     <SecondaryCard
+      contact
       flexDirection={["column", "row", "row"]}
       alignItems="center"
       justifyContent="space-between"
@@ -78,6 +79,7 @@ const ProjectCard = ({  }) => {
       data-aos={innerWidth <= 640 ? "fade-up" : "fade-left"}
       data-aos-offset="400"
       noP
+      project
     >
       <ContentContainer
         flexDirection="column"
@@ -124,10 +126,11 @@ const ProjectCard = ({  }) => {
           minHeight="16.666%"
         >
           <Btn
-            backgroundcolor={['colors.secondary.200', 'colors.secondary.400']}
+            backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
             size="large"
             variant="contained"
             style={{ width: '33.33%' }}
+            project
           >
             {t('btn')}
           </Btn>

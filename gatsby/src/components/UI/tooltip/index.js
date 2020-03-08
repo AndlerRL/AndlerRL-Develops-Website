@@ -49,10 +49,12 @@ const TooltipContainer = styled(motion.div)`
   background-color: ${themeGet('colors.blackDepth.400')};
   color: #f5f5f5;
   border: 2px solid ${themeGet('colors.blackDepth.300')};
+  z-index: 2;
 `;
 
 const TooltipText = styled.p`
   text-align: center;
+  z-index: 2;
 `;
 
 const Arrow = props => (

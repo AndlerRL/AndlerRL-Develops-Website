@@ -1,6 +1,12 @@
 {
   "index": {
-    "test": ["test", "Hello World from Index!"]
+    "test": ["test", "Hello World from Index!"],
+    "menu": {
+      "first": "First",
+      "second": "Second",
+      "third": "Third",
+      "tech": "Technologies"
+    }
   },
   "projects": {
     "title": ["Above all that I have been", "Above all that I have built", "lies here."],
@@ -11,6 +17,7 @@
   },
   "contact-me": {
     "form": {
+      "title": "Write me a letter!",
       "name": "Name",
       "company": "Company",
       "email": "E-mail",
@@ -18,7 +25,13 @@
       "submit": "Submit",
       "error": ["Please, input the ", " correctly.\n", "Minimun length: "]
     },
-    "title": ["hope looking forward", "to meet you", "and do business.", "with you"]
+    "title": ["hope looking forward", "to meet you", "and do business.", "with you"],
+    "contact": {
+      "title": "Where you can find me",
+      "direction": "Hospital Nacional Psiquiátrico 20m sur 10m este",
+      "phone": "+506 6216–3355",
+      "email": "andre.rlucas@outlook.com"
+    }
   },
   "layout": {
     "nav": {

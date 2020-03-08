@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react'
-import techTitleEN from 'images/techs-title_en.svg'
-import techTitleES from 'images/techs-title_es.svg'
 import { 
   PrimaryCard,
   SecondaryCard, 
@@ -20,6 +18,7 @@ import { Btn } from 'components/UI/btn'
 import Link from "components/link"
 import Tech from "./techs"
 import { Translate } from 'store'
+import Scrollspy from 'components/UI/scrollspy'
 
 const Logo = styled(motion.div)`
   background: url(${logo}) center center no-repeat;
@@ -28,6 +27,7 @@ const Logo = styled(motion.div)`
   background-size: contain;
   top: -200px;
   position: absolute;
+  z-index: 2;
 `
 
 const DescriptionContainer = styled(Flex)`
@@ -35,6 +35,7 @@ const DescriptionContainer = styled(Flex)`
   background-size: cover;
   min-height: 100vh;
   position: relative;
+  z-index: 2;
   
   > div:first-of-type {
     width: 100%;
@@ -62,16 +63,6 @@ const DescriptionContainer = styled(Flex)`
   }
 `
 
-const TechTitle = styled.div`
-  position: relative;
-  width: 83.333%;
-  background: url(${({ lang }) => lang === 'en' ? techTitleEN : techTitleES}) center center no-repeat;
-  background-size: contain;
-  height: 25vh;
-  top: -78px;
-  margin: auto;
-`
-
 const Home = ({ locale }) => {
   const { checkLang, t } = Translate.useContainer()
 
@@ -79,10 +70,15 @@ const Home = ({ locale }) => {
     checkLang(locale, 'index')
   }, [])
 
+  const menuItems = {
+    id: ['first_s', 'second_s', 'third_s', 'techs'],
+    title: [t('menu.first'), t('menu.second'), t('menu.third'), t('menu.tech')]
+  }
+
   return (
     <React.Fragment>
       <HomeHero />
-      <Wrapper isMain >
+      <Wrapper isMain>
         <PrimaryCard
           flexDirection="column"
           alignItems="center"
@@ -90,7 +86,7 @@ const Home = ({ locale }) => {
           style={{
             marginTop: -150
           }}
-          mb={6}
+          mb={7}
         >
           <YellowTriangleTop top={-116} />
           <Logo />
@@ -110,6 +106,10 @@ const Home = ({ locale }) => {
           <YellowTriangleBottom bottom={-116} />
         </PrimaryCard>
       </Wrapper>
+      <Scrollspy 
+        items={menuItems.id}
+        title={menuItems.title}
+      />
       <DescriptionContainer
         alignItems="center"
         justifyContent="center"
@@ -125,7 +125,7 @@ const Home = ({ locale }) => {
             justifyContent="center"
           >
             <YellowTriangleTop top={-116} />
-            <Text as="h2">
+            <Text as="h2" id="first_s">
               Yellowish Card
             </Text>
             <Text as="p"
@@ -139,6 +139,7 @@ const Home = ({ locale }) => {
               lineHeight={2}
               width={1}
               my={4}
+             id="second_s"
             >
               Nam aliquam sem et tortor consequat id porta. Tempor id eu nisl nunc mi ipsum. Leo integer malesuada nunc vel. Neque volutpat ac tincidunt vitae. Non arcu risus quis varius quam. Lectus magna fringilla urna porttitor rhoncus. At tellus at urna condimentum mattis pellentesque. Donec ac odio tempor orci dapibus ultrices in. Elementum pulvinar etiam non quam lacus suspendisse. A diam maecenas sed enim ut sem. Varius morbi enim nunc faucibus.
             </Text>
@@ -151,7 +152,7 @@ const Home = ({ locale }) => {
             my={6}
           >
             <LightBlueTriangleTop top={-116} />
-            <Text as="h2">
+            <Text as="h2" id="third_s">
               LightBlueish Card
             </Text>
             <Text as="p"
@@ -194,8 +195,7 @@ const Home = ({ locale }) => {
             </Flex>
             <LightBlueTriangleBottom bottom={-116} />
           </SecondaryCard>
-          <TechTitle lang={locale} />
-          <Tech />
+          <Tech lang={locale} />
         </Wrapper>
       </DescriptionContainer>
     </React.Fragment>

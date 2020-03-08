@@ -1,3 +1,5 @@
+import techTitleEN from 'images/techs-title_en.svg'
+import techTitleES from 'images/techs-title_es.svg'
 import React, { useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
@@ -30,6 +32,17 @@ const TechContainer = styled(motion.div)`
   }
 `
 
+const TechTitle = styled.div`
+  position: relative;
+  width: 83.333%;
+  background: url(${({ lang }) => lang === 'en' ? techTitleEN : techTitleES}) center center no-repeat;
+  background-size: contain;
+  height: 25vh;
+  top: -78px;
+  margin: auto;
+  z-index: 1;
+`
+
 const TechComponent = ({ fluid, title, stack }) => {
   useEffect(() => {
     AOS.init()
@@ -49,6 +62,8 @@ const TechComponent = ({ fluid, title, stack }) => {
           scale: 1.1
         }}
         stack={stack}
+        data-aos="fade-down"
+        data-aos-offset="200"
       >
         <Img fluid={fluid} />
       </TechContainer>
@@ -56,7 +71,7 @@ const TechComponent = ({ fluid, title, stack }) => {
   )
 }
 
-const Tech = () => {
+const Tech = ({ locale }) => {
   const data = useStaticQuery(graphql`
     query {
       allSanityTech(filter: {title: {nin: ["HTML5", "JavaScript", "CCS3"]}}, sort: {fields: title}) {
@@ -102,8 +117,10 @@ const Tech = () => {
       alignItems="center"
       justifyContent="flex-start"
       width={1}
-    >
-      <Box mt={6} width={1}>
+      id="techs"
+    > 
+      <TechTitle lang={locale}  />
+      <Box mt={4} width={1}>
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
@@ -114,7 +131,6 @@ const Tech = () => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
-          data-aos="zoom-in"
         >
           { frontEnd.map(({ id, title, logo }) => (
             <TechComponent 
@@ -125,7 +141,7 @@ const Tech = () => {
           )) }
         </Flex>
       </Box>
-      <Box mt={6} width={1}>
+      <Box mt={5} width={1}>
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
@@ -136,7 +152,6 @@ const Tech = () => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
-          data-aos="zoom-in"
         >
           { cms.map(({ id, title, logo }) => (
             <TechComponent 
@@ -147,7 +162,7 @@ const Tech = () => {
           )) }
         </Flex>
       </Box>
-      <Box mt={6} width={1}>
+      <Box mt={5} width={1}>
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
@@ -158,7 +173,6 @@ const Tech = () => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
-          data-aos="zoom-in"
         >
           { bundler.map(({ id, title, logo }) => (
             <TechComponent 
@@ -169,7 +183,7 @@ const Tech = () => {
           )) }
         </Flex>
       </Box>
-      <Box mt={6} width={1}>
+      <Box mt={5} width={1}>
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
@@ -180,7 +194,6 @@ const Tech = () => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
-          data-aos="zoom-in"
         >
           { backEnd.map(({ id, title, logo }) => (
             <TechComponent 
@@ -191,7 +204,7 @@ const Tech = () => {
           )) }
         </Flex>
       </Box>
-      <Box mt={6} width={1}>
+      <Box mt={5} width={1}>
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
@@ -202,7 +215,6 @@ const Tech = () => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
-          data-aos="zoom-in"
         >
           { saas.map(({ id, title, logo }) => (
             <TechComponent 
@@ -213,12 +225,12 @@ const Tech = () => {
           )) }
         </Flex>
       </Box>
-      <Box mt={6} width={1}>
+      <Box mt={5} width={1}>
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
           color="#f5f5f5"
-          mt={6}
+          mt={5}
         >
           Template Engine
         </CategoryTitle>
@@ -226,7 +238,6 @@ const Tech = () => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
-          data-aos="zoom-in"
         >
           { templateEngine.map(({ id, title, logo }) => (
             <TechComponent 
@@ -237,7 +248,7 @@ const Tech = () => {
           )) }
         </Flex>
       </Box>
-      <Box mt={6} width={1}>
+      <Box mt={5} width={1}>
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"
@@ -248,7 +259,6 @@ const Tech = () => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
-          data-aos="zoom-in"
         >
           { unitTest.map(({ id, title, logo }) => (
               <TechComponent 
@@ -259,7 +269,7 @@ const Tech = () => {
             )) }
         </Flex>
       </Box>
-      <Box mt={6} width={1}>
+      <Box mt={5} width={1}>
         <CategoryTitle as="h1"
           data-aos="zoom-in"
           data-aos-offset="150"

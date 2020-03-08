@@ -1,6 +1,12 @@
 {
   "index": {
-    "test": ["test", "Hola Mundo desde Index!"]
+    "test": ["test", "Hola Mundo desde Index!"],
+    "menu": {
+      "first": "Primero",
+      "second": "Segundo",
+      "third": "Tercero",
+      "tech": "Technologías"
+    }
   },
   "projects": {
     "title": ["Sobre todo lo que he sido", "Sobre todo lo que he construido", "yace aquí."],
@@ -11,6 +17,7 @@
   },
   "contact-me": {
     "form": {
+      "title": "Escríbeme una carta!",
       "name": "Nombre",
       "company": "Compañía",
       "email": "Correo Electrónico",
@@ -18,7 +25,13 @@
       "submit": "Enviar",
       "error": ["Por favor, introduzca el ", " correctamente.\n", "Longitud mínima: "]
     },
-    "title": ["espero que en adelante", "pueda conocerte", "y hacer negocios.", "contigo"]
+    "title": ["espero que en adelante", "pueda conocerte", "y hacer negocios.", "contigo"],
+    "contact": {
+      "title": "En donde me puedes encontrar",
+      "direction": "Hospital Nacional Psiquiátrico 20m sur 10m este",
+      "phone": "+506 6216–3355",
+      "email": "andre.rlucas@outlook.com"
+    }
   },
   "layout": {
     "nav": {

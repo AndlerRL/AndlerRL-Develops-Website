@@ -1,6 +1,6 @@
 import translateES from 'locales/es.json'
 import translateEN from 'locales/en.json'
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider, theme } from 'util/styles'
 import GlobalStyles from 'util/styles/GlobalStyles'

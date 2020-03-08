@@ -1,15 +1,12 @@
 import styled, { themeGet } from 'util/styles'
+import { Box } from 'rebass'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Box)`
   width: 91.666%;
-  max-width: 900px;
+  max-width: ${({ wide }) => wide ? '1366px' : '900px'};
   padding-top: ${({ isMain }) => isMain ? themeGet('space.5') : 0}px;
   position: relative;
   margin-bottom: ${({ isMain }) => isMain ? themeGet('space.7') : 0}px;
-
-  @media screen and (min-width: ${themeGet('breakpoints.1')}) {
-    max-width: 1366px;
-  }
 `
 
 export const Grid = styled.ul`

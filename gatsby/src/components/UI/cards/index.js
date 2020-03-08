@@ -33,11 +33,13 @@ import { Flex, Box, Text } from 'rebass'
  */
 
 export const PrimaryCard = styled(Flex)`
-  background-color: ${({ contact }) => contact ? themeGet('colors.primary.A200') : 'transparent'};
-  color: ${({ contact }) => contact ? '#212121' : themeGet('colors.primary.A200')};
+  background-color: ${({ contact }) => contact ? themeGet('colors.blackDepth.400') : 'transparent'};
+  color: ${({ contact }) => contact ? '#f5f5f5' : themeGet('colors.primary.A200')};
   position: relative;
   padding: ${({ noP }) => !noP ? themeGet('space.4') : 0}px;
   font-weight: ${themeGet('fontWeights.light')};
+  letter-spacing: ${themeGet('letterSpacings.labels')};
+  z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
     background-color: ${themeGet('colors.primary.A200')};
@@ -52,6 +54,7 @@ export const YellowTriangleTop = styled.div`
   position: absolute;
   top: ${({ top }) => top || 0}px;
   display: none;
+  z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
     display: initial;
@@ -64,21 +67,24 @@ export const YellowTriangleBottom = styled.div`
   position: absolute;
   bottom: ${({ bottom }) => bottom || 0}px;
   display: none;
+  z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
     display: initial;
   }
 `
 export const SecondaryCard = styled(Flex)`
-  background-color: ${({ contact }) => contact ? themeGet('colors.secondary.A200') : 'transparent'};
-  color: ${({ contact }) => contact ? '#212121' : themeGet('colors.secondary.A200')};
+  background-color: ${({ contact }) => contact ? themeGet('colors.blackDepth.400') : 'transparent'};
+  color: ${({ contact }) => contact ? '#f5f5f5' : themeGet('colors.secondary.A200')};
   position: relative;
   padding: ${({ noP }) => !noP ? themeGet('space.4') : 0}px;
   font-weight: ${themeGet('fontWeights.light')};
+  letter-spacing: ${themeGet('letterSpacings.labels')};
+  z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    background-color: ${themeGet('colors.secondary.A200')};
-    color: #212121;
+    background-color: ${({ project }) => project ? themeGet('colors.blackDepth.400') : themeGet('colors.secondary.A200')};
+    color: ${({ project }) => project ? '#f5f5f5' : '#212121'};
   }
 `
 
@@ -89,6 +95,7 @@ export const LightBlueTriangleTop = styled.div`
   position: absolute;
   top: ${({ top }) => top || 0}px;
   display: none;
+  z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
     display: initial;
@@ -101,6 +108,7 @@ export const LightBlueTriangleBottom = styled.div`
   position: absolute;
   bottom: ${({ bottom }) => bottom || 0}px;
   display: none;
+  z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
     display: initial;

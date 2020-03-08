@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     color: #f5f5f5;
     font-family: 'Montserrat', sans-serif;
-    font-weight: ${themeGet('fontWeights.regular')};
+    font-weight: ${themeGet('fontWeights.medium')};
     font-size: ${themeGet('fontSizes.2')}px;
     background-color: ${themeGet('colors.blacksDepth.500')};
     overflow: ${({ intro }) => intro ? 'hidden' : 'auto'};

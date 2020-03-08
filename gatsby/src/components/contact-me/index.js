@@ -9,6 +9,8 @@ import { Flex, Box, Text } from 'rebass'
 import styled, { themeGet } from 'util/styles'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import Maps from 'components/google_maps'
+import { SocialIcons, Icon } from 'components/UI/icons'
 
 const ContactTitle = styled(Text)`
   color: ${themeGet('colors.primary.A200')};
@@ -24,6 +26,47 @@ const ContactTitle = styled(Text)`
 
   &:nth-child(4) {
     font-size: ${themeGet('fontSizes.7')}px;
+  }
+`
+
+const ContactContainer = styled(Flex)`
+  color: #f5f5f5;
+  
+  a {
+    color: ${themeGet('colors.secondary.A200')}; 
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    color: #212121;
+
+    a {
+      color: ${themeGet('colors.secondary.A700')};
+      text-decoration: none;
+
+      &:visited,
+      &:hover {
+        color: ${themeGet('colors.secondary.A400')};
+      }
+    }
+  }
+`
+
+const MapContainer = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  div {
+    width: 100% !important;
+  }
+
+  div[role="button"] {
+    display: none !important;
+  }
+
+  @media screen and (min-width: ${themeGet('breakpoints.1')}) {
+    width: 41.666%;
   }
 `
 
@@ -206,7 +249,7 @@ const ContactMe = ({ locale, submit }) => {
   )
 
   return (
-    <Wrapper isMain >
+    <Wrapper isMain wide mb={8}>
       <Flex
         flexDirection={["column-reverse", "column-reverse", "row"]}
         alignItems="center"
@@ -223,21 +266,25 @@ const ContactMe = ({ locale, submit }) => {
           mx={["auto", "auto", "0px"]}
         >
           <Flex as="form"
-            flexDirection={["row", "row", "column"]}
+            flexDirection={["column", "row", "column"]}
             width={1}
             height="100%"
             onSubmit={submit}
           >
+            <Text as="h1">{t('form.title')}</Text>
             <Box width={1}>
               {input}
               <Flex
                 width={1}
                 alignItems="center"
                 justifyContent="flex-start"
-                style={{ display: innerWidth >= 840 ? 'none' : 'flex' }}
+                style={{ display: innerWidth <= 640 ? 'none' : 'flex' }}
               >
                 <Btn type="submit"
+                  backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
                   size="large"
+                  variant="contained"
+                  project
                 >
                   {t('form.submit')}
                 </Btn>
@@ -250,10 +297,13 @@ const ContactMe = ({ locale, submit }) => {
               width={1}
               alignItems="center"
               justifyContent="center"
-              style={{ display: innerWidth <= 840 ? 'none' : 'flex' }}
+              style={{ display: innerWidth <= 840 && innerWidth >= 640 ? 'none' : 'flex' }}
             >
               <Btn type="submit"
+                backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
                 size="large"
+                variant="contained"
+                project
               >
                 {t('form.submit')}
               </Btn>
@@ -292,32 +342,101 @@ const ContactMe = ({ locale, submit }) => {
       </Flex>
       <PrimaryCard
         contact
-        flexDirection={["column", "row", "row"]}
+        flexDirection={["column", "column", "row"]}
         alignItems="center"
         justifyContent="space-between"
         width={[1, 10 / 12, 10 / 12]}
         mx="auto"
+        height={[700, 400, 400]}
+        p={0}
+        mt={6}
       >
         <Flex
           flexDirection="column"
           alignItems="center"
           justifyContent="space-between"
-          width={8 / 12}
+          width={[1, 7 / 12, 7 / 12]}
+          height="100%"
+          p={4}
         >
-          <Text as="h1">
-            Where you can find me
+          <Text as="h1"
+            color={["#f5f5f5", "#212121", "#212121"]}
+          >
+            {t('contact.title')}
           </Text>
+          <ContactContainer
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="space-between"
+            width={1}
+            height={["83.333%", "75%", "75%"]}
+            py={3}
+          >
+            <Flex
+              aligItems="center"
+              justifyContent="flex-start"
+              width={1}
+            >
+              <Icon.location size="24px" color="inherit" />
+              <Text as="p" pl={2}>{t('contact.direction')}</Text>
+            </Flex>
+            <Flex
+              aligItems="center"
+              justifyContent="flex-start"
+              width={1}
+            >
+              <Icon.phone size="24px" color="inherit" />
+              <Text as="a"
+                pl={2}
+                href="tel:+50662163355"
+              >
+                {t('contact.phone')}
+              </Text>
+            </Flex>
+            <Flex
+              aligItems="center"
+              justifyContent="flex-start"
+              width={1}
+            >
+              <Icon.whatsapp size="24px" color="inherit" />
+              <Text as="a"
+                pl={2}
+                href="https://api.whatsapp.com/send?phone=50662163355"
+              >
+                {t('contact.phone')}
+              </Text>
+            </Flex>
+            <Flex
+              aligItems="center"
+              justifyContent="flex-start"
+              width={1}
+            >
+              <Icon.at size="24px" color="inherit" />
+              <Text as="a"
+                pl={2}
+                href="mailto:andre.rlucas@outlook.com"
+              >
+                {t('contact.email')}
+              </Text>
+            </Flex>
+          </ContactContainer>
+          <SocialIcons mb={2} />
         </Flex>
-        <Flex
-          flexDirection="column"
+        <MapContainer
           alignItems="center"
-          justifyContent="space-between"
-          width={4 / 12}
+          justifyContent="center"
+          style={{ 
+            margin: '0 auto',
+            padding: 0,
+            height: '400px',
+            borderLeft: '6px solid #161616'
+          }}
         >
-          <Text as="h1">
-            MAP GOES HERE
-          </Text>
-        </Flex>
+          <Maps 
+            height="100%"
+            zoom={17}  
+          />
+        </MapContainer>
       </PrimaryCard>
     </Wrapper>
   )
