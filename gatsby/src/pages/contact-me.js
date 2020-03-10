@@ -6,7 +6,7 @@ import Layout from "components/layout"
 import SEO from "components/seo"
 import ContactMe from "components/contact-me"
 
-const ContactMePage = ({ pathContext: { locale }, location }) => {
+const ContactMePage = ({ pageContext: { locale }, location }) => {
 
   return (
     <Layout location={location} locale={locale}>

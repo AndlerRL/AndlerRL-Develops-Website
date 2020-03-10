@@ -14,7 +14,7 @@ import {
 import { Box } from 'rebass'
 import Scrollspy from 'components/UI/scrollspy'
 
-const TermsConditionsPage = ({ pathContext: { locale }, location }) => {
+const TermsConditionsPage = ({ pageContext: { locale }, location }) => {
   const menuItems = {
     id: [
       'terms', 

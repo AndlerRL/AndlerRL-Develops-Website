@@ -5,7 +5,7 @@ import SEO from "components/seo"
 import styled, { themeGet } from 'util/styles'
 import Projects from "components/projects"
 
-const ProjectsPage = ({ pathContext: { locale }, location  }) => {
+const ProjectsPage = ({ pageContext: { locale }, location  }) => {
   
   return (
     <Layout location={location} locale={locale}>

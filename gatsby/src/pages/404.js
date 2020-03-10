@@ -4,7 +4,7 @@ import Layout from "components/layout"
 import SEO from "components/seo"
 import NoContent from 'components/404'
 
-const NotFoundPage = ({ pathContext: { locale }, location }) => {
+const NotFoundPage = ({ pageContext: { locale }, location }) => {
   return (
     <Layout locale={locale} location={location} >
       <SEO title="404: Not found" />

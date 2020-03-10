@@ -3,15 +3,12 @@ import styled, { themeGet } from 'util/styles'
 import { Flex, Box, Text} from 'rebass'
 import { Btn } from 'components/UI/btn'
 import { Icon } from 'components/UI/icons'
-import Image from 'components/image'
+import Image from 'gatsby-image'
+import { navigate } from 'gatsby'
 import { SecondaryCard } from 'components/UI/cards'
 import { Translate } from 'store'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-
-const ImgContainer = styled.figure`
-
-`
 
 const ContentContainer = styled(Flex)`
   &:first-of-type {
@@ -42,7 +39,7 @@ const ContentContainer = styled(Flex)`
   }
 `
 
-const ProjectCard = ({  }) => {
+const ProjectCard = ({ p, locale }) => {
   const { t } = Translate.useContainer()
   const [innerWidth, setInnerWidth] = useState(0)
 
@@ -54,6 +51,11 @@ const ProjectCard = ({  }) => {
     },
     [setInnerWidth]
   )
+
+  const toProjectHandler = url => {
+    const lang = locale === 'es' ? '/es' : ''
+    navigate(`${lang}/projects/${url}`)
+  }
 
   useEffect(() => {
     const { innerWidth } = window
@@ -92,7 +94,7 @@ const ProjectCard = ({  }) => {
           width={1}
           minHeight="83.333%"
         >
-          <Image img="home_hero_fb.jpg" />
+          <Image fluid={p.mainImage.asset.fluid} />
         </Box>
         <Flex as="h3"
           alignItems="center"
@@ -100,7 +102,7 @@ const ProjectCard = ({  }) => {
           width={1}
           minHeight="16.666%"
         >
-          Orci eu Lobortis
+          { p.title[locale] }
         </Flex>
       </ContentContainer>
       <ContentContainer
@@ -117,7 +119,7 @@ const ProjectCard = ({  }) => {
           minHeight="83.333%"
           p={4}
         >
-          {'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec adipiscing tristique risus nec feugiat in fermentum posuere urna. Pretium quam vulputate dignissim suspendisse in est ante. Et molestie ac feugiat sed lectus vestibulum mattis.'.substr(0, 250)}…
+          { p.projectBody[locale].map((b, i) => i === 0 && b.children[0].text.substr(0, 200)) }…
         </Flex>
         <Flex
           alignItems="center"
@@ -131,6 +133,7 @@ const ProjectCard = ({  }) => {
             variant="contained"
             style={{ width: '33.33%' }}
             project
+            onClick={() => toProjectHandler(p.slug.current)}
           >
             {t('btn')}
           </Btn>

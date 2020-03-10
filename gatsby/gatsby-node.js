@@ -25,8 +25,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   })
 }
 
-exports.onCreatePage = ({ page, boundActionCreators }) => {
-  const { createPage, deletePage } = boundActionCreators
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
 
   return new Promise(resolve => {
     deletePage(page)
@@ -46,5 +46,48 @@ exports.onCreatePage = ({ page, boundActionCreators }) => {
     })
 
     resolve()
+  })
+}
+
+exports.createPages = async ({ graphql, page, actions }) => {
+  const { createPage } = actions
+  const projectTemplate = path.resolve(__dirname, `src/templates/project.js`)
+  const res = await graphql(`
+    {
+      allSanityProject(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (res.errors) {
+    throw res.errors
+  }
+
+  const projectData = res.data.allSanityProject.edges || []
+  
+  projectData.map((edge, index) => {
+    return Object.keys(locales).map(lang => {
+      const path = locales[lang].default 
+        ? `/projects/${edge.node.slug.current}`
+        : `${locales[lang].path}/projects/${edge.node.slug.current}`
+  
+      return createPage({
+        path,
+        component: projectTemplate,
+        context: {
+          slug: edge.node.slug.current,
+          id: edge.node.id,
+          locale: lang
+        }
+      })
+    })
   })
 }

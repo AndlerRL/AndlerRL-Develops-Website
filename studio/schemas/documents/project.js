@@ -43,10 +43,21 @@ export default {
       }
     },
     {
+      name: 'projectUrl',
+      title: 'Web URL',
+      type: 'string',
+    },
+    {
       name: 'techs',
       title: 'Techs',
       type: 'array',
       of: [{type: 'reference', to: {type: 'tech'}}]
+    },
+    {
+      name: 'mainTech',
+      title: 'Main tech',
+      type: 'reference',
+      to: {type: 'tech'}
     },
     {
       name: 'body',

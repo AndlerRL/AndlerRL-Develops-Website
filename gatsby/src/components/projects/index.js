@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import { Translate } from 'store'
 import { Text, Flex } from 'rebass'
 import { PrimaryCard } from 'components/UI/cards'
@@ -9,6 +10,7 @@ import styled, { themeGet } from 'util/styles'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { ProjectSkeleton } from 'components/UI/skeletons'
+import { Image } from 'components/image'
 
 const TitleContainer = styled(Flex)`
   text-transform: lowercase;
@@ -21,7 +23,45 @@ const TitleContainer = styled(Flex)`
 
 const Projects = ({ locale }) => {
   const { checkLang, t } = Translate.useContainer()
+  const data = useStaticQuery(graphql`
+    query {
+      allSanityProject {
+        edges {
+          node {
+            id
+            title {
+              en
+              es
+            }
+            mainImage {
+              asset {
+                fluid {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            projectBody: _rawBody
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+  const projects = data.allSanityProject.edges;
+  const projectsData = projects 
+    ? projects.map(({ node }) => <ProjectCard p={node} locale={locale} />)
+    : (
+      <React.Fragment>
+        <ProjectSkeleton />
+        <ProjectSkeleton />
+        <ProjectSkeleton />
+      </React.Fragment>
+    )
   
+  console.log(projects.map(({ node }) => node))
+
   useEffect(() => {
     AOS.init({
       offset: 0
@@ -73,14 +113,7 @@ const Projects = ({ locale }) => {
             </Text>
           </TitleContainer>
         </PrimaryCard>
-        <ProjectSkeleton />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        { projectsData }
       </Wrapper>
     </React.Fragment>
   )

@@ -5,7 +5,7 @@ import SEO from "components/seo"
 import IntroAnim from 'components/UI/intro'
 import Home from "components/home"
 
-const IndexPage = React.memo(({ pathContext: { locale }, location  }) => {
+const IndexPage = React.memo(({ pageContext: { locale }, location  }) => {
   const [intro, setIntro] = useState(true)
 
   return (
