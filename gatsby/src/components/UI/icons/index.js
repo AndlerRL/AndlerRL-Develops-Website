@@ -11,6 +11,8 @@ import {
   FiNavigation2,
   FiSmartphone,
   FiAtSign,
+  FiArrowLeft,
+  FiExternalLink,
 } from 'react-icons/all'
 import { Flex } from 'rebass'
 import { motion } from 'framer-motion'
@@ -32,7 +34,9 @@ export const Icon = {
   location: props => <FiNavigation2 {...props} />,
   phone: props => <FiSmartphone {...props} />,
   whatsapp: props => <FaWhatsapp {...props} />,
-  at: props => <FiAtSign {...props} />
+  at: props => <FiAtSign {...props} />,
+  arrowLeft: props => <FiArrowLeft {...props} />,
+  externalLink: props => <FiExternalLink {...props} />
 }
 
 const anim = {

@@ -33,7 +33,8 @@ export const query = graphql`
           }
         }
       }
-      techs {
+      mainTech {
+        title
         logo {
           asset {
             fluid {
@@ -42,6 +43,17 @@ export const query = graphql`
           }
         }
       }
+      techs {
+        title
+        logo {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+      projectUrl
       projectBody: _rawBody
     }
   }

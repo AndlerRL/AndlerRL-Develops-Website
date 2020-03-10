@@ -2,6 +2,8 @@ import yellowTop from 'images/yellowTopTriangle.svg'
 import yellowBottom from 'images/yellowBottomTriangle.svg'
 import lightBlueTop from 'images/lightBlueTopTriangle.svg'
 import lightBlueBottom from 'images/lightBlueBottomTriangle.svg'
+import blackTop from 'images/blackTopTriangle.svg'
+import blackBottom from 'images/blackBottomTriangle.svg'
 import styled, { themeGet } from 'util/styles'
 import { Flex, Box, Text } from 'rebass'
 
@@ -48,28 +50,30 @@ export const PrimaryCard = styled(Flex)`
 `
 
 export const YellowTriangleTop = styled.div`
-  background: url(${yellowTop}) center center no-repeat;
+  background: url(${({ project }) => project ? blackTop : yellowTop }) center center no-repeat;
   width: 100%;
   height: 116px;
   position: absolute;
   top: ${({ top }) => top || 0}px;
-  display: none;
+  display: ${({ project }) => project ? 'initial' : 'none'};
   z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    background: url(${yellowTop}) center center no-repeat;
     display: initial;
   }
 `
 export const YellowTriangleBottom = styled.div`
-  background: url(${yellowBottom}) center center no-repeat;
+  background: url(${({ project }) => project ? blackBottom : yellowBottom }) center center no-repeat;
   width: 100%;
   height: 116px;
   position: absolute;
   bottom: ${({ bottom }) => bottom || 0}px;
-  display: none;
+  display: ${({ project }) => project ? 'initial' : 'none'};
   z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    background: url(${yellowBottom}) center center no-repeat;
     display: initial;
   }
 `
@@ -89,28 +93,30 @@ export const SecondaryCard = styled(Flex)`
 `
 
 export const LightBlueTriangleTop = styled.div`
-  background: url(${lightBlueTop}) center center no-repeat;
+  background: url(${({ project }) => project ? blackTop : lightBlueTop}) center center no-repeat;
   width: 100%;
   height: 116px;
   position: absolute;
   top: ${({ top }) => top || 0}px;
-  display: none;
+  display: ${({ project }) => project ? 'initial' : 'none'};
   z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    background: url(${lightBlueTop}) center center no-repeat;
     display: initial;
   }
 `
 export const LightBlueTriangleBottom = styled.div`
-  background: url(${lightBlueBottom}) center center no-repeat;
+  background: url(${({ project }) => project ? blackBottom : lightBlueBottom}) center center no-repeat;
   width: 100%;
   height: 116px;
   position: absolute;
   bottom: ${({ bottom }) => bottom || 0}px;
-  display: none;
+  display: ${({ project }) => project ? 'initial' : 'none'};
   z-index: 1;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    background: url(${lightBlueBottom}) center center no-repeat;
     display: initial;
   }
 `
