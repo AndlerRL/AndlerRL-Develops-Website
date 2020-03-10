@@ -3,10 +3,14 @@ import { Box } from 'rebass'
 
 export const Wrapper = styled(Box)`
   width: 91.666%;
-  max-width: ${({ wide }) => wide ? '1366px' : '900px'};
+  max-width: ${({ wide }) => wide ? '1366px' : '765px'};
   padding-top: ${({ isMain }) => isMain ? themeGet('space.5') : 0}px;
   position: relative;
-  margin-bottom: ${({ isMain }) => isMain ? themeGet('space.7') : 0}px;
+  margin-bottom: ${({ isMain }) => isMain ? themeGet('space.8') : 0}px;
+
+  @media screen and (max-width: 1180px) {
+    padding-top: ${({ termCon }) => termCon ? themeGet('space.8') : themeGet('space.5')}px;
+  }
 `
 
 export const Grid = styled.ul`

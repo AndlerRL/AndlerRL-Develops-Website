@@ -1,6 +1,6 @@
 import { yellow, lightBlue, blueGrey } from '@material-ui/core/colors'
 
-const breakpoints = ['40em', '52em', '64em'];
+const breakpoints = ['40em', '52em', '64em', '75em'];
 
 const colors = {
   primary: {

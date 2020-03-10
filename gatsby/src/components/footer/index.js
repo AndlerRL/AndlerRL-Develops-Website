@@ -19,7 +19,7 @@ const FooterContainer = styled(Flex)`
     position: absolute;
     width: 225px;
     max-width: 33.33%;
-    height: 150px;
+    height: 90px;
     left: 32px;
     top: -75px;
     filter: grayscale(25%);
@@ -31,6 +31,10 @@ const FooterContainer = styled(Flex)`
     img {
       width: 100%;
       margin: auto;
+    }
+
+    @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+      height: 150px;
     }
   }
 
@@ -108,28 +112,38 @@ const Footer = ({ locale }) => {
               </motion.span>
             </Link>
           </Box>
-          <Box my={2}>
-            <Link to="/terms-n-conditions">
-              <motion.span
-                whileHover={anim.linkHover}
-                transition={anim.transition}
-              >
-                {t('nav.tnc')}
-              </motion.span>
-            </Link>
-          </Box>
         </Flex>
         <BackToTop />
       </Flex>
       <SocialIcons mb={4} />
-      <Text as="p"
-        fontWeight="light"
-        color="#f5f5f5"
-        letterSpacing="0.5px"
-        fontSize={1}
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        width={1}
+        flexDirection="column"
       >
-        Andler Develops © {new Date().getFullYear()}, ®{t('footer.copyright')}
-      </Text>
+        <Link to="/terms-n-conditions">
+          <motion.span
+            whileHover={anim.linkHover}
+            transition={anim.transition}
+            style={{
+              fontWeight: 'lighter'
+            }}
+          >
+            {t('nav.tnc')}
+          </motion.span>
+        </Link>
+        <Text as="p"
+          fontWeight="light"
+          color="#f5f5f5"
+          letterSpacing="0.5px"
+          fontSize={1}
+          textAlign="center"
+          mt={2}
+        >
+          Andler Develops © {new Date().getFullYear()}, ®{t('footer.copyright')}
+        </Text>
+      </Flex>
     </FooterContainer>
   )
 }

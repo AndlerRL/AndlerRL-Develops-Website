@@ -78,7 +78,7 @@ const Home = ({ locale }) => {
   return (
     <React.Fragment>
       <HomeHero />
-      <Wrapper isMain>
+      <Wrapper isMain mb={5}>
         <PrimaryCard
           flexDirection="column"
           alignItems="center"
@@ -115,10 +115,10 @@ const Home = ({ locale }) => {
         justifyContent="center"
         flexDirection="column"
         width={1}
-        py={7}
+        py={5}
       >
         <div></div>
-        <Wrapper>
+        <Wrapper mt={5} >
           <PrimaryCard
             flexDirection="column"
             alignItems="center"

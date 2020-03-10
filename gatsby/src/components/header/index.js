@@ -9,6 +9,7 @@ import { Icon } from 'components/UI/icons'
 import { Btn } from 'components/UI/btn'
 import Tooltip from 'components/UI/tooltip'
 import { Translate } from 'store'
+import { useScrollCheck } from 'hooks/useScrollCheck'
 
 const HeadTop = styled.header`
   background-color: ${({ isMoved }) => isMoved ? 'transparent' : themeGet('colors.blackDepth.300')};
@@ -66,14 +67,18 @@ const HeadBottom = styled.header`
   transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 50ms,
     bottom 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 100ms;
 
-  a {
-    color: #f5f5f5;
-    text-decoration: none;
-    width: 33.333%;
-    text-align: center;
+  nav {
+    width: 100%;
 
-    &:not(:last-of-type) {
-      border-right: 2px solid ${themeGet('colors.blackDepth.200')};
+    a {
+      color: #f5f5f5;
+      text-decoration: none;
+      width: 33.333%;
+      text-align: center;
+
+      &:not(:last-of-type) {
+        border-right: 2px solid ${themeGet('colors.blackDepth.200')};
+      }
     }
   }
 
@@ -84,48 +89,15 @@ const HeadBottom = styled.header`
 
 const Header = ({ locale }) => {
   const { changeLang, t } = Translate.useContainer()
-  const [height, setHeight] = useState(0);
-  const [yOffset, setYOffset] = useState(0);
-  const [headPos, setHeadPos] = useState({
-    top: 0,
-    bottom: -53
-  })
-
-  const checkPos = useCallback(
-    () => {
-      const { scrollY, pageYOffset } = window;
-
-      if (height !== scrollY)
-        setHeight(scrollY)
-
-      if (yOffset > pageYOffset) {
-        setHeadPos({
-          top: 0,
-          bottom: -53
-        })
-      } else {
-        setHeadPos({
-          top: -64,
-          bottom: 0
-        })
-      }
-
-      setYOffset(pageYOffset)
-    },
-    [setHeight, height]
-  )
+  const { checkHeadPos, headPos, height } = useScrollCheck()
 
   useEffect(() => {
-    const { scrollY, pageYOffset } = window;
-    
-    setHeight(scrollY)
-    setYOffset(pageYOffset)
-    window.addEventListener('scroll', checkPos)
+    window.addEventListener('scroll', checkHeadPos)
 
     return () => {
-      window.removeEventListener('scroll', checkPos)
+      window.removeEventListener('scroll', checkHeadPos)
     }
-  }, [checkPos])
+  }, [checkHeadPos])
 
   return (
     <React.Fragment>

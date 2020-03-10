@@ -8,6 +8,7 @@ import ProjectsHero from 'components/UI/projectsHero'
 import styled, { themeGet } from 'util/styles'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { ProjectSkeleton } from 'components/UI/skeletons'
 
 const TitleContainer = styled(Flex)`
   text-transform: lowercase;
@@ -72,6 +73,7 @@ const Projects = ({ locale }) => {
             </Text>
           </TitleContainer>
         </PrimaryCard>
+        <ProjectSkeleton />
         <ProjectCard />
         <ProjectCard />
         <ProjectCard />

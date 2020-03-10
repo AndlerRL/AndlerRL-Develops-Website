@@ -10,7 +10,7 @@ const Input = styled(TextField)`
   margin: 1rem auto !important;
 
   label {
-    color: #f5f5f5 !important;
+    color: #f5f5f5;
 
     @media screen and (min-width: ${themeGet('breakpoints.0')}) {
       color: #212121;
@@ -48,13 +48,13 @@ const styles = {
       root: {
         position: 'relative',
         '& $notchedOutline': {
-          borderColor: 'rgba(0, 0, 0, 0.23)',
+          borderColor: '#f5f5f5',
         },
         '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
           borderColor: '#f5f5f5',
           // Reset on touch devices, it doesn't add specificity
           '@media (hover: none)': {
-            borderColor: 'rgba(0, 0, 0, 0.23)',
+            borderColor: '#f5f5f5',
           },
         },
         '&$focused $notchedOutline': {

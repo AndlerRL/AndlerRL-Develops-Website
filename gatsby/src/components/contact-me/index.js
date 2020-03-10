@@ -312,27 +312,27 @@ const ContactMe = ({ locale, submit }) => {
         </SecondaryCard>
         <Box>
           <ContactTitle as="h1"
-            data-aos="fade-down-left"
+            data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
             data-aos-offset="0"
           >
             {t('title.0')}
           </ContactTitle>
           <ContactTitle as="h1" my={6}
-            data-aos="fade-down-left"
+            data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
             data-aos-delay="1000"
             data-aos-offset="0"
           >
             {t('title.1')}
           </ContactTitle>
           <ContactTitle as="h1"
-            data-aos="fade-down-left"
+            data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
             data-aos-delay="1750"
             data-aos-offset="0"
           >
             {t('title.2')}
           </ContactTitle>
           <ContactTitle as="h1"
-            data-aos="fade-down-left"
+            data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
             data-aos-delay="3000"
             data-aos-offset="0"
           >

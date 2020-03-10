@@ -1,20 +1,13 @@
 import React from 'react'
 import { Btn } from 'components/UI/btn'
 import { Icon } from 'components/UI/icons'
+import { useScrollCheck } from 'hooks/useScrollCheck'
 
 const BackTo = () => {
-  const backToTopHandler = () => {
-    const { scroll } = window
-
-    scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    })
-  }
+  const { backToTop } = useScrollCheck()
 
   return (
-    <Btn onClick={backToTopHandler}>
+    <Btn onClick={backToTop}>
       <Icon.arrowUpCircle
         size="64px"
         color="#f5f5f5"
