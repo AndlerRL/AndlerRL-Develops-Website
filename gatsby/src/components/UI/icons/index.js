@@ -13,6 +13,8 @@ import {
   FiAtSign,
   FiArrowLeft,
   FiExternalLink,
+  FiX,
+  FiLoader,
 } from 'react-icons/all'
 import { Flex } from 'rebass'
 import { motion } from 'framer-motion'
@@ -36,7 +38,9 @@ export const Icon = {
   whatsapp: props => <FaWhatsapp {...props} />,
   at: props => <FiAtSign {...props} />,
   arrowLeft: props => <FiArrowLeft {...props} />,
-  externalLink: props => <FiExternalLink {...props} />
+  externalLink: props => <FiExternalLink {...props} />,
+  close: props => <FiX {...props} />,
+  load: props => <FiLoader {...props} />,
 }
 
 const anim = {

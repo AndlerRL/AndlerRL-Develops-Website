@@ -1,10 +1,37 @@
 {
   "index": {
-    "test": ["test", "Hola Mundo desde Index!"],
+    "title": {
+      "greet": ["Saludos! Mi nombre es Roberto Romero Lucas", "y soy desarrollador web full-stack."],
+      "content": [
+        "También me autodenomino cómo Andler Develops, una persona independiente que ha trabajado la mayoría de su carrera cómo Freelance, consiguiendo trabajos desde Nicaragua a Costa Rica, con clientes locales e internacionales.",
+        "Andler Develops conforma de un equipo de QA, Back-end, Front-end y Diseño de una sóla persona, que puede realizar cualquier tipo de proyectos:",
+        "E-Commerce",
+        "Blogs",
+        "Páginas Corporativas",
+        "Interfáz de Programación de Aplicaciones (API en inglés)",
+        "Cómo empresa independiente, dedico mi vida a la programación, y con cada cliente que he tenido, puedo decir que límites son los que uno impone y yo, cómo Andler Develops no se conoce tal límite."
+      ]
+    },
+    "mainContent": {
+      "titleMain": "¿Qué puedo hacer por ti?",
+      "contentMain": [
+        "Cómo desarrollador tengo pasión por crear páginas web interactivas, atractivas al ojo humano, que el usuario sepa de que donde entró somos serios en diseño y en lo que hacemos; creatividad es uno de los factores que invaden mis habilidades y la armonía entre los algoritmos y el arte de crear componentes atractivos es algo que me define cómo ser humano.",
+        "Andler Develops no sólo desarrolla páginas webs, si no también vídeo juegos creados con JavaScript, utilizando prototypes y classes, lo último en el mercado en cuestiones algorítmicas–ES2015 al ES2020–así por igual en los sitios web, utilizo metodologías modulares, funcionales y classes. En web, soy fanático de ReactJS, familiarizándome con el JAMStack, algo increíblemente fácil de manejar y crear con GatsbyJS, arrancado por ReactJS–Sanity.io–para manejo de datos y usando API de GraphQL.",
+        "Los sitios web que realizo están optimizado para SEO, así para que mantengas los datos más precisos que estas tecnologías pueden ofrecer–y dinámicos–para que obtengas una mejor experiencia de usuario.",
+        "Pero, ¿Qué puedo hacer por ti? Primero:",
+        "Dime, ¿Qué es lo que tu mente te dicta y te dice que hacer en tu futuro negocio, en tu página web que aún está en vivo pero quieres mejorarlo?",
+        "Dime, ¿Qué quieres mejorar o a donde quieres llevar tu negocio?",
+        "Quiero conocerte y quiero que también me conozcas, sé que podemos realizar un gran negocio, por si te interesa, dame tu precio y veremos qué podemos hacer y qué será de tu página para el futuro."
+      ],
+      "titleSub": "¿Quien soy yo?",
+      "contentSub": [
+        ""
+      ]
+    },
     "menu": {
-      "first": "Primero",
-      "second": "Segundo",
-      "third": "Tercero",
+      "first": "Qué hago",
+      "second": "Quién soy",
+      "third": "Testimonios",
       "tech": "Technologías"
     }
   },

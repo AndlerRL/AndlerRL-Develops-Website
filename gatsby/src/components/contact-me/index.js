@@ -11,6 +11,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import Maps from 'components/google_maps'
 import { SocialIcons, Icon } from 'components/UI/icons'
+import { motion } from 'framer-motion'
 
 const ContactTitle = styled(Text)`
   color: ${themeGet('colors.primary.A200')};
@@ -70,7 +71,7 @@ const MapContainer = styled.div`
   }
 `
 
-const ContactMe = ({ locale, submit }) => {
+const ContactMe = ({ locale, submit, submitting }) => {
   const { checkLang, t } = Translate.useContainer()
   const [form, setForm] = useState({
     name: {
@@ -130,7 +131,6 @@ const ContactMe = ({ locale, submit }) => {
     },
   })
   const [formIsValid, setFormIsValid] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
   const [innerWidth, setInnerWidth] = useState(0)
 
   const checkWidth = useCallback(
@@ -210,7 +210,10 @@ const ContactMe = ({ locale, submit }) => {
   const input = formEleArr.map(ele => {
     if (ele.config.label === t('form.name') || ele.config.label === t('form.company') || ele.config.label === t('form.email')) 
       return (
-        <Box width={[11 / 12, 11 / 12, 1]}>
+        <Box 
+          width={[11 / 12, 11 / 12, 1]}
+          key={ele.id}
+        >
           <Input
             invalid={!ele.config.validation.valid}
             shouldValidate={ele.config.validation}
@@ -230,7 +233,11 @@ const ContactMe = ({ locale, submit }) => {
   const message = formEleArr.map(ele => {
     if (ele.config.label === t('form.message'))
       return (
-        <Box width={[11 / 12, 11 / 12, 1]} height={["100%", "100%", "auto"]}>
+        <Box 
+          width={[11 / 12, 11 / 12, 1]}
+          height={["100%", "100%", "auto"]}
+          key={ele.id}
+        >
           <Input
             invalid={!ele.config.validation.valid}
             shouldValidate={ele.config.validation}
@@ -269,7 +276,7 @@ const ContactMe = ({ locale, submit }) => {
             flexDirection={["column", "row", "column"]}
             width={1}
             height="100%"
-            onSubmit={submit}
+            onSubmit={(e) => submit(e, form)}
           >
             <Text as="h1">{t('form.title')}</Text>
             <Box width={1}>
@@ -285,6 +292,7 @@ const ContactMe = ({ locale, submit }) => {
                   size="large"
                   variant="contained"
                   project
+                  disabled={!formIsValid}
                 >
                   {t('form.submit')}
                 </Btn>
@@ -305,7 +313,27 @@ const ContactMe = ({ locale, submit }) => {
                 variant="contained"
                 project
               >
-                {t('form.submit')}
+                {
+                  submitting 
+                  ? (
+                    <motion.div
+                      animate={{
+                        rotate: 360
+                      }}
+                      transition={{
+                        loop: Infinity,
+                        ease: 'linear',
+                        duration: 2,
+                      }}
+                      style={{
+                        transformOrigin: 'center center'
+                      }}
+                    >
+                      <Icon.load size="16px" />
+                    </motion.div>
+                  )
+                  : t('form.submit')
+                }
               </Btn>
             </Flex>
           </Flex>

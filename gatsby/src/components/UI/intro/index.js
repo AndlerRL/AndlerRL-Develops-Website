@@ -156,7 +156,7 @@ const IntroAnim = ({ animComplete, introEnd }) => (
         x: '-19.15vh',
         position: 'absolute',
         transition: {
-          delay: 4.5,
+          delay: 4.25,
           duration: 1.15,
           ease: 'backIn'
         }

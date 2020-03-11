@@ -35,7 +35,7 @@ const TechContainer = styled(motion.div)`
 const TechTitle = styled.div`
   position: relative;
   width: 83.333%;
-  background: url(${({ lang }) => lang === 'en' ? techTitleEN : techTitleES}) center center no-repeat;
+  background: url(${({ lang }) => lang === 'en' ? techTitleES : techTitleEN}) center center no-repeat;
   background-size: contain;
   height: 25vh;
   top: -78px;

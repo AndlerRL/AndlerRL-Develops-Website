@@ -19,6 +19,8 @@ import Link from "components/link"
 import Tech from "./techs"
 import { Translate } from 'store'
 import Scrollspy from 'components/UI/scrollspy'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const Logo = styled(motion.div)`
   background: url(${logo}) center center no-repeat;
@@ -63,11 +65,62 @@ const DescriptionContainer = styled(Flex)`
   }
 `
 
+const Questions = styled(Text)`
+  margin: ${themeGet('space.4')}px auto;
+  padding: ${themeGet('space.4')}px;
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 1.75;
+  font-weight: 400;
+  width: 83.333%;
+  background-color: ${themeGet('colors.blackDepth.300')};
+  box-shadow: 0 4px 10px 3px #2222;
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    background-color: ${themeGet('colors.primary.A100')};
+  }
+`
+
+const Testimonies = styled(Text)`
+  margin: ${themeGet('space.4')}px auto;
+  padding: ${themeGet('space.4')}px;
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 1.75;
+  font-weight: 400;
+  width: 83.333%;
+  background-color: ${themeGet('colors.blackDepth.300')};
+  box-shadow: 0 4px 10px 3px #2222;
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    background-color: ${themeGet('colors.secondary.A100')};
+  }
+`
+
+const variants = {
+  visible: custom => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 6.15 + (custom * 0.75)
+    }
+  }),
+  initial: {
+    opacity: 0,
+    x: 100
+  }
+}
+
 const Home = ({ locale }) => {
   const { checkLang, t } = Translate.useContainer()
 
   useEffect(() => {
     checkLang(locale, 'index')
+    AOS.init()
+
+    return () => {
+      AOS.refresh()
+    }
   }, [])
 
   const menuItems = {
@@ -90,19 +143,63 @@ const Home = ({ locale }) => {
         >
           <YellowTriangleTop top={-116} />
           <Logo />
-          <Text as="h1"
+          <Text as="h2"
             mt={5}
             letterSpacing={3}
+            textAlign="center"
           >
-            {t('test.1')}
+            {t('title.greet.0')}
           </Text>
-          <Text as="p"
-            lineHeight={2}
+          <Text as="h2"
+            mt={2}
+            letterSpacing={3}
+            textAlign="center"
+          >
+            {t('title.greet.1')}
+          </Text>
+          <Flex
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="flex-start"
             width={1}
             my={4}
           >
-            Nam aliquam sem et tortor consequat id porta. Tempor id eu nisl nunc mi ipsum. Leo integer malesuada nunc vel. Neque volutpat ac tincidunt vitae. Non arcu risus quis varius quam. Lectus magna fringilla urna porttitor rhoncus. At tellus at urna condimentum mattis pellentesque. Donec ac odio tempor orci dapibus ultrices in. Elementum pulvinar etiam non quam lacus suspendisse. A diam maecenas sed enim ut sem. Varius morbi enim nunc faucibus.
-          </Text>
+            <Text as="p"
+              lineHeight={2}
+            >
+              {t('title.content.0')}
+            </Text>
+            <Text as="p"
+              lineHeight={2}
+              mt={4}
+            >
+              {t('title.content.1')}
+            </Text>
+            <Box as="ul" width={1}>
+              {
+                [1, 2, 3, 4].map(i => (
+                  <motion.li custom={i}
+                    animate="visible"
+                    initial="initial"
+                    variants={variants}
+                  >
+                    <Text as="span"
+                      lineHeight={2}
+                      fontWeight={400}
+                    >
+                      {t(`title.content.${i + 1}`)}
+                    </Text>
+                  </motion.li>
+                ))
+              }
+            </Box>
+            <Text as="p"
+              lineHeight={2}
+              mt={4}
+            >
+              {t('title.content.6')}
+            </Text>
+          </Flex>
           <YellowTriangleBottom bottom={-116} />
         </PrimaryCard>
       </Wrapper>
@@ -125,24 +222,68 @@ const Home = ({ locale }) => {
             justifyContent="center"
           >
             <YellowTriangleTop top={-116} />
-            <Text as="h2" id="first_s">
-              Yellowish Card
-            </Text>
-            <Text as="p"
-              lineHeight={2}
+            <Flex
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="flex-start"
               width={1}
-              my={4}
+              id="first_s"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id faucibus nisl tincidunt eget nullam non nisi est sit. Suspendisse interdum consectetur libero id faucibus nisl. Pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Quam elementum pulvinar etiam non quam. Malesuada bibendum arcu vitae elementum curabitur vitae. Vitae elementum curabitur vitae nunc sed velit dignissim sodales ut. Turpis egestas pretium aenean pharetra magna ac placerat vestibulum. Tellus elementum sagittis vitae et leo duis. Justo nec ultrices dui sapien. Sit amet luctus venenatis lectus magna fringilla urna porttitor. Magna eget est lorem ipsum dolor. Consequat semper viverra nam libero justo laoreet sit. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Arcu non odio euismod lacinia at quis risus sed vulputate.
-            </Text>
-            <Text as="p"
-              lineHeight={2}
-              width={1}
-              my={4}
-             id="second_s"
-            >
-              Nam aliquam sem et tortor consequat id porta. Tempor id eu nisl nunc mi ipsum. Leo integer malesuada nunc vel. Neque volutpat ac tincidunt vitae. Non arcu risus quis varius quam. Lectus magna fringilla urna porttitor rhoncus. At tellus at urna condimentum mattis pellentesque. Donec ac odio tempor orci dapibus ultrices in. Elementum pulvinar etiam non quam lacus suspendisse. A diam maecenas sed enim ut sem. Varius morbi enim nunc faucibus.
-            </Text>
+              <Text as="h1" mb={4}>
+                {t('mainContent.titleMain')}
+              </Text>
+              {
+                [0, 1, 2, 3, 4, 5, 6].map(i => {
+                  if (i <= 2)
+                    return (
+                      <Text as="p"
+                        lineHeight={2}
+                        mb={3}
+                        textAlign="left"
+                        width={1}
+                      >
+                        {t(`mainContent.contentMain.${i}`)}
+                      </Text>
+                    )
+
+                  if (i === 3)
+                    return (
+                      <Text as="h2"
+                        lineHeight={2}
+                        mb={3}
+                        textAlign="left"
+                        width={1}
+                      >
+                        {t(`mainContent.contentMain.${i}`)}
+                      </Text>
+                    )
+
+                  if (i >= 4 && i < 6)
+                    return (
+                      <Questions as="h3"
+                        data-aos="zoom-in-up"
+                        data-aos-offset="300"
+                        data-aos-delay={(i * 2) * 100}
+                      >
+                        {t(`mainContent.contentMain.${i}`)}
+                      </Questions>
+                    )
+
+                  if (i === 6)
+                    return (
+                      <Text as="p"
+                        lineHeight={2}
+                        my={4}
+                        textAlign="left"
+                        width={1}
+                        fontWeight="400"
+                      >
+                        {t(`mainContent.contentMain.${i}`)}
+                      </Text>
+                    )
+                })
+              }
+            </Flex>
             <YellowTriangleBottom bottom={-116} />
           </PrimaryCard>
           <SecondaryCard
@@ -152,46 +293,47 @@ const Home = ({ locale }) => {
             my={6}
           >
             <LightBlueTriangleTop top={-116} />
-            <Text as="h2" id="third_s">
-              LightBlueish Card
-            </Text>
-            <Text as="p"
-              lineHeight={2}
-              width={1}
-              my={4}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id faucibus nisl tincidunt eget nullam non nisi est sit. Suspendisse interdum consectetur libero id faucibus nisl. Pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Quam elementum pulvinar etiam non quam. Malesuada bibendum arcu vitae elementum curabitur vitae. Vitae elementum curabitur vitae nunc sed velit dignissim sodales ut. Turpis egestas pretium aenean pharetra magna ac placerat vestibulum. Tellus elementum sagittis vitae et leo duis. Justo nec ultrices dui sapien. Sit amet luctus venenatis lectus magna fringilla urna porttitor. Magna eget est lorem ipsum dolor. Consequat semper viverra nam libero justo laoreet sit. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Arcu non odio euismod lacinia at quis risus sed vulputate.
-            </Text>
-            <Text as="p"
-              lineHeight={2}
-              width={1}
-              my={4}
-            >
-              Nam aliquam sem et tortor consequat id porta. Tempor id eu nisl nunc mi ipsum. Leo integer malesuada nunc vel. Neque volutpat ac tincidunt vitae. Non arcu risus quis varius quam. Lectus magna fringilla urna porttitor rhoncus. At tellus at urna condimentum mattis pellentesque. Donec ac odio tempor orci dapibus ultrices in. Elementum pulvinar etiam non quam lacus suspendisse. A diam maecenas sed enim ut sem. Varius morbi enim nunc faucibus.
-            </Text>
             <Flex
-              width={1}
+              flexDirection="column"
               alignItems="center"
-              justifyContent="space-around"
+              justifyContent="flex-start"
+              width={1}
+              id="second_s"
             >
-              <Btn
-                backgroundcolor={['colors.secondary.300', 'colors.secondary.500']}
-                size="large"
-                variant="contained"
+              <Text as="h1">
+                {t('mainContent.titleSub')}
+              </Text>
+              <Text as="p"
+                lineHeight={2}
+                width={1}
+                my={4}
               >
-                <Link to="/contact-me">
-                  contact me
-                </Link>
-              </Btn>
-              <Btn
-                backgroundcolor={['colors.secondary.200', 'colors.secondary.400']}
-                size="large"
-                variant="contained"
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id faucibus nisl tincidunt eget nullam non nisi est sit. Suspendisse interdum consectetur libero id faucibus nisl. Pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Quam elementum pulvinar etiam non quam. Malesuada bibendum arcu vitae elementum curabitur vitae. Vitae elementum curabitur vitae nunc sed velit dignissim sodales ut. Turpis egestas pretium aenean pharetra magna ac placerat vestibulum. Tellus elementum sagittis vitae et leo duis. Justo nec ultrices dui sapien. Sit amet luctus venenatis lectus magna fringilla urna porttitor. Magna eget est lorem ipsum dolor. Consequat semper viverra nam libero justo laoreet sit. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Arcu non odio euismod lacinia at quis risus sed vulputate.
+              </Text>
+              <Flex
+                width={1}
+                alignItems="center"
+                justifyContent="space-around"
               >
-                <Link to="/projects">
-                  see projects
-                </Link>
-              </Btn>
+                <Btn
+                  backgroundcolor={['colors.secondary.300', 'colors.secondary.500']}
+                  size="large"
+                  variant="contained"
+                >
+                  <Link to="/contact-me">
+                    contact me
+                  </Link>
+                </Btn>
+                <Btn
+                  backgroundcolor={['colors.secondary.200', 'colors.secondary.400']}
+                  size="large"
+                  variant="contained"
+                >
+                  <Link to="/projects">
+                    see projects
+                  </Link>
+                </Btn>
+              </Flex>
             </Flex>
             <LightBlueTriangleBottom bottom={-116} />
           </SecondaryCard>

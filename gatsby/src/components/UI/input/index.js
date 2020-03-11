@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
-import styled, { themeGet } from 'util/styles';
-import { TextField, MenuItem } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
+import styled, { themeGet } from 'util/styles'
+import { TextField, MenuItem } from '@material-ui/core'
 import { Translate } from 'store'
 
 const Input = styled(TextField)`
@@ -31,6 +30,7 @@ const Input = styled(TextField)`
 
   & .MuiInputBase-input {
     color: #f5f5f5;
+    font-weight: 300 !important;
 
     @media screen and (min-width: ${themeGet('breakpoints.0')}) {
       color: #212121;
@@ -41,37 +41,6 @@ const Input = styled(TextField)`
     color: ${themeGet('colors.error.900')} !important;
   }
 `;
-
-const styles = {
-  overrides: {
-    MuiOutlinedInput: {
-      root: {
-        position: 'relative',
-        '& $notchedOutline': {
-          borderColor: '#f5f5f5',
-        },
-        '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
-          borderColor: '#f5f5f5',
-          // Reset on touch devices, it doesn't add specificity
-          '@media (hover: none)': {
-            borderColor: '#f5f5f5',
-          },
-        },
-        '&$focused $notchedOutline': {
-          borderColor: '#f5f5f5',
-          borderWidth: 1,
-        },
-      },
-    },
-    MuiFormLabel: {
-      root: {
-        '&$focused': {
-          color: '#f5f5f5'
-        }
-      }
-    }
-  }
-}
 
 const InputComponent = React.memo(({
   shouldValidate,
@@ -102,9 +71,6 @@ const InputComponent = React.memo(({
   case 'input':
     inputElement = (
       <Input
-        classes={{
-          root: styles.overrides
-        }}
         {...elementConfig}
         value={value}
         defaultValue=""
@@ -122,7 +88,6 @@ const InputComponent = React.memo(({
   case 'email':
     inputElement = (
       <Input
-        classes={styles.overrides}
         {...elementConfig}
         value={value}
         defaultValue=""
@@ -234,4 +199,4 @@ InputComponent.propTypes = {
   disabled: PropTypes.bool
 };
 
-export default withStyles(styles)(InputComponent);
+export default InputComponent;

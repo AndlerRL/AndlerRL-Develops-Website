@@ -1,10 +1,37 @@
 {
   "index": {
-    "test": ["test", "Hello World from Index!"],
+    "title": {
+      "greet": ["Cheers! My name is Roberto Romero Lucas", "and I'm a full-stack web developer."],
+      "content": [
+        "Also I call myself as Andler Develops, an independent person who has worked the majority of his career as a freelance, getting jobs from Nicaragua to Costa Rica, with local and international clients.",
+        "Andler Develops is made up of a one-person team QA, Back-end, Front-end and Design that can create any type of projects:",
+        "E-Commerce",
+        "Blogs",
+        "Corporative sites",
+        "Application Programming Interface (API)",
+        "As a independent company, I dedicate my life to programming, and with each client that I had, I can tell that the limits are those that one imposes and I, as Andler Develops does not know such a limit."
+      ]
+    },
+    "mainContent": {
+      "titleMain": "What can I do for you?",
+      "contentMain": [
+        "As a developer, I have passion to create interactive websites, attractive to the human eye, that the user knows that since they got in we are serious about what we do and design; creativity is one of my factor skills that invade me and the harmony between algorithms and the art of creating attractive components is something that define me as a human been.",
+        "Andler Develops not only develop websites, also video games created with JavaScript, using prototypes and classes, the last on the market on algorithmic questions–ES2015 to ES2020–the same for websites, using modular, functional and classes methodologies. In web, I'm fanatic of ReactJS, familiarizing me with JAMStack development, something amazingly easy to control, implement and create with GatsbyJS, bootstrapped by ReactJS–Sanity.io–for data management and using GraphQL API.",
+        "The websites that I made are SEO optimized, so you can keep it up to date with the most precise data that those technologies can offer–and dynamic–so you can get a better use experience.",
+        "But, What can I do for you? First:",
+        "Tell me, What is your mind dictating you and tells you what to do in your future business, in your website that still running but want to get it better?",
+        "Tell me, What would you like to improve or where would you like to take your business?",
+        "I want to meet you and also want you to know me, I know that we can do some great business, if you're interested, gime me your price and we shall see what we can do and what would it be your site for the future."
+      ],
+      "titleSub": "Who Am I?",
+      "contentSub": [
+        ""
+      ]
+    },
     "menu": {
-      "first": "First",
-      "second": "Second",
-      "third": "Third",
+      "first": "What I Can Do",
+      "second": "Who Am I",
+      "third": "Testimonies",
       "tech": "Technologies"
     }
   },

@@ -10,6 +10,7 @@ import localeText from './contentTypes/localeText'
 import localeBlock from './contentTypes/localeBlock'
 import tech from './documents/tech'
 import project from './documents/project'
+import testimony from './documents/testimony'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -27,5 +28,6 @@ export default createSchema({
     contentImage,
     localeText,
     localeBlock,
+    testimony,
   ])
 })

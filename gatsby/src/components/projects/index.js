@@ -51,7 +51,7 @@ const Projects = ({ locale }) => {
   `)
   const projects = data.allSanityProject.edges;
   const projectsData = projects 
-    ? projects.map(({ node }) => <ProjectCard p={node} locale={locale} />)
+    ? projects.map(({ node }) => <ProjectCard p={node} locale={locale} key={node.id} />)
     : (
       <React.Fragment>
         <ProjectSkeleton />

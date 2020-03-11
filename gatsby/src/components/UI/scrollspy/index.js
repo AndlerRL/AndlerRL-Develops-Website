@@ -11,16 +11,18 @@ const ScrollspyContainer = styled(Scrollspy)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  z-index: 1400;
+  z-index: ${({ item }) => item < 65 ? 1400 : -1};
   margin-left: auto;
   margin-bottom: -18.25rem;
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
   background-color: ${({ item }) => item < 65 ? themeGet('colors.blackDepth.500') : 'transparent'};
+  opacity: ${({ item }) => item < 65 ? 1 : 0};
   height: calc(${themeGet('space.5')}px - 5px );
   transition: top 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 100ms,
-    background-color 0.15s cubic-bezier(0.785, 0.135, 0.15, 0.86) 75ms;
+    background-color 0.15s cubic-bezier(0.785, 0.135, 0.15, 0.86) 75ms,
+    opacity 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   font-size: ${themeGet('fontSizes.1')}px;
 
   a {
@@ -53,6 +55,8 @@ const ScrollspyContainer = styled(Scrollspy)`
     overflow-x: none;
     height: auto;
     font-size: ${themeGet('fontSizes.2')}px;
+    opacity: 1;
+    z-index: 1400;
 
     a {
       border-left: 3px solid ${themeGet('colors.blackDepth.100')};

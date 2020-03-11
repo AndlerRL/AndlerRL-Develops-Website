@@ -41,7 +41,7 @@ const ImgMainContainer = styled(Flex)`
     user-select: none;
     background-image: url(${({ mainImg }) => mainImg});
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-size: cover;
     background-position: center;
     background-clip: text;
@@ -60,7 +60,7 @@ const MainTechContainer = styled(motion.div)`
   width: ${({ stack }) => stack === 'JAMStack' || stack === 'MEAN Stack' || stack === 'MERN Stack' ? '200px' : '125px'};
   height: ${({ stack }) => stack === 'JAMStack' || stack === 'MEAN Stack' || stack === 'MERN Stack' ? '100px' : '125px'};
   position: absolute;
-  bottom: 46px;
+  bottom: 64px;
   left: 16px;
   z-index: 2;
 
@@ -74,7 +74,7 @@ const MainTechContainer = styled(motion.div)`
   }
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    bottom: ${({ stack }) => stack === 'JAMStack' || stack === 'MEAN Stack' || stack === 'MERN Stack' ? '46px' : '16px'};
+    bottom: 32px;
   }
 `
 
@@ -193,7 +193,7 @@ const Project = ({ locale, p }) => {
         </MainTechContainer>
       </ImgMainContainer>
       <Wrapper isMain
-        mt="-319px"
+        mt="-275px"
       >
         <PrimaryCard
           flexDirection="row"
@@ -254,7 +254,7 @@ const Project = ({ locale, p }) => {
         >
           <Flex
             flexWrap="wrap"
-            justifyContent="flex-start"
+            justifyContent="center"
             alignItems="center"
             width={1}
           >
