@@ -17,18 +17,31 @@ const TestimoniesContainer = styled(Flex)`
 `
 
 const TestimoniesContent = styled(Flex)`
-  background-color: ${themeGet('colors.blackDepth.100')};
+  background-color: ${themeGet('colors.blackDepth.300')};
 
-  &:nth-child(even) {
-    background-color: ${themeGet('colors.blackDepth.200')};
+  > div > div {
+    > div:nth-child(even) {
+      background-color: ${themeGet('colors.blackDepth.100')}80;
+    }
+
+    > div:nth-child(odd) {
+      background-color: ${themeGet('colors.blackDepth.200')}80;
+    }
   }
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    background-color: ${themeGet('colors.secondary.300')};
+    background-color: ${themeGet('colors.secondary.A100')};
 
-    &:nth-child(even) {
-      background-color: ${themeGet('colors.secondary.400')};
+    > div > div {
+      > div:nth-child(even) {
+        background-color: ${themeGet('colors.secondary.400')}80;
+      }
+
+      > div:nth-child(odd) {
+        background-color: ${themeGet('colors.secondary.500')}80;
+      }
     }
+
   }
 `
 
@@ -89,58 +102,61 @@ export const Testimonies = ({ locale, t }) => {
         flexDirection="column"
         alignItems="center"
         justifyContent="space-between"
-        p={3}
         width={1}
       >
         <AutoPlaySwipeableViews
-          axis={'x'}
+          axis="x"
           index={activeStep}
           onChangeIndex={handleStepChange}
           enableMouseEvents
+          interval={6000}
+          style={{ maxWidth: '100%' }}
         >
           {edges.map(({ node }, index) => (
             <Flex
+              flexDirection="column"
               alignItems="center"
-              justifyContent="space-between"
-              width={1}
-              style={{ position: 'relative' }}
-              key={node.title}>
-              <Icon.quoteLeft size="32px" style={{ opacity: 0.5, position: 'absolute', top: '8px', left: 0 }} />
+              justifyContent="space-evenly"
+              key={node.title}
+              height="100%"
+              p={3}
+            >
               <Flex
                 flexDirection="column"
                 alignItems="center"
                 justifyContent="center"
+                style={{ position: 'relative' }}
                 width={1}
               >
+                <Icon.quoteLeft size="32px" style={{ opacity: 0.5, position: 'absolute', top: '8px', left: 0 }} />
                 { Math.abs(activeStep - index) <= 2 
                   ? node.quote[locale].map(({ _key, children }) => (
                     <Text as="p"
                       lineHeight={2}
                       fontWeight="400"
-                      px={4}
+                      px={5}
                       py={3}
                       key={_key}
                       style={{ fontStyle: 'oblique' }}
                     >
                       {children[0].text}
                     </Text>
-
                     ))
                   : null }
+                <Icon.quoteRight size="32px" style={{ opacity: 0.5, position: 'absolute', bottom: '8px', right: 0 }} />
               </Flex>
-              <Icon.quoteRight size="32px" style={{ opacity: 0.5, position: 'absolute', bottom: '8px', right: 0 }} />
+              <Text as="p"
+                textAlign="left"
+                p={3}
+                width={1}
+                style={{ fontStyle: 'oblique' }}
+                fontSize={1}
+              >
+                {node.title}
+              </Text>
             </Flex>
           ))}
         </AutoPlaySwipeableViews>
-        <Text as="p"
-          textAlign="left"
-          p={3}
-          width={1}
-          style={{ fontStyle: 'oblique' }}
-          fontSize={1}
-        >
-          {edges[activeStep].node.title}
-        </Text>
       </TestimoniesContent>
       <Stepper
         steps={maxSteps}

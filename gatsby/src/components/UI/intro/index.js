@@ -295,11 +295,11 @@ const IntroAnim = ({ animComplete, introEnd }) => {
           position: 'absolute'
         }}
         animate={{
-          scale: 0.135,
+          scale: innerWidth <= 640 ? 0.393 : 0.135,
           top: 0,
           left: 0,
-          y: innerWidth <= 640 ? '-7.35vh' : '-12.6vh',
-          x: innerWidth <= 640 ? '-11.17vh' : '-19.15vh',
+          y: innerWidth <= 640 ? '-0.5vw' : '-12.6vh',
+          x: innerWidth <= 640 ? '-14.7vw' : '-19.15vh',
           position: 'absolute',
           transition: {
             delay: 4.25,
@@ -346,7 +346,6 @@ const IntroAnim = ({ animComplete, introEnd }) => {
                     duration: 1.5,
                   }}
                 />
-                <LogoController />
                 <DevsM
                   initial="hidden"
                   animate="visible"
