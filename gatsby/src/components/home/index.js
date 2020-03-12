@@ -135,6 +135,17 @@ const Home = ({ locale }) => {
       }
     }
   `)
+  /**
+   * 
+   * TODO
+   * 
+   * PUT THE STACKS BELLOW STANDARD IMGS AND
+   * A SHORT DESCRIPTION ABOUT WHAT I DO WITH THEM
+   * 
+   * 
+   * 
+   * 
+   */
   console.log(data)
   const { allSanityTech: { nodes } } = data
 
@@ -393,7 +404,8 @@ const Home = ({ locale }) => {
               justifyContent="space-between"
               width={1}
               id="third_s"
-              my={4}
+              mt={5}
+              mb={4}
             >
               <Text as="h2"
                 width={[1, 10 / 12, 10 / 12]}

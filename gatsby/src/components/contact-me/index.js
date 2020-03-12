@@ -57,6 +57,8 @@ const MapContainer = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
+  border-top: 6px solid ${themeGet('colors.blackDepth.400')};
+  border-left: none;
 
   div {
     width: 100% !important;
@@ -68,6 +70,8 @@ const MapContainer = styled.div`
 
   @media screen and (min-width: ${themeGet('breakpoints.1')}) {
     width: 41.666%;
+    border-top: none;
+    border-left: 6px solid ${themeGet('colors.blackDepth.400')};
   }
 `
 
@@ -274,20 +278,20 @@ const ContactMe = ({ locale, submit, submitting }) => {
           my={5}
           mx={["auto", "auto", "0px"]}
         >
+          <Text as="h1">{t('form.title')}</Text>
           <Flex as="form"
             flexDirection={["column", "row", "column"]}
             width={1}
             height="100%"
             onSubmit={(e) => submit(e, form)}
           >
-            <Text as="h1">{t('form.title')}</Text>
             <Box width={1}>
               {input}
               <Flex
                 width={1}
                 alignItems="center"
                 justifyContent="flex-start"
-                style={{ display: innerWidth <= 640 ? 'none' : 'flex' }}
+                style={{ display: innerWidth < 840 && innerWidth > 640 ? 'flex' : 'none' }}
               >
                 <Btn type="submit"
                   backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
@@ -307,13 +311,14 @@ const ContactMe = ({ locale, submit, submitting }) => {
               width={1}
               alignItems="center"
               justifyContent="center"
-              style={{ display: innerWidth <= 840 && innerWidth >= 640 ? 'none' : 'flex' }}
+              style={{ display: innerWidth < 640 || innerWidth > 840 ? 'flex' : 'none' }}
             >
               <Btn type="submit"
                 backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
                 size="large"
                 variant="contained"
                 project
+                disabled={!formIsValid}
               >
                 {
                   submitting 
@@ -377,7 +382,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
         justifyContent="space-between"
         width={[1, 10 / 12, 10 / 12]}
         mx="auto"
-        height={[700, 400, 400]}
+        height={[700, 650, 400]}
         p={0}
         mt={6}
       >
@@ -385,7 +390,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
           flexDirection="column"
           alignItems="center"
           justifyContent="space-between"
-          width={[1, 7 / 12, 7 / 12]}
+          width={[1, 11 / 12, 7 / 12]}
           height="100%"
           p={4}
         >
@@ -403,7 +408,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
             py={3}
           >
             <Flex
-              aligItems="center"
+              alignItems="center"
               justifyContent="flex-start"
               width={1}
             >
@@ -411,7 +416,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
               <Text as="p" pl={2}>{t('contact.direction')}</Text>
             </Flex>
             <Flex
-              aligItems="center"
+              alignItems="center"
               justifyContent="flex-start"
               width={1}
             >
@@ -424,7 +429,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
               </Text>
             </Flex>
             <Flex
-              aligItems="center"
+              alignItems="center"
               justifyContent="flex-start"
               width={1}
             >
@@ -437,7 +442,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
               </Text>
             </Flex>
             <Flex
-              aligItems="center"
+              alignItems="center"
               justifyContent="flex-start"
               width={1}
             >
@@ -459,7 +464,6 @@ const ContactMe = ({ locale, submit, submitting }) => {
             margin: '0 auto',
             padding: 0,
             height: '400px',
-            borderLeft: '6px solid #161616'
           }}
         >
           <Maps 
