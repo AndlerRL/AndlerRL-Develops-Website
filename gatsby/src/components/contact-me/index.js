@@ -143,6 +143,8 @@ const ContactMe = ({ locale, submit, submitting }) => {
   )
 
   useEffect(() => {
+    const { innerWidth } = window
+
     AOS.init()
     checkLang(locale, 'contact-me')
     setInnerWidth(innerWidth)
@@ -152,7 +154,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
       AOS.refresh()
       window.removeEventListener('resize', checkWidth)
     }
-  }, [])
+  }, [checkWidth, locale])
 
   useEffect(() => {
     if (form.name.label !== t('form.name')) {

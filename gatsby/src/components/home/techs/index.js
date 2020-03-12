@@ -35,7 +35,7 @@ const TechContainer = styled(motion.div)`
 const TechTitle = styled.div`
   position: relative;
   width: 83.333%;
-  background: url(${({ lang }) => lang === 'en' ? techTitleES : techTitleEN}) center center no-repeat;
+  background: url(${({ lang }) => lang === 'en' ? techTitleEN : techTitleES}) center center no-repeat;
   background-size: contain;
   height: 25vh;
   top: -78px;
@@ -74,7 +74,7 @@ const TechComponent = ({ fluid, title, stack }) => {
 const Tech = ({ locale }) => {
   const data = useStaticQuery(graphql`
     query {
-      allSanityTech(filter: {title: {nin: ["HTML5", "JavaScript", "CCS3"]}}, sort: {fields: title}) {
+      allSanityTech(filter: {title: {nin: ["HTML5", "JavaScript", "CSS3"]}}, sort: {fields: title}) {
         nodes {
           category
           title

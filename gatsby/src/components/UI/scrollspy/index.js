@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useEffect } from 'react'
 import styled, { themeGet } from 'util/styles'
 import Scrollspy from 'react-scrollspy'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
@@ -13,7 +13,7 @@ const ScrollspyContainer = styled(Scrollspy)`
   justify-content: space-between;
   z-index: ${({ item }) => item < 65 ? 1400 : -1};
   margin-left: auto;
-  margin-bottom: -18.25rem;
+  margin-bottom: -19rem;
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
@@ -97,7 +97,7 @@ const ScrollspyComponent = ({ items, title }) => {
 
   useEffect(() => {
     checkMenuPos()
-  }, [menuPos])
+  }, [menuPos, checkMenuPos])
 
   return (
     <ScrollspyContainer

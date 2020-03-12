@@ -33,6 +33,15 @@
       "second": "Quién soy",
       "third": "Testimonios",
       "tech": "Technologías"
+    },
+    "btn": {
+      "contact": "contácteme",
+      "projects": "ver proyectos"
+    },
+    "testimonies": {
+      "title": "TESTIMONIOS",
+      "back": "Reg.",
+      "next": "Sig."
     }
   },
   "projects": {

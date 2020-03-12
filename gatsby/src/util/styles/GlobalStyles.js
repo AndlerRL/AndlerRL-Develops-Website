@@ -1,4 +1,4 @@
-import { createGlobalStyle, themeGet, getPx } from './index';
+import { createGlobalStyle, themeGet } from './index';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -26,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: ${themeGet('fontSizes.2')}px;
     background-color: ${themeGet('colors.blacksDepth.500')};
     overflow: ${({ intro }) => intro ? 'hidden' : 'auto'};
+    scroll-snap-type: y proximity;
   }
 
   h1, h2, h3, h4, h5, h6 {

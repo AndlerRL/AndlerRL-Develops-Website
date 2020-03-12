@@ -100,7 +100,7 @@ const NoContent = ({ locale }) => {
           }}
           transition={{
             duration: 2,
-            yoyo: Infinity
+            loop: Infinity
           }}
           onTap={redirectHandler}
           style={{

@@ -12,9 +12,11 @@ import {
   FiSmartphone,
   FiAtSign,
   FiArrowLeft,
+  FiArrowRight,
   FiExternalLink,
   FiX,
   FiLoader,
+  IoIosQuote,
 } from 'react-icons/all'
 import { Flex } from 'rebass'
 import { motion } from 'framer-motion'
@@ -38,9 +40,12 @@ export const Icon = {
   whatsapp: props => <FaWhatsapp {...props} />,
   at: props => <FiAtSign {...props} />,
   arrowLeft: props => <FiArrowLeft {...props} />,
+  arrowRight: props => <FiArrowRight {...props} />,
   externalLink: props => <FiExternalLink {...props} />,
   close: props => <FiX {...props} />,
   load: props => <FiLoader {...props} />,
+  quoteLeft: props => <IoIosQuote {...props} style={{ ...props.style, transform: 'scale(-1, -1)' }} />,
+  quoteRight: props => <IoIosQuote {...props} />,
 }
 
 const anim = {

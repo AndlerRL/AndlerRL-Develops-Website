@@ -6,7 +6,7 @@ export default {
     {
       name: 'quote',
       title: 'Quote',
-      type: 'localeString'
+      type: 'localeBlock'
     },
     {
       name: 'title',

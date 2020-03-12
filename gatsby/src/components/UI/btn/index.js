@@ -25,9 +25,12 @@ export const Btn = styled(Button)`
   font-weight: ${themeGet('fontWeights.regular')} !important;
   letter-spacing: 1px !important;
   color: ${({ project }) => project ? '#f5f5f5' : '#212121'} !important;
-  padding: 8px 18px !important;
+  padding: 8px 24px !important;
   border-radius: calc(${themeGet('radii.4')}px * 2) !important;
   transition: all 0.15s cubic-bezier(0.785, 0.135, 0.15, 0.86) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
 
   a {
     color: ${({ project }) => project ? '#f5f5f5' : '#212121'} !important;
@@ -45,5 +48,10 @@ export const Btn = styled(Button)`
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  &[disabled] {
+    opacity: 0.25;
+    pointer-events: none;
   }
 `

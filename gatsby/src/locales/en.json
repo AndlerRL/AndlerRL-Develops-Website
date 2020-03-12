@@ -29,10 +29,19 @@
       ]
     },
     "menu": {
-      "first": "What I Can Do",
-      "second": "Who Am I",
+      "first": "What I can do",
+      "second": "Who am I",
       "third": "Testimonies",
       "tech": "Technologies"
+    },
+    "btn": {
+      "contact": "contact me",
+      "projects": "see projects"
+    },
+    "testimonies": {
+      "title": "TESTIMONIES",
+      "back": "Back",
+      "next": "Next"
     }
   },
   "projects": {

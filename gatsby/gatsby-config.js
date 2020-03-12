@@ -24,7 +24,7 @@ module.exports = {
       options: {
         fonts: [
           `Kalam\:700`,
-          `Montserrat\:300,400,500,600`,
+          `Montserrat\:300,300i,400,400i,500,500i,600`,
           `Oswald\:400,500,600,700`
         ],
         display: 'swap'
