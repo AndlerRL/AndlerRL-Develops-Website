@@ -10,9 +10,10 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import ReactGA from "react-ga"
 import { useStaticQuery, graphql } from "gatsby"
+import logo from 'images/thumbnail.png'
 
 function SEO({ description, lang, meta, title, pageView, thumbnail }) {
-  const { site, imageSharp } = useStaticQuery(
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -28,11 +29,6 @@ function SEO({ description, lang, meta, title, pageView, thumbnail }) {
             keywords
             googleAnalyticsId
             siteUrl
-          }
-        }
-        imageSharp(fluid: {originalName: {eq: "thumbnail.png"}}) {
-          fluid {
-            base64
           }
         }
       }
@@ -52,7 +48,7 @@ function SEO({ description, lang, meta, title, pageView, thumbnail }) {
   });
 
   const metaDescription = description || site.siteMetadata.description[lang]
-  const metaThumbnail = thumbnail || imageSharp.base64
+  const metaThumbnail = thumbnail || logo
 
   return (
     <Helmet

@@ -1,6 +1,6 @@
 import Link from "components/link"
 import PropTypes from "prop-types"
-import React, { useEffect, useState, useCallback } from "react"
+import React, { useEffect } from "react"
 import styled, { themeGet } from 'util/styles'
 import { Flex, Box } from 'rebass';
 import logo_alt from 'images/new_logo_alt.svg'

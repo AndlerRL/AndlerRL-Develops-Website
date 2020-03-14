@@ -58,8 +58,6 @@ const Projects = ({ locale }) => {
         <ProjectSkeleton />
       </React.Fragment>
     )
-  
-  console.log(projects.map(({ node }) => node))
 
   useEffect(() => {
     AOS.init({

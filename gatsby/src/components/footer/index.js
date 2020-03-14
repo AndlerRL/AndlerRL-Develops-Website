@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled, { themeGet } from 'util/styles'
 import { Flex, Box, Text } from 'rebass'
 import { SocialIcons } from 'components/UI/icons'
@@ -69,7 +69,7 @@ const Footer = ({ locale }) => {
       pb={[5, 3, 3]}
     >
       <div className="Logo__alt">
-        <img src={logo_alt} />
+        <img src={logo_alt} alt="logo_alt darkened" />
       </div>
       <Flex
         width={1}

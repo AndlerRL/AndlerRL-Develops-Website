@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Flex, Text, Box } from 'rebass'
 import styled, { themeGet } from 'util/styles'
 import { Wrapper } from 'components/UI/wrappers'

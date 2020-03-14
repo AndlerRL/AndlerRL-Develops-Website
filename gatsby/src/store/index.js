@@ -10,11 +10,16 @@ const initState = {
     en: translateEN
   },
   current: null,
-  lang: navigator.language === 'es_US' ? 'es' : 'en'
+  lang: null
 }
 
 const reducer = (state, action) => {
   switch(action.type) {
+    case 'READ_LANG': 
+      return {
+        ...state,
+        lang: action.lang
+      }
     case 'SET_LANG': 
       return {
         ...state,
@@ -38,6 +43,12 @@ const useTranslate = () => {
   const [win, setWin] = useState(null)
 
   useEffect(() => {
+    const { language } = navigator
+
+    dispatch({
+      type: 'READ_LANG',
+      lang: language.match('es') ? 'es' : 'en'
+    })
     setWin(window)
 
     return () => {

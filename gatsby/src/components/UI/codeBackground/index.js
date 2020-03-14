@@ -39,7 +39,7 @@ const HomeHero = () => (
       <VideoContainer autoPlay loop muted playsInline poster={homeHeroGif}>
         <source src={homeHeroMp4} type="video/mp4" />
         <source src={homeHeroWebm} type="video/webm" />
-        <img src={homeHeroGif} />
+        <img src={homeHeroGif} alt="No video supported. Using GIF" />
       </VideoContainer>
     </div>
   </React.Fragment>

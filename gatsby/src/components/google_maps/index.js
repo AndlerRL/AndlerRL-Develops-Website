@@ -1,10 +1,9 @@
-import React, { useState, useRef } from 'react'
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 import PropTypes from 'prop-types'
-import { Text, Flex } from 'rebass';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import React, { useRef } from 'react'
 
 const GoogleMap = ({ height, lat, lng, zoom, google }) => {
-  const [controls, setControls] = useState({
+  const controls = {
     center: {
       lat,
       lng
@@ -12,7 +11,7 @@ const GoogleMap = ({ height, lat, lng, zoom, google }) => {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {}
-  })
+  }
 
   const style = {
     width: '100%',

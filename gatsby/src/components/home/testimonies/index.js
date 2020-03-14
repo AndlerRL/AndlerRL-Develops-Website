@@ -5,7 +5,7 @@ import { autoPlay } from 'react-swipeable-views-utils'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Icon } from 'components/UI/icons'
 import { Btn } from 'components/UI/btn'
-import { Box, Flex, Text } from 'rebass'
+import { Flex, Text } from 'rebass'
 import styled, { themeGet } from 'util/styles'
 
 const TestimoniesContainer = styled(Flex)`

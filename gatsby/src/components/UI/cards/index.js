@@ -5,7 +5,7 @@ import lightBlueBottom from 'images/lightBlueBottomTriangle.svg'
 import blackTop from 'images/blackTopTriangle.svg'
 import blackBottom from 'images/blackBottomTriangle.svg'
 import styled, { themeGet } from 'util/styles'
-import { Flex, Box, Text } from 'rebass'
+import { Flex } from 'rebass'
 
 /**
  * 

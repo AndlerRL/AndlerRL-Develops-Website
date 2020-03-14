@@ -162,25 +162,25 @@ const ContactMe = ({ submit, submitting }) => {
 
   useEffect(() => {
     if (form.name.label !== t('form.name')) {
-      setForm({
-        ...form,
+      setForm(f => ({
+        ...f,
         name: {
-          ...form.name,
+          ...f.name,
           label: t('form.name')
         },
         company: {
-          ...form.company,
+          ...f.company,
           label: t('form.company')
         },
         email: {
-          ...form.email,
+          ...f.email,
           label: t('form.email')
         },
         message: {
-          ...form.message,
+          ...f.message,
           label: t('form.message')
         },
-      });
+      }));
     }
   }, [t, setForm]);
 
