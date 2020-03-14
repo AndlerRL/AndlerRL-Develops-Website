@@ -39,6 +39,10 @@ const useTranslate = () => {
 
   useEffect(() => {
     setWin(window)
+
+    return () => {
+      setWin(window)
+    }
   }, [])
   
   const checkPath = locale => {

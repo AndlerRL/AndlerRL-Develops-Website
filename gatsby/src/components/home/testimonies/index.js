@@ -11,8 +11,20 @@ import styled, { themeGet } from 'util/styles'
 const TestimoniesContainer = styled(Flex)`
   border: 3px solid ${themeGet('colors.blackDepth.300')};
 
+  .MuiMobileStepper-dot {
+    transition: background-color 0.33s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+
+  .MuiMobileStepper-dotActive {
+    background-color: ${themeGet('colors.blackDepth.100')};
+  }
+
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    border-color: ${themeGet('colors.secondary.A100')}
+    border-color: ${themeGet('colors.primary.A100')};
+
+    .MuiMobileStepper-dotActive {
+      background-color: ${themeGet('colors.primary.A200')};
+    }
   }
 `
 
@@ -30,15 +42,15 @@ const TestimoniesContent = styled(Flex)`
   }
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    background-color: ${themeGet('colors.secondary.A100')};
+    background-color: ${themeGet('colors.primary.A100')};
 
     > div > div {
       > div:nth-child(even) {
-        background-color: ${themeGet('colors.secondary.400')}80;
+        background-color: ${themeGet('colors.primary.400')}80;
       }
 
       > div:nth-child(odd) {
-        background-color: ${themeGet('colors.secondary.500')}80;
+        background-color: ${themeGet('colors.primary.500')}80;
       }
     }
 
@@ -50,7 +62,7 @@ const Stepper = styled(MobileStepper)`
   background-color: ${themeGet('colors.blackDepth.300')} !important;
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    background-color: ${themeGet('colors.secondary.A100')} !important;
+    background-color: ${themeGet('colors.primary.A100')} !important;
 
     button {
       color: #212121 !important;
@@ -134,7 +146,7 @@ export const Testimonies = ({ locale, t }) => {
                     <Text as="p"
                       lineHeight={2}
                       fontWeight="400"
-                      px={5}
+                      px={[4, 5, 5]}
                       py={3}
                       key={_key}
                       style={{ fontStyle: 'oblique' }}
@@ -152,7 +164,7 @@ export const Testimonies = ({ locale, t }) => {
                 style={{ fontStyle: 'oblique' }}
                 fontSize={1}
               >
-                {node.title}
+                - {node.title}
               </Text>
             </Flex>
           ))}

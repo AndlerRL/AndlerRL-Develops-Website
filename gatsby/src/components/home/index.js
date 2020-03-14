@@ -25,15 +25,18 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { Image } from 'components/image'
+import { Icon } from 'components/UI/icons'
+import lorax from 'images/the-lorax.png'
 
-const Logo = styled(motion.div)`
+const Logo = styled.div`
   background: url(${logo}) center center no-repeat;
   width: 300px;
   height: 270px;
   background-size: contain;
   top: -200px;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
 `
 
 const DescriptionContainer = styled(Flex)`
@@ -69,21 +72,48 @@ const DescriptionContainer = styled(Flex)`
   }
 `
 
-const Questions = styled(Text)`
-  margin: ${themeGet('space.4')}px auto;
-  padding: ${themeGet('space.4')}px;
-  text-align: center;
-  letter-spacing: 2px;
-  line-height: 1.75;
-  font-weight: 400;
-  width: 83.333%;
+const Questions = styled(Box)`
   background-color: ${themeGet('colors.blackDepth.300')};
   box-shadow: 0 4px 10px 3px #2222;
   scroll-snap-align: start;
 
+  h3 {
+    padding: ${themeGet('space.4')}px;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
     background-color: ${themeGet('colors.primary.A100')};
   }
+`
+
+const QuestionsSecondary = styled(Box)`
+  background-color: ${themeGet('colors.blackDepth.300')};
+  box-shadow: 0 4px 10px 3px #2222;
+  scroll-snap-align: start;
+
+  h3 {
+    padding: ${themeGet('space.4')}px;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    background-color: ${themeGet('colors.secondary.A100')};
+  }
+`
+
+const Quote = styled(Flex)`
+  background: ${themeGet('colors.secondary.A100')} url(${lorax}) center center no-repeat;
+  background-size: 50% auto;
+  box-shadow: 0 4px 10px 3px #2222;
+  scroll-snap-align: start;
+  position: relative;
 `
 
 const ImgContentContainer = styled(Box)`
@@ -120,7 +150,7 @@ const Home = ({ locale }) => {
   const { checkLang, t } = Translate.useContainer()
   const data = useStaticQuery(graphql`
     {
-      allSanityTech(filter: {title: {in: ["HTML5", "JavaScript", "CSS3"]}}, sort: {fields: title}) {
+      allSanityTech(filter: {title: {in: ["HTML5", "JavaScript", "CSS3", "JAMStack", "MERN Stack", "MEAN Stack"]}}, sort: {fields: title}) {
         nodes {
           category
           title
@@ -135,18 +165,6 @@ const Home = ({ locale }) => {
       }
     }
   `)
-  /**
-   * 
-   * TODO
-   * 
-   * PUT THE STACKS BELLOW STANDARD IMGS AND
-   * A SHORT DESCRIPTION ABOUT WHAT I DO WITH THEM
-   * 
-   * 
-   * 
-   * 
-   */
-  console.log(data)
   const { allSanityTech: { nodes } } = data
 
   useEffect(() => {
@@ -268,7 +286,7 @@ const Home = ({ locale }) => {
                 {t('mainContent.titleMain')}
               </Text>
               {
-                [0, 1, 2, 3, 4, 5, 6].map(i => {
+                [0, 1, 2, 3, 4, 5, 6, 7].map(i => {
                   if (i === 0)
                     return (
                       <Text as="p"
@@ -295,7 +313,7 @@ const Home = ({ locale }) => {
                           width={1}
                           my={4}
                         >
-                          { nodes.map(({ logo }, i) => (
+                          { nodes.map(({ logo, title }, i) => (title === 'HTML5' || title === 'JavaScript' || title === 'CSS3') && (
                             <ImgContentContainer
                               width={[11 / 12, 4 / 12, 4 / 12]}
                               data-aos="zoom-in"
@@ -320,6 +338,50 @@ const Home = ({ locale }) => {
 
                   if (i === 2)
                     return (
+                      <Flex
+                        flexDirection={["column", "row-reverse", "row"]}
+                        alignItems="center"
+                        justifyContent="space-between"
+                        width={1}
+                      >
+                        <Flex
+                          flexDirection="column"
+                          alignItems="center"
+                          justifyContent="space-around"
+                          width={[1, 5 / 12, 5 / 12]}
+                          height={["500px", "600px", "600px"]}
+                          my={4}
+                        >
+                          { nodes.map(({ logo, title }, i) => (title === 'JAMStack' || title === 'MERN Stack' || title === 'MEAN Stack') && (
+                            <ImgContentContainer
+                              width={[1, 1, 1]}
+                              data-aos="zoom-in"
+                              data-aos-delay={(((i + 1) * 2.5) * 100)}
+                              data-aos-anchor-placement="center-bottom"
+                              data-aos-once="true"
+                            >
+                              <Img fluid={logo.asset.fluid} />
+                            </ImgContentContainer>
+                          )) }
+                        </Flex>
+                        <Questions
+                          width={[1, 1 / 2, 1 / 2]}
+                          my={4}
+                          data-aos="zoom-out-up"
+                          data-aos-offset="250"
+                          data-aos-delay={(i * 2) * 100}
+                          data-aos-once="true"
+                          data-aos-anchor-placement="center-bottom"
+                        >
+                          <Text as="h3">
+                            {t(`mainContent.contentMain.${i}`)}
+                          </Text>
+                        </Questions>
+                      </Flex>
+                    )
+
+                  if (i === 3)
+                    return (
                       <Text as="p"
                         lineHeight={2}
                         mb={3}
@@ -331,7 +393,7 @@ const Home = ({ locale }) => {
                       </Text>
                     )
 
-                  if (i === 3)
+                  if (i === 4)
                     return (
                       <Text as="h2"
                         lineHeight={2}
@@ -343,20 +405,24 @@ const Home = ({ locale }) => {
                       </Text>
                     )
 
-                  if (i >= 4 && i < 6)
+                  if (i === 5 || i === 6)
                     return (
-                      <Questions as="h3"
+                      <Questions
+                        style={{ width: '83.333%' }}
+                        my={4}
                         data-aos="zoom-out-up"
-                        data-aos-offset="300"
+                        data-aos-offset="250"
                         data-aos-delay={(i * 2) * 100}
                         data-aos-once="true"
                         data-aos-anchor-placement="center-bottom"
                       >
-                        {t(`mainContent.contentMain.${i}`)}
+                        <Text as="h3">
+                          {t(`mainContent.contentMain.${i}`)}
+                        </Text>
                       </Questions>
                     )
 
-                  if (i === 6)
+                  if (i === 7)
                     return (
                       <Text as="p"
                         lineHeight={2}
@@ -371,39 +437,12 @@ const Home = ({ locale }) => {
                 })
               }
             </Flex>
-            <YellowTriangleBottom bottom={-116} />
-          </PrimaryCard>
-          <SecondaryCard
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            my={6}
-          >
-            <LightBlueTriangleTop top={-116} />
-            <Flex
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="flex-start"
-              width={1}
-              id="second_s"
-            >
-              <Text as="h1">
-                {t('mainContent.titleSub')}
-              </Text>
-              <Text as="p"
-                lineHeight={2}
-                width={1}
-                my={4}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id faucibus nisl tincidunt eget nullam non nisi est sit. Suspendisse interdum consectetur libero id faucibus nisl. Pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus. Tempus imperdiet nulla malesuada pellentesque elit eget gravida cum. Quam elementum pulvinar etiam non quam. Malesuada bibendum arcu vitae elementum curabitur vitae. Vitae elementum curabitur vitae nunc sed velit dignissim sodales ut. Turpis egestas pretium aenean pharetra magna ac placerat vestibulum. Tellus elementum sagittis vitae et leo duis. Justo nec ultrices dui sapien. Sit amet luctus venenatis lectus magna fringilla urna porttitor. Magna eget est lorem ipsum dolor. Consequat semper viverra nam libero justo laoreet sit. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Arcu non odio euismod lacinia at quis risus sed vulputate.
-              </Text>
-            </Flex>
             <Flex
               flexDirection="column"
               alignItems="center"
               justifyContent="space-between"
               width={1}
-              id="third_s"
+              id="second_s"
               mt={5}
               mb={4}
             >
@@ -422,7 +461,7 @@ const Home = ({ locale }) => {
               justifyContent="space-around"
             >
               <Btn
-                backgroundcolor={['colors.secondary.300', 'colors.secondary.500']}
+                backgroundcolor={['colors.primary.300', 'colors.primary.500']}
                 size="large"
                 variant="contained"
               >
@@ -431,7 +470,7 @@ const Home = ({ locale }) => {
                 </Link>
               </Btn>
               <Btn
-                backgroundcolor={['colors.secondary.200', 'colors.secondary.400']}
+                backgroundcolor={['colors.primary.200', 'colors.primary.400']}
                 size="large"
                 variant="contained"
               >
@@ -439,6 +478,160 @@ const Home = ({ locale }) => {
                   {t('btn.projects')}
                 </Link>
               </Btn>
+            </Flex>
+            <YellowTriangleBottom bottom={-116} />
+          </PrimaryCard>
+          <SecondaryCard
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            my={6}
+          >
+            <LightBlueTriangleTop top={-116} />
+            <Flex
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="flex-start"
+              width={1}
+              id="third_s"
+            >
+              <Text as="h1">
+                {t('mainContent.titleSub')}
+              </Text>
+              { 
+                [0, 1, 2, 3, 4, 5, 6, 7].map(i => {
+                  if (i <= 1)
+                    return (
+                      <Text as="p"
+                        lineHeight={2}
+                        width={1}
+                        my={4}
+                      >
+                        {t(`mainContent.contentSub.${i}`)}
+                      </Text>
+                    )
+                  
+                  if (i === 2 || i === 3) {
+                    if (i === 2)
+                      return (
+                        <Flex
+                          flexDirection={["column", "row-reverse", "row"]}
+                          alignItems="center"
+                          justifyContent="space-between"
+                          width={1}
+                          my={4}
+                        >
+                          <Box width={[1, 1 / 2, 1 / 2]}
+                            height={["300px", "400px", "400px"]}
+                            data-aos="fade-up"
+                            data-aos-once="true"
+                            my={2}
+                          >
+                            <Image img="first-pc.png" />
+                          </Box>
+                          <Flex
+                            flexDirection="column"
+                            alignItems="center"
+                            justifyContent="space-around"
+                            width={[1, 1 / 2, 1 / 2]}
+                          >
+                            <QuestionsSecondary
+                              width={1}
+                              my={4}
+                              data-aos="zoom-out-up"
+                              data-aos-offset="250"
+                              data-aos-delay={(i * 2) * 100}
+                              data-aos-once="true"
+                              data-aos-anchor-placement="center-bottom"
+                            >
+                              <Text as="h3">
+                                {t(`mainContent.contentSub.${i}`)}
+                              </Text>
+                            </QuestionsSecondary>
+                            <QuestionsSecondary
+                              width={1}
+                              my={4}
+                              data-aos="zoom-out-up"
+                              data-aos-offset="250"
+                              data-aos-delay={(i + 1 * 2) * 100}
+                              data-aos-once="true"
+                              data-aos-anchor-placement="center-bottom"
+                            >
+                              <Text as="h3">
+                                {t(`mainContent.contentSub.${i + 1}`)}
+                              </Text>
+                            </QuestionsSecondary>
+                          </Flex>
+                        </Flex>
+                      )
+                  }
+
+                  if (i === 4 || i === 5 )
+                    return (
+                      <Text as="p"
+                        lineHeight={2}
+                        width={1}
+                        my={4}
+                      >
+                        {t(`mainContent.contentSub.${i}`)}
+                      </Text>
+                    )
+
+                  if (i >= 6)
+                    return (
+                      <QuestionsSecondary
+                        width={11 / 12}
+                        my={4}
+                        data-aos="zoom-out-up"
+                        data-aos-offset="250"
+                        data-aos-delay={(i * 2) * 100}
+                        data-aos-once="true"
+                        data-aos-anchor-placement="center-bottom"
+                      >
+                        <Text as="h3">
+                          {t(`mainContent.contentSub.${i}`)}
+                        </Text>
+                      </QuestionsSecondary>
+                    )
+                })
+              }
+              <Quote
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                width={9 / 12}
+                p={5}
+                my={5}
+              >
+                <Flex
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  style={{ position: 'relative' }}
+                  width={1}
+                >
+                  <Icon.quoteLeft size="32px" style={{ opacity: 0.5, position: 'absolute', top: '8px', left: 0 }} />
+                    <Text as="p"
+                      lineHeight={2}
+                      fontWeight="500"
+                      px={5}
+                      py={3}
+                      style={{ fontStyle: 'oblique' }}
+                    >
+                      {t('mainContent.quote.content')}
+                    </Text>
+                  <Icon.quoteRight size="32px" style={{ opacity: 0.5, position: 'absolute', bottom: '8px', right: 0 }} />
+                </Flex>
+                <Text as="p"
+                  textAlign="left"
+                  p={3}
+                  width={1}
+                  style={{ fontStyle: 'oblique', bottom: 0, position: 'absolute' }}
+                  fontSize={1}
+                >
+                  - {t('mainContent.quote.credits')}
+                </Text>
+              </Quote>
             </Flex>
             <LightBlueTriangleBottom bottom={-116} />
           </SecondaryCard>

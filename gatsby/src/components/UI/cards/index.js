@@ -35,6 +35,7 @@ import { Flex, Box, Text } from 'rebass'
  */
 
 export const PrimaryCard = styled(Flex)`
+  scroll-snap-align: start;
   background-color: ${themeGet('colors.blackDepth.400')};
   color: ${({ contact }) => contact ? '#f5f5f5' : themeGet('colors.primary.A200')};
   position: relative;
@@ -74,6 +75,7 @@ export const YellowTriangleBottom = styled.div`
   }
 `
 export const SecondaryCard = styled(Flex)`
+  scroll-snap-align: start;
   background-color: ${themeGet('colors.blackDepth.400')};
   color: ${({ contact }) => contact ? '#f5f5f5' : themeGet('colors.secondary.A200')};
   position: relative;

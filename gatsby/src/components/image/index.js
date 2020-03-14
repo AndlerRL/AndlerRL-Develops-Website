@@ -23,7 +23,7 @@ const ImgContainer = styled.div`
 `
 
 
-export const Image = ({ fluid }) => {
+export const Image = ({ img }) => {
   const data = useStaticQuery(graphql`
     query {
       allImageSharp(filter: {fluid: {originalName: {ne: null}}}) {
@@ -50,16 +50,14 @@ export const Image = ({ fluid }) => {
   `)
   const { allImageSharp, allSanityImageAsset } = data
 
-  const imgLocalFind = allImageSharp.edges.find(({ node: { fluid } }) => fluid.originalName === fluid)
-  const imgSanityFind = allSanityImageAsset.edges.find(({ node: { id } }) => id === fluid)
+  const imgLocalFind = allImageSharp.edges.find(({ node: { fluid } }) => fluid.originalName === img)
+  const imgSanityFind = allSanityImageAsset.edges.find(({ node: { id } }) => id === img)
 
   const fluidImg = imgLocalFind 
     ? imgLocalFind
     : imgSanityFind
 
-  console.log(fluidImg)
-
-  return (
+  return fluidImg && (
     <ImgContainer>
       <Img fluid={fluidImg.node.fluid} />
     </ImgContainer>
