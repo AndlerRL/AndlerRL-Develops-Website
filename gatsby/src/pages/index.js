@@ -1,5 +1,5 @@
 import Layout from "components/layout"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Translate } from 'store'
 import SEO from "components/seo"
 import IntroAnim from 'components/UI/intro'
@@ -10,7 +10,7 @@ const IndexPage = React.memo(({ pageContext: { locale }, location  }) => {
 
   return (
     <Layout location={location} locale={locale} intro={intro}>
-      <SEO title="Home" />
+      <SEO title="Home" lang={locale} pageView={`${locale === 'es' ? '/es/' : '/'}`} />
       <IntroAnim animComplete={() => {setIntro(false)}} introEnd={!intro} />
       <Translate.Provider>
         <Home locale={locale} />

@@ -4,9 +4,22 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://andler.netlify.com`,
     title: `Andler Develops`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `AndlerRL`,
+    description: {
+      es: `Desarrollador web de alta gama, preparado para utilizar las últimas tecnologías en el mercado, lleno de creatividad y aspiraciones.`,
+      en: `High-end web developer, prepared to use the latest technologies on the market, full of creativity and aspirations.`
+    },
+    manifest: {
+      backgroundColor: `#010101`,
+      themeColor: `#212121`,
+    },
+    keywords: `andler, dev, develops, devs, full-stack, developer, desarrollador, fullstack, portfolio, portafolio, freelance, freelancer`,
+    googleAnalyticsId: `UA-140783181-1`,
+    schema: {
+      '@type': `Person`,
+      author: `Roberto Romero Lucas`
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -1,16 +1,22 @@
 import React from "react"
 import { Translate } from 'store'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from "components/layout"
 import SEO from "components/seo"
 import Project from 'components/project'
 
 const ProjectPage = ({ pageContext: { locale }, location, data: { sanityProject } }) => {
-  console.log(sanityProject)
-
+  const pBody = sanityProject.projectBody[locale]
+  
   return (
     <Layout locale={locale} location={location} >
-      <SEO title={sanityProject.title[locale]} />
+      <SEO 
+        title={sanityProject.title[locale]}
+        description={`${pBody[0].children[0].text.substr(0, 200)}…`}
+        lang={locale}
+        pageView={`${locale === 'es' ? '/es/' : '/'}projects/${sanityProject.title[locale]}`}
+        thumbnail={sanityProject.mainImage.asset.fluid.base64}
+      />
       <Translate.Provider>
         <Project locale={locale} p={sanityProject} />
       </Translate.Provider>

@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import styled, { themeGet } from 'util/styles'
-import { Flex, Box, Text} from 'rebass'
+import { Flex, Box } from 'rebass'
 import { Btn } from 'components/UI/btn'
-import { Icon } from 'components/UI/icons'
 import Image from 'gatsby-image'
 import { navigate } from 'gatsby'
 import { SecondaryCard } from 'components/UI/cards'
@@ -12,7 +11,7 @@ import 'aos/dist/aos.css'
 
 const ContentContainer = styled(Flex)`
   &:first-of-type {
-    border-right: 3.5px solid ${themeGet('colors.blackDepth.500')};
+    border-right: none;
 
     > figure {
       border-bottom: 5px solid ${themeGet('colors.blackDepth.500')};
@@ -35,7 +34,17 @@ const ContentContainer = styled(Flex)`
   }
 
   &:last-of-type {
-    border-left: 3.5px solid ${themeGet('colors.blackDepth.500')};
+    border-left: none;
+  }
+
+  @media screen and (min-width: ${themeGet('breakpoints.o')}) {
+    &:first-of-type {
+      border-right: 3.5px solid ${themeGet('colors.blackDepth.500')};
+    }
+
+    &:last-of-type {
+      border-left: 3.5px solid ${themeGet('colors.blackDepth.500')};
+    }
   }
 `
 
@@ -132,7 +141,7 @@ const ProjectCard = ({ p, locale }) => {
             size="large"
             variant="contained"
             style={{ width: '33.33%' }}
-            project
+            project="true"
             onClick={() => toProjectHandler(p.slug.current)}
           >
             {t('btn')}

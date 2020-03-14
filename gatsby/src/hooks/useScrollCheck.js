@@ -96,7 +96,7 @@ export const useScrollCheck = () => {
         yOffset: pageYOffset
       })
     },
-    [height]
+    [height, yOffset]
   )
 
   const checkSubMenuPos = useCallback(
@@ -126,7 +126,7 @@ export const useScrollCheck = () => {
         yOffset: pageYOffset
       })
     },
-    [height]
+    [height, yOffset]
   )
 
   useEffect(() => {
@@ -160,7 +160,7 @@ export const useScrollCheck = () => {
       type: 'SET_YOFFSET',
       yOffset: pageYOffset
     })
-  }, [checkSubMenuPos])
+  }, [checkSubMenuPos, menuPos])
 
   const backToTop = () => {
     const { scroll } = window

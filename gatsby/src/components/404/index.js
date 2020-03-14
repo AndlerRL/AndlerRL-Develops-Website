@@ -62,11 +62,11 @@ const EndPosts = styled.div`
   }
 `;
 
-const NoContent = ({ locale }) => {
+const NoContent = () => {
   const { t, lang, checkLang } = Translate.useContainer();
 
   useEffect(() => {
-    checkLang(locale, '404')
+    checkLang('404')
   }, [])
 
   const redirectHandler = () => {

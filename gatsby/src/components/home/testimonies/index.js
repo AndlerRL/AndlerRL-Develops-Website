@@ -176,13 +176,13 @@ export const Testimonies = ({ locale, t }) => {
         variant="dots"
         activeStep={activeStep}
         nextButton={
-          <Btn project size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+          <Btn project="true" size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
             {t('testimonies.next')}
             <Icon.arrowRight />
           </Btn>
         }
         backButton={
-          <Btn project size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Btn project="true" size="small" onClick={handleBack} disabled={activeStep === 0}>
             <Icon.arrowLeft />
             {t('testimonies.back')}
           </Btn>

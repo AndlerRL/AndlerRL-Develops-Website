@@ -114,6 +114,11 @@ const Quote = styled(Flex)`
   box-shadow: 0 4px 10px 3px #2222;
   scroll-snap-align: start;
   position: relative;
+  color: #212121;
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    color: inherit;
+  }
 `
 
 const ImgContentContainer = styled(Box)`
@@ -168,7 +173,7 @@ const Home = ({ locale }) => {
   const { allSanityTech: { nodes } } = data
 
   useEffect(() => {
-    checkLang(locale, 'index')
+    checkLang('index')
     AOS.init()
 
     return () => {
@@ -580,12 +585,10 @@ const Home = ({ locale }) => {
                   if (i >= 6)
                     return (
                       <QuestionsSecondary
-                        width={11 / 12}
+                        width={[1, 11 / 12, 11 / 12]}
                         my={4}
-                        data-aos="zoom-out-up"
-                        data-aos-offset="250"
+                        data-aos="fade-up"
                         data-aos-delay={(i * 2) * 100}
-                        data-aos-once="true"
                         data-aos-anchor-placement="center-bottom"
                       >
                         <Text as="h3">
@@ -599,9 +602,12 @@ const Home = ({ locale }) => {
                 flexDirection="column"
                 alignItems="center"
                 justifyContent="center"
-                width={9 / 12}
-                p={5}
+                width={[1, 9 / 12, 9 / 12]}
+                p={[3, 5, 5]}
                 my={5}
+                data-aos="zoom-in"
+                data-aos-once="true"
+                data-aos-anchor-placement="top-center"
               >
                 <Flex
                   flexDirection="column"
@@ -609,13 +615,14 @@ const Home = ({ locale }) => {
                   justifyContent="center"
                   style={{ position: 'relative' }}
                   width={1}
+                  my={[3, 0, 0]}
                 >
                   <Icon.quoteLeft size="32px" style={{ opacity: 0.5, position: 'absolute', top: '8px', left: 0 }} />
                     <Text as="p"
                       lineHeight={2}
                       fontWeight="500"
                       px={5}
-                      py={3}
+                      py={[4, 3, 3]}
                       style={{ fontStyle: 'oblique' }}
                     >
                       {t('mainContent.quote.content')}

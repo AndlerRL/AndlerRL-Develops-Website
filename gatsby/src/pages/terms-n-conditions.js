@@ -42,7 +42,7 @@ const TermsConditionsPage = ({ pageContext: { locale }, location }) => {
 
   return (
     <Layout locale={locale} location={location} >
-      <SEO title="Terms and Conditions" />
+      <SEO title="Terms and Conditions" lang={locale} pageView={`${locale === 'es' ? '/es/' : '/'}terms-n-conditions`} />
       <Translate.Provider>
         <Scrollspy 
           items={menuItems.id}

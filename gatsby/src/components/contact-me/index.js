@@ -75,7 +75,7 @@ const MapContainer = styled.div`
   }
 `
 
-const ContactMe = ({ locale, submit, submitting }) => {
+const ContactMe = ({ submit, submitting }) => {
   const { checkLang, t } = Translate.useContainer()
   const [form, setForm] = useState({
     name: {
@@ -150,7 +150,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
     const { innerWidth } = window
 
     AOS.init()
-    checkLang(locale, 'contact-me')
+    checkLang('contact-me')
     setInnerWidth(innerWidth)
     window.addEventListener('resize', checkWidth)
 
@@ -158,7 +158,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
       AOS.refresh()
       window.removeEventListener('resize', checkWidth)
     }
-  }, [checkWidth, locale])
+  }, [checkWidth])
 
   useEffect(() => {
     if (form.name.label !== t('form.name')) {
@@ -230,7 +230,6 @@ const ContactMe = ({ locale, submit, submitting }) => {
             label={ele.config.label}
             htmlFor={ele.config.label}
             changed={e => onChange(e, ele.id)}
-            locale={locale}
           />
         </Box>
       )
@@ -254,7 +253,6 @@ const ContactMe = ({ locale, submit, submitting }) => {
             label={ele.config.label}
             htmlFor={ele.config.label}
             changed={e => onChange(e, ele.id)}
-            locale={locale}
           />
         </Box>
       )
@@ -297,7 +295,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
                   backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
                   size="large"
                   variant="contained"
-                  project
+                  project="true"
                   disabled={!formIsValid}
                 >
                   {t('form.submit')}
@@ -317,7 +315,7 @@ const ContactMe = ({ locale, submit, submitting }) => {
                 backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
                 size="large"
                 variant="contained"
-                project
+                project="true"
                 disabled={!formIsValid}
               >
                 {

@@ -10,7 +10,7 @@ const initState = {
     en: translateEN
   },
   current: null,
-  lang: 'en'
+  lang: navigator.language === 'es_US' ? 'es' : 'en'
 }
 
 const reducer = (state, action) => {
@@ -45,7 +45,7 @@ const useTranslate = () => {
     }
   }, [])
   
-  const checkPath = locale => {
+  const checkPath = useCallback(locale => {
     if (win && lang !== locale) {
       const { location } = win
       const l = lang !== 'en' && !location.pathname.match('/es/') 
@@ -58,22 +58,22 @@ const useTranslate = () => {
         `/${l}${to}`
       )
     }
-  }
+  }, [lang, win])
 
-  const checkLang = useCallback((locale, p) => {
-    const newLang = translations[locale]
+  const checkLang = useCallback(p => {
+    const localLang = localStorage.getItem('lang');
+    const locale = navigator.language.match('es') ? 'es' : 'en';
+    const newLang = translations[localLang || locale]
     const newCurrent = newLang[p]
 
     dispatch({
       type: 'SET_LANG',
       current: newCurrent,
-      lang: localStorage.getItem('lang')
-        ? localStorage.getItem('lang')
-        : localStorage.setItem('lang', locale)
+      lang: localLang || locale
     })
 
     return checkPath(locale)
-  }, [checkPath])
+  }, [checkPath, translations])
 
   const t = useCallback(t => {
     const tIndex = t.indexOf('.')
@@ -101,10 +101,10 @@ const useTranslate = () => {
   }, [current])
 
   const changeLang = locale => {
-    const newLang = lang === 'en' ? 'es' : 'en'
+    const newLang = locale === 'en' ? 'es' : 'en'
     const newL = translations[locale]
     const newCurrent = newL[page]
-    
+
     localStorage.setItem('lang', newLang)
 
     dispatch({

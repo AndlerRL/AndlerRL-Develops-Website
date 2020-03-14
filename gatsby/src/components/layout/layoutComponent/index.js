@@ -16,7 +16,7 @@ const LayoutComponent = ({ locale, children }) => {
   const { lang, checkLang, checkPath } = Translate.useContainer()
 
   useEffect(() => {
-    checkLang(locale, 'layout')
+    checkLang('layout')
   }, [])
 
   useEffect(() => {

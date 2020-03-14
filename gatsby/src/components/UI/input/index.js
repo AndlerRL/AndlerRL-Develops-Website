@@ -54,14 +54,13 @@ const InputComponent = React.memo(({
   elementType,
   elementConfig,
   disabled,
-  locale,
 }) => {
   const { t, checkLang } = Translate.useContainer();
   let inputElement = null;
   let errorHelperText = null;
 
   useEffect(() => {
-    checkLang(locale, 'contact-me')
+    checkLang('contact-me')
   }, [])
 
   if (invalid && touched)

@@ -56,7 +56,7 @@ const ContactMePage = ({ pageContext: { locale }, location }) => {
 
   return (
     <Layout location={location} locale={locale}>
-      <SEO title="Contact Me" />
+      <SEO title="Contact Me" lang={locale} pageView={`${locale === 'es' ? '/es/' : '/'}projects`}/>
       <Translate.Provider>
         <ContactMe 
           locale={locale}

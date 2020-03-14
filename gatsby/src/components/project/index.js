@@ -106,10 +106,6 @@ const TechContainer = styled(motion.div)`
 `
 
 const Project = ({ locale, p }) => {
-  useEffect(() => {
-    
-  }, [])
-
   const body = p.projectBody[locale].map((b, i) => {
     if (b._type === 'block')
       return (
@@ -117,6 +113,7 @@ const Project = ({ locale, p }) => {
           my={4}
           lineHeight={2}
           width={1}
+          key={i}
         >
           {b.children[0].text}
         </Text>
@@ -129,8 +126,9 @@ const Project = ({ locale, p }) => {
             width={1}
             p={2}
             height={["250px", "300px", "300px", "350px"]}
+            key={i}
           >
-            <Image fluid={b.asset._ref} />
+            <Image img={b.asset._ref} />
           </ImgContentContainer>
         )
 
@@ -141,8 +139,9 @@ const Project = ({ locale, p }) => {
             width={1 / 2}
             p={2}
             height={["125px", "150px", "225px", "225px"]}
+            key={i}
           >
-            <Image fluid={b.asset._ref} />
+            <Image img={b.asset._ref} />
           </ImgContentContainer>
         )
     }
@@ -213,36 +212,40 @@ const Project = ({ locale, p }) => {
             position: 'relative'
           }}
         >
-          <Btn
-            style={{
-              position: 'absolute',
-              zIndex: 2,
-              top: -16,
-              right: 32,
-              width: 150
-            }}
-            size="large"
-            variant="contained"
-            project
-            backgroundcolor={["colors.blackDepth.200", "colors.blackDepth.400"]}
-          >
-              <Text as="a"
-                href={p.projectUrl}
-                target="__blank"
-                textAlign="center"
-                letterSpacing={1}
-                width={1}
+          {
+            p.projectUrl !== 'N/A' && (
+              <Btn
+                style={{
+                  position: 'absolute',
+                  zIndex: 2,
+                  top: -16,
+                  right: 32,
+                  width: 150
+                }}
+                size="large"
+                variant="contained"
+                project="true"
+                backgroundcolor={["colors.blackDepth.200", "colors.blackDepth.400"]}
               >
-                <Flex as="span"
-                  alignItems="center"
-                  justifyContent="space-around"
-                  width={1}
-                >
-                  { locale === 'es' ? '¡Ir en Vivo!' : 'Go to Live!' }
-                  <Icon.externalLink size="14px" />
-                </Flex>
-              </Text>
-          </Btn>
+                  <Text as="a"
+                    href={p.projectUrl}
+                    target="__blank"
+                    textAlign="center"
+                    letterSpacing={1}
+                    width={1}
+                  >
+                    <Flex as="span"
+                      alignItems="center"
+                      justifyContent="space-around"
+                      width={1}
+                    >
+                      { locale === 'es' ? '¡Ir en Vivo!' : 'Go to Live!' }
+                      <Icon.externalLink size="14px" />
+                    </Flex>
+                  </Text>
+              </Btn>
+            )
+          }
         </Box>
         <SecondaryCard
           contact
@@ -259,8 +262,8 @@ const Project = ({ locale, p }) => {
             width={1}
           >
             {
-              p.techs.map(t => (
-                <Tooltip text={t.title}>
+              p.techs.map((t, i) => (
+                <Tooltip text={t.title} key={i}>
                   <TechContainer
                     whileHover={{
                       opacity: 1,

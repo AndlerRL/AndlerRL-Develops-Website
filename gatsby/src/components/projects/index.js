@@ -6,11 +6,10 @@ import { PrimaryCard } from 'components/UI/cards'
 import ProjectCard from './projectCard'
 import { Wrapper } from 'components/UI/wrappers'
 import ProjectsHero from 'components/UI/projectsHero'
-import styled, { themeGet } from 'util/styles'
+import styled from 'util/styles'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { ProjectSkeleton } from 'components/UI/skeletons'
-import { Image } from 'components/image'
 
 const TitleContainer = styled(Flex)`
   text-transform: lowercase;
@@ -67,7 +66,7 @@ const Projects = ({ locale }) => {
       offset: 0
     })
 
-    checkLang(locale, 'projects')
+    checkLang('projects')
 
     return () => {
       AOS.refresh()
@@ -82,7 +81,7 @@ const Projects = ({ locale }) => {
           alignItems="center"
           justifyContent="center"
           style={{
-            marginTop: -150
+            marginTop: -200
           }}
           mb={6}
         >
