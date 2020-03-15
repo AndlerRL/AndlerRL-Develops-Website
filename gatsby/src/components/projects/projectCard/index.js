@@ -69,7 +69,9 @@ const ProjectCard = ({ p, locale }) => {
   useEffect(() => {
     const { innerWidth } = window
     
-    AOS.init()
+    AOS.init({
+      once: true
+    })
     setInnerWidth(innerWidth)
     window.addEventListener('resize', checkWidth)
 

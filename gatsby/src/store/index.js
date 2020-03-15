@@ -63,7 +63,6 @@ const useTranslate = () => {
   
   const checkPath = useCallback(locale => {
     if (lang) {
-      console.log(lang, locale)
       if (win && lang !== locale) {
         const { location } = win
         const l = lang !== 'en' && !location.pathname.match('/es/')

@@ -152,7 +152,9 @@ const ContactMe = ({ submit, submitting }) => {
 
     const { innerWidth } = window
 
-    AOS.init()
+    AOS.init({
+      once: true
+    })
     setInnerWidth(innerWidth)
     window.addEventListener('resize', checkWidth)
 

@@ -10,10 +10,9 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import ReactGA from "react-ga"
 import { useStaticQuery, graphql } from "gatsby"
-import logo from 'images/thumbnail.png'
 
 function SEO({ description, lang, meta, title, pageView, thumbnail }) {
-  const { site } = useStaticQuery(
+  const { site, file } = useStaticQuery(
     graphql`
       query {
         site {
@@ -30,6 +29,10 @@ function SEO({ description, lang, meta, title, pageView, thumbnail }) {
             googleAnalyticsId
             siteUrl
           }
+        }
+        file(name: {eq: "thumbnail"}) {
+          publicURL
+          name
         }
       }
     `
@@ -48,7 +51,7 @@ function SEO({ description, lang, meta, title, pageView, thumbnail }) {
   });
 
   const metaDescription = description || site.siteMetadata.description[lang]
-  const metaThumbnail = thumbnail || logo
+  const metaThumbnail = file.publicURL
 
   return (
     <Helmet

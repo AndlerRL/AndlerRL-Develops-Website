@@ -29,8 +29,6 @@ const IndexPage = React.memo(({ pageContext: { locale }, location  }) => {
     return hideIntro()
   }
 
-  console.log(intro)
-
   return (
     <Layout location={location} locale={locale} intro={intro}>
       <SEO title="Home" lang={locale} pageView={`${locale === 'es' ? '/es/' : '/'}`} />

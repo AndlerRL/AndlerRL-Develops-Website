@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: ${themeGet('fontWeights.medium')};
     font-size: ${themeGet('fontSizes.2')}px;
     background-color: ${themeGet('colors.blacksDepth.500')};
-    overflow: ${({ intro }) => !intro.end ? 'hidden' : 'auto'};
+    overflow: ${({ intro }) => intro && !intro.end ? 'hidden' : 'auto'};
     scroll-snap-type: y proximity;
   }
 

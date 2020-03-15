@@ -64,7 +64,8 @@ const Projects = ({ locale }) => {
       checkLang('projects')
       
     AOS.init({
-      offset: 0
+      offset: 0,
+      once: true
     })
 
 

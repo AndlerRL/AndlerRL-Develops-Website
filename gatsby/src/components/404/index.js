@@ -83,30 +83,28 @@ const NoContent = () => {
             x: [null, 30, 15, -15, -30, -15],
             y: [null, 15, 30, -15, -15, -30],
             z: [null, 5, 0, -10, 5, 10],
-            scale: [null, 1.04, 1.01, 1.05, 1.02, 1.03]
-          }}
-          transition={{
-            duration: 4,
-            times: [0, 0.5, 1],
-            yoyo: Infinity
+            scale: [null, 1.04, 1.01, 1.05, 1.02, 1.03],
+            transition: {
+              duration: 4,
+              times: [0, 0.5, 1],
+              yoyo: Infinity
+            }
           }}
         />
         <motion.h2
           style={{
-            marginBottom: '-8rem'
+            marginBottom: '-8rem',
+            cursor: 'pointer'
           }}
           animate={{
             opacity: [null, 0.5, 1],
-            scale: [null, 1.05, 1]
-          }}
-          transition={{
-            duration: 2,
-            loop: Infinity
+            scale: [null, 1.05, 1],
+            transition: {
+              duration: 2,
+              loop: Infinity
+            }
           }}
           onTap={redirectHandler}
-          style={{
-            cursor: 'pointer'
-          }}
         >
           {t('1')}
         </motion.h2>

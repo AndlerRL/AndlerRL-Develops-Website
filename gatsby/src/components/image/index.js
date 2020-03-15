@@ -20,19 +20,22 @@ const ImgContainer = styled.div`
   max-height: 100%;
   max-width: 100%;
   z-index: 2;
+
+  > img.Regular {
+    width: 100%;
+    height: 100%;
+  }
 `
 
 
 export const Image = ({ img }) => {
-  const data = useStaticQuery(graphql`
+  const { allFile, allSanityImageAsset } = useStaticQuery(graphql`
     query {
-      allImageSharp(filter: {fluid: {originalName: {ne: null}}}) {
+      allFile(filter: {name: {ne: null}}) {
         edges {
           node {
-            fluid {
-              ...GatsbyImageSharpFluid
-              originalName
-            }
+            publicURL
+            name
           }
         }
       }
@@ -41,16 +44,15 @@ export const Image = ({ img }) => {
           node {
             id
             fluid {
-              ...GatsbySanityImageFluid
+              src
             }
           }
         }
       }
     }
   `)
-  const { allImageSharp, allSanityImageAsset } = data
 
-  const imgLocalFind = allImageSharp.edges.find(({ node: { fluid } }) => fluid.originalName === img)
+  const imgLocalFind = allFile.edges.find(({ node: { name } }) => img.match(name))
   const imgSanityFind = allSanityImageAsset.edges.find(({ node: { id } }) => id === img)
 
   const fluidImg = imgLocalFind 
@@ -59,7 +61,11 @@ export const Image = ({ img }) => {
 
   return fluidImg && (
     <ImgContainer>
-      <Img fluid={fluidImg.node.fluid} />
+      { 
+        fluidImg.node.fluid
+        ? <Img fluid={fluidImg.node.fluid} />
+        : <img src={fluidImg.node.publicURL} className="Regular" />
+      }
     </ImgContainer>
   )
 }

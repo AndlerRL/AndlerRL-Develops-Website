@@ -45,7 +45,9 @@ const TechTitle = styled.div`
 
 const TechComponent = ({ fluid, title, stack }) => {
   useEffect(() => {
-    AOS.init()
+    AOS.init({
+      once: true
+    })
 
     return () => {
       AOS.refresh()
@@ -94,7 +96,7 @@ const Tech = ({ locale }) => {
   useEffect(() => {
     AOS.init({
       offset: 250,
-      once: false
+      once: true
     })
 
     return () => {

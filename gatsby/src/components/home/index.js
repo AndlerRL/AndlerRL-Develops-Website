@@ -1,6 +1,6 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { Text, Flex, Box } from "rebass"
-import { motion, useViewportScroll } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import AOS from 'aos'
@@ -191,7 +191,9 @@ const Home = ({ locale }) => {
     if (lang)
       checkLang('index')
 
-    AOS.init()
+    AOS.init({
+      once: true
+    })
 
     return () => {
       AOS.refresh()
@@ -336,7 +338,6 @@ const Home = ({ locale }) => {
                               data-aos="zoom-in"
                               data-aos-delay={(((i + 1) * 3) * 100)}
                               data-aos-anchor-placement="center-bottom"
-                              data-aos-once="true"
                               key={i}
                             >
                               <Img fluid={logo.asset.fluid} />
@@ -377,7 +378,6 @@ const Home = ({ locale }) => {
                               data-aos="zoom-in"
                               data-aos-delay={(((i + 1) * 2.5) * 100)}
                               data-aos-anchor-placement="center-bottom"
-                              data-aos-once="true"
                               key={i}
                             >
                               <Img fluid={logo.asset.fluid} />
@@ -390,7 +390,6 @@ const Home = ({ locale }) => {
                           data-aos="zoom-out-up"
                           data-aos-offset="250"
                           data-aos-delay={(i * 2) * 100}
-                          data-aos-once="true"
                           data-aos-anchor-placement="center-bottom"
                         >
                           <Text as="h3">
@@ -435,7 +434,6 @@ const Home = ({ locale }) => {
                         data-aos="zoom-out-up"
                         data-aos-offset="250"
                         data-aos-delay={(i * 2) * 100}
-                        data-aos-once="true"
                         data-aos-anchor-placement="center-bottom"
                         key={i}
                       >
@@ -551,10 +549,9 @@ const Home = ({ locale }) => {
                           <Box width={[1, 1 / 2, 1 / 2]}
                             height={["300px", "400px", "400px"]}
                             data-aos="fade-up"
-                            data-aos-once="true"
                             my={2}
                           >
-                            <Image img="first-pc.png" />
+                            <Image img="first-pc" />
                           </Box>
                           <Flex
                             flexDirection="column"
@@ -568,7 +565,6 @@ const Home = ({ locale }) => {
                               data-aos="zoom-out-up"
                               data-aos-offset="250"
                               data-aos-delay={(i * 2) * 100}
-                              data-aos-once="true"
                               data-aos-anchor-placement="center-bottom"
                             >
                               <Text as="h3">
@@ -581,7 +577,6 @@ const Home = ({ locale }) => {
                               data-aos="zoom-out-up"
                               data-aos-offset="250"
                               data-aos-delay={(i + 1 * 2) * 100}
-                              data-aos-once="true"
                               data-aos-anchor-placement="center-bottom"
                             >
                               <Text as="h3">
@@ -630,7 +625,6 @@ const Home = ({ locale }) => {
                 p={[3, 5, 5]}
                 my={5}
                 data-aos="zoom-in"
-                data-aos-once="true"
                 data-aos-anchor-placement="top-center"
               >
                 <Flex
