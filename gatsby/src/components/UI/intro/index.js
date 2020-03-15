@@ -50,11 +50,11 @@ const IntroAnimContainer = styled(motion.div)`
     @media screen and (min-width: ${themeGet('breakpoints.0')}) {
       width: 413px;
       height: 238.66px;
+      margin-left: 0;
     }
   }
 
   @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    position: fixed;
     background-position-x: center;
   }
 `
@@ -302,7 +302,9 @@ const IntroAnim = ({ introEnd, animComplete }) => {
    * MOBILE ANIMATIONS ENDS
    * 
    */
-  
+
+
+
   return innerWidth !== 0 && (
     <IntroAnimContainer 
       introEnd={introEnd}

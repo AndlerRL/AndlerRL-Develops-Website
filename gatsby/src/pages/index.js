@@ -17,7 +17,7 @@ const IndexPage = React.memo(({ pageContext: { locale }, location  }) => {
         ...i,
         end: true
       }))
-    }, 350)
+    }, 200)
   }
 
   const introAnimHandler = () => {
