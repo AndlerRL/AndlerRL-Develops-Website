@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Translate } from 'store'
 import { Text, Flex } from 'rebass'
@@ -21,7 +21,7 @@ const TitleContainer = styled(Flex)`
 `
 
 const Projects = ({ locale }) => {
-  const { checkLang, t } = Translate.useContainer()
+  const { checkLang, t, lang } = Translate.useContainer()
   const data = useStaticQuery(graphql`
     query {
       allSanityProject {
@@ -59,17 +59,19 @@ const Projects = ({ locale }) => {
       </React.Fragment>
     )
 
-  useEffect(() => {
+    useLayoutEffect(() => {
+    if (lang)
+      checkLang('projects')
+      
     AOS.init({
       offset: 0
     })
 
-    checkLang('projects')
 
     return () => {
       AOS.refresh()
     }
-  }, [])
+  }, [lang])
 
   return (
     <React.Fragment>

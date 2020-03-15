@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useLayoutEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import braketLeft from 'images/intro/braket_left.svg'
 import braketRight from 'images/intro/braket_right.svg'
@@ -13,35 +13,49 @@ import { Flex } from 'rebass'
 
 const IntroAnimContainer = styled(motion.div)`
   position: fixed;
-  display: flex;
+  display: ${({ introEnd }) => introEnd.end ? 'none' : 'flex'};
+  opacity: ${({ introEnd }) => introEnd.cOpc ? 1 : 0};
+  z-index: 1700;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: ${({ introEnd }) => introEnd ? -1 : 1700};
-  opacity: ${({ introEnd }) => introEnd ? 0 : 1};
+  height: 100vh;
   transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86) 100ms;
-  background: ${themeGet('colors.blackDepth.400')} url(${logoDark}) center center no-repeat;
+  background: ${themeGet('colors.blackDepth.400')} url(${logoDark}) no-repeat;
   background-size: 300px 300px;
   background-blend-mode: overlay;
+  overflow: ${({ introEnd }) => !introEnd.end ? 'hidden' : 'auto'};
+  background-position-x: 33.33%;
+  background-position-y: center;
 
   .LogoContainer {
     width: 352.5px;
     height: 72.75px;
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-top: 0;
-    margin-left: 0;
+    margin-left: calc(-50% + 171.75px);
+
+    @media screen and (min-width: ${themeGet('breakpoints.2')}) {
+      width: 440px;
+      height: 298.33px;
+    }
 
     @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-      height: 298.33px;
-      width: 590px;
+      width: 413px;
+      height: 238.66px;
     }
+  }
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    position: fixed;
+    background-position-x: center;
   }
 `
 
@@ -54,9 +68,14 @@ const BraketL = styled(motion.div)`
   position: absolute;
   left: auto;
 
-  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+  @media screen and (min-width: ${themeGet('breakpoints.2')}) {
     width: 106px;
     max-height: 298.33px;
+  }
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    width: 74.2px;
+    max-height: 208.83px;
   }
 `
 const BraketR = styled(motion.div)`
@@ -68,9 +87,14 @@ const BraketR = styled(motion.div)`
   position: absolute;
   right: auto;
 
-  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+  @media screen and (min-width: ${themeGet('breakpoints.2')}) {
     width: 106px;
     max-height: 298.33px;
+  }
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    width: 74.2px;
+    max-height: 208.83px;
   }
 `
 
@@ -105,36 +129,46 @@ const Andler = styled(motion.div)`
   background: url(${andler}) center center no-repeat;
   background-size: contain;
   transform-origin: bottom;
-  height: 50%;
-  max-height: 148px;
-  width: 100%;
-  max-width: 590px;
+  top: -44px;
+  width: 413px;
+  height: 100%;
+  max-height: 104.41px;
   position: absolute;
-  top: 12px;
-  left: calc(50% - 295px);
+
+  @media screen and (min-width: ${themeGet('breakpoints.2')}) {
+    top: -8.4px;
+    max-height: 148px;
+    width: 440px;
+    height: 50%;
+  }
 `
 const Devs = styled(motion.div)`
   background: url(${devs}) center center no-repeat;
   background-size: contain;
   transform-origin: top;
-  bottom: 12px;
-  height: 50%;
-  max-height: 148px;
-  width: 100%;
-  max-width: 590px;
+  width: 413px;
+  height: 100%;
+  max-height: 104.41px;
+  bottom: -44px;
   position: absolute;
-  left: calc(50% - 295px);
-`
 
-const LogoController = styled.div`
-  width: 352.5wpx;
-
-  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    width: 590px;
+  @media screen and (min-width: ${themeGet('breakpoints.2')}) {
+    bottom: -8.4px;
+    max-height: 148px;
+    width: 440px;
+    height: 50%;
   }
 `
 
-const IntroAnim = ({ animComplete, introEnd }) => {
+const LogoController = styled.div`
+  width: 413px;
+
+  @media screen and (min-width: ${themeGet('breakpoints.2')}) {
+    width: 440px;
+  }
+`
+
+const IntroAnim = ({ introEnd, animComplete }) => {
   const [innerWidth, setInnerWidth] = useState(0)
 
   const checkWidth = useCallback(
@@ -146,7 +180,7 @@ const IntroAnim = ({ animComplete, introEnd }) => {
     [setInnerWidth]
   )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { innerWidth } = window
 
     setInnerWidth(innerWidth)
@@ -172,7 +206,7 @@ const IntroAnim = ({ animComplete, introEnd }) => {
     visible: {
       opacity: 1,
       scale: 1,
-      x: innerWidth <= 640 ? -160 : -397
+      x: innerWidth <= 640 ? -160 : innerWidth <= 1024 ? -270.9 : -287.9
     }
   }
   
@@ -185,7 +219,7 @@ const IntroAnim = ({ animComplete, introEnd }) => {
     visible: {
       opacity: 1,
       scale: 1,
-      x: innerWidth <= 640 ? 160 : 387
+      x: innerWidth <= 640 ? 160 : innerWidth <= 1024 ? 270.9 :  287.9
     }
   }
   
@@ -231,10 +265,9 @@ const IntroAnim = ({ animComplete, introEnd }) => {
     hidden: {
       x: -24,
       opacity: 0,
-      rotateY: '-90deg',
     },
     visible: {
-      x: 0,
+      x: 21,
       opacity: 1,
       rotateY: 0,
     }
@@ -242,12 +275,11 @@ const IntroAnim = ({ animComplete, introEnd }) => {
 
   const _Anim = {
     hidden: {
-      x: -24,
+      y: 24,
       opacity: 0,
-      rotateY: '-90deg',
     },
     visible: {
-      x: 0,
+      y: 0,
       opacity: 1,
       rotateY: 0,
     }
@@ -255,12 +287,11 @@ const IntroAnim = ({ animComplete, introEnd }) => {
 
   const devsMAnim = {
     hidden: {
-      x: -24,
+      x: 24,
       opacity: 0,
-      rotateY: '90deg',
     },
     visible: {
-      x: 0,
+      x: -17,
       opacity: 1,
       rotateY: 0,
     }
@@ -271,15 +302,6 @@ const IntroAnim = ({ animComplete, introEnd }) => {
    * MOBILE ANIMATIONS ENDS
    * 
    */
-
-  /**
-   * ANIMATION CODE FOR LogoContainer
-   * 
-   * 
-   * 
-   * 
-   * 
-   */
   
   return innerWidth !== 0 && (
     <IntroAnimContainer 
@@ -287,7 +309,7 @@ const IntroAnim = ({ animComplete, introEnd }) => {
     >
       <motion.div className="LogoContainer"
         initial={{
-          scale: 1,
+          scale: innerWidth <= 640 || innerWidth >= 1024 ? 1 : 0.7,
           top: 'auto',
           left: 'auto',
           y: '0vh',
@@ -295,11 +317,11 @@ const IntroAnim = ({ animComplete, introEnd }) => {
           position: 'absolute'
         }}
         animate={{
-          scale: innerWidth <= 640 ? 0.393 : 0.135,
+          scale: innerWidth <= 640 ? 0.393 : 0.185,
           top: 0,
           left: 0,
-          y: innerWidth <= 640 ? '-0.5vw' : '-12.6vh',
-          x: innerWidth <= 640 ? '-14.7vw' : '-19.15vh',
+          y: innerWidth <= 640 ? '-1.15vw' : '-9.25vh',
+          x: innerWidth <= 640 ? '-6.5vw' : '-9.5vh',
           position: 'absolute',
           transition: {
             delay: 4.25,
@@ -318,50 +340,44 @@ const IntroAnim = ({ animComplete, introEnd }) => {
               animate="visible"
               variants={braketLAnim}
               transition={{
-                duration: 1.5
+                duration: 1.5,
+                ease: 'backOut'
               }}
             />
-              <Flex
-                alignItems="center"
-                justifyContent="center"
-                width={1}
-                height="100%"
-                style={{ position: 'relative', margin: '0 15px' }}
-              >
-                <AndlerM
-                  initial="hidden"
-                  animate="visible"
-                  variants={aMAnim}
-                  transition={{
-                    delay: 1.75,
-                    duration: 1.5,
-                  }}
-                />
-                <Underscore
-                  initial="hidden"
-                  animate="visible"
-                  variants={_Anim}
-                  transition={{
-                    delay: 1.75,
-                    duration: 1.5,
-                  }}
-                />
-                <DevsM
-                  initial="hidden"
-                  animate="visible"
-                  variants={devsMAnim}
-                  transition={{
-                    delay: 1.75,
-                    duration: 1.5,
-                  }}
-                />
-              </Flex>
+            <AndlerM
+              initial="hidden"
+              animate="visible"
+              variants={aMAnim}
+              transition={{
+                delay: 1,
+                duration: 1,
+              }}
+            />
+            <Underscore
+              initial="hidden"
+              animate="visible"
+              variants={_Anim}
+              transition={{
+                delay: 1.5,
+                duration: 1,
+              }}
+            />
+            <DevsM
+              initial="hidden"
+              animate="visible"
+              variants={devsMAnim}
+              transition={{
+                delay: 2.25,
+                duration: 1.25,
+              }}
+            />
             <BraketR
               initial="hidden"
               animate="visible"
               variants={braketRAnim}
               transition={{
-                duration: 1.5
+                duration: 1.5,
+                ease: 'backOut'
               }}
             />
           </React.Fragment>
@@ -376,49 +392,61 @@ const IntroAnim = ({ animComplete, introEnd }) => {
                 duration: 1.5
               }}
             />
+            <Flex
+              flexDireciton="column"
+              alignItems="center"
+              justifyContent="center"
+              width={innerWidth <= 1024 ? "413px" : "440px"}
+              height={innerWidth <= 1024 ? "104.41px" : "148px"}
+              style={{ position: 'relative' }}
+            >
+              <Andler
+                initial="hidden"
+                animate="visible"
+                variants={andlerAnim}
+                transition={{
+                  delay: 1.75,
+                  duration: 1.5,
+                }}
+              />
+              <LogoController />
+              <motion.div
+                style={{
+                  backgroundColor: '#f5f5f5',
+                  position: 'absolute'
+                }}
+                initial={{
+                  width: 0,
+                  height: 4,
+                  opacity: 0,
+                }}
+                animate={{
+                  width: [0, innerWidth <= 1024 ? 413 : 440, 0],
+                  height: [28, 4, 0],
+                  opacity: [1, 1, 0],
+                  transition: {
+                    duration: 1.5,
+                    times: [0.24999, 0.9133, 1],
+                    delay: 1,
+                  }
+                }}
+              />
+              <Devs
+                initial="hidden"
+                animate="visible"
+                variants={devsAnim}
+                transition={{
+                  delay: 1.75,
+                  duration: 1.5,
+                }}
+              />
+            </Flex>
             <BraketR
               initial="hidden"
               animate="visible"
               variants={braketRAnim}
               transition={{
                 duration: 1.5
-              }}
-            />
-            <Andler
-              initial="hidden"
-              animate="visible"
-              variants={andlerAnim}
-              transition={{
-                delay: 1.75,
-                duration: 1.5,
-              }}
-            />
-            <LogoController />
-            <motion.div
-              style={{backgroundColor: '#f5f5f5'}}
-              initial={{
-                width: 0,
-                height: 4,
-                opacity: 0
-              }}
-              animate={{
-                width: [0, innerWidth <= 640 ? 344.16 : 590, 0],
-                height: [28, 4, 0],
-                opacity: [1, 1, 0],
-                transition: {
-                  duration: 1.5,
-                  times: [0.24999, 0.9133, 1],
-                  delay: 1,
-                }
-              }}
-            />
-            <Devs
-              initial="hidden"
-              animate="visible"
-              variants={devsAnim}
-              transition={{
-                delay: 1.75,
-                duration: 1.5,
               }}
             />
           </React.Fragment>

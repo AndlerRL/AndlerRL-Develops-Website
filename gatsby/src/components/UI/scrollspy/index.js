@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import styled, { themeGet } from 'util/styles'
 import Scrollspy from 'react-scrollspy'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
@@ -85,7 +85,7 @@ const ScrollspyContainer = styled(Scrollspy)`
 const ScrollspyComponent = ({ items, title }) => {
   const { checkMenuPos, checkSubMenuPos, menuPos, subHeadPos } = useScrollCheck()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener('scroll', checkSubMenuPos)
 
     return () => {
@@ -95,7 +95,7 @@ const ScrollspyComponent = ({ items, title }) => {
 
   const itemPos = menuPos && menuPos.getBoundingClientRect()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     checkMenuPos()
   }, [menuPos, checkMenuPos])
 

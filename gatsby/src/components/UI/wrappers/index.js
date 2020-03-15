@@ -2,6 +2,7 @@ import styled, { themeGet } from 'util/styles'
 import { Box } from 'rebass'
 
 export const Wrapper = styled(Box)`
+  z-index: 2;
   width: 91.666%;
   max-width: ${({ wide }) => wide ? '1366px' : '765px'};
   padding-top: ${({ isMain }) => isMain ? themeGet('space.5') : 0}px;

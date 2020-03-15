@@ -1,4 +1,4 @@
-import { useReducer, useCallback, useEffect } from 'react'
+import { useReducer, useCallback, useLayoutEffect } from 'react'
 
 const initState = {
   headPos: {
@@ -101,7 +101,7 @@ export const useScrollCheck = () => {
 
   const checkSubMenuPos = useCallback(
     () => {
-      const { scrollY, pageYOffset } = window;
+      const { scrollY, pageYOffset } = window
 
       if (height !== scrollY)
         dispatch({
@@ -129,7 +129,7 @@ export const useScrollCheck = () => {
     [height, yOffset]
   )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { scrollY, pageYOffset } = window;
 
     dispatch({
@@ -142,7 +142,7 @@ export const useScrollCheck = () => {
     })
   }, [checkHeadPos])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { scrollY, pageYOffset } = window;
     const focus = document.querySelector('.is-current')
     

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { Translate } from 'store';
@@ -65,9 +65,10 @@ const EndPosts = styled.div`
 const NoContent = () => {
   const { t, lang, checkLang } = Translate.useContainer();
 
-  useEffect(() => {
-    checkLang('404')
-  }, [])
+  useLayoutEffect(() => {
+    if (lang)
+      checkLang('404')
+  }, [lang])
 
   const redirectHandler = () => {
     navigate(lang === 'es' ? '/es/' : '/')

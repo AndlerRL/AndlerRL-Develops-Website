@@ -11,8 +11,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    height: auto;
-    background-color: ${themeGet('colors.blacksDepth.500')};
+    min-height: 100vh;
   }
 
   body {
@@ -25,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: ${themeGet('fontWeights.medium')};
     font-size: ${themeGet('fontSizes.2')}px;
     background-color: ${themeGet('colors.blacksDepth.500')};
-    overflow: ${({ intro }) => intro ? 'hidden' : 'auto'};
+    overflow: ${({ intro }) => !intro.end ? 'hidden' : 'auto'};
     scroll-snap-type: y proximity;
   }
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import styled, { themeGet } from 'util/styles'
 import { TextField, MenuItem } from '@material-ui/core'
 import { Translate } from 'store'
@@ -55,13 +55,14 @@ const InputComponent = React.memo(({
   elementConfig,
   disabled,
 }) => {
-  const { t, checkLang } = Translate.useContainer();
+  const { t, checkLang, lang } = Translate.useContainer();
   let inputElement = null;
   let errorHelperText = null;
 
-  useEffect(() => {
-    checkLang('contact-me')
-  }, [])
+  useLayoutEffect(() => {
+    if (lang)
+      checkLang('contact-me')
+  }, [lang])
 
   if (invalid && touched)
     errorHelperText = `${t('form.error.0')}${label.toLowerCase()}${t('form.error.1')}${t('form.error.2')}${shouldValidate.minLength}`;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { Translate } from 'store'
 import Header from "components/header"
 import Footer from "components/footer"
@@ -9,17 +9,18 @@ const LayoutContainer = styled(Flex)`
   background: linear-gradient(to top, ${themeGet('colors.blackDepth.300')} 1vh, ${themeGet('colors.blackDepth.500')} 33.33vh);
   min-height: 100vh;
   width: 100%;
+  position: relative;
 `
-
 
 const LayoutComponent = ({ locale, children }) => {
   const { lang, checkLang, checkPath } = Translate.useContainer()
 
-  useEffect(() => {
-    checkLang('layout')
-  }, [])
+  useLayoutEffect(() => {
+    if (lang)
+      checkLang('layout')
+  }, [lang])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (lang !== locale)
       checkPath(locale)
   }, [lang])

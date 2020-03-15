@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useLayoutEffect, useState, useCallback } from 'react'
 import { Translate } from 'store'
 import { Wrapper } from "components/UI/wrappers"
 import { PrimaryCard, SecondaryCard } from 'components/UI/cards'
@@ -76,7 +76,7 @@ const MapContainer = styled.div`
 `
 
 const ContactMe = ({ submit, submitting }) => {
-  const { checkLang, t } = Translate.useContainer()
+  const { checkLang, t, lang } = Translate.useContainer()
   const [form, setForm] = useState({
     name: {
       elementType: 'text',
@@ -146,11 +146,13 @@ const ContactMe = ({ submit, submitting }) => {
     [setInnerWidth]
   )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (lang)
+      checkLang('contact-me')
+
     const { innerWidth } = window
 
     AOS.init()
-    checkLang('contact-me')
     setInnerWidth(innerWidth)
     window.addEventListener('resize', checkWidth)
 
@@ -158,9 +160,9 @@ const ContactMe = ({ submit, submitting }) => {
       AOS.refresh()
       window.removeEventListener('resize', checkWidth)
     }
-  }, [checkWidth])
+  }, [checkWidth, lang])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (form.name.label !== t('form.name')) {
       setForm(f => ({
         ...f,

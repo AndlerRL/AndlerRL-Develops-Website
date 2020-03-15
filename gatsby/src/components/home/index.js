@@ -1,4 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
+import { Text, Flex, Box } from "rebass"
+import { motion, useViewportScroll } from 'framer-motion'
+import { useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 import { 
   PrimaryCard,
@@ -9,9 +15,7 @@ import {
   LightBlueTriangleBottom,
 } from "components/UI/cards"
 import HomeHero from "components/UI/codeBackground"
-import { Text, Flex, Box } from "rebass"
 import { Wrapper } from "components/UI/wrappers"
-import { motion } from 'framer-motion'
 import logo from 'images/new_logo.svg'
 import stationBck from 'images/projects_bg.jpg'
 import styled, { themeGet } from 'util/styles'
@@ -21,10 +25,6 @@ import Tech from "./techs"
 import { Testimonies } from './testimonies'
 import { Translate } from 'store'
 import Scrollspy from 'components/UI/scrollspy'
-import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 import { Image } from 'components/image'
 import { Icon } from 'components/UI/icons'
 import lorax from 'images/the-lorax.png'
@@ -37,10 +37,25 @@ const Logo = styled.div`
   top: -200px;
   position: absolute;
   z-index: 3;
+
+  div,
+  img,
+  picture,
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
 `
 
-const DescriptionContainer = styled(Flex)`
-  background: url(${stationBck}) center center fixed no-repeat;
+const DescriptionContainer = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: ${themeGet('space.5')}px;
+  background: url(${stationBck}) center no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   min-height: 100vh;
   position: relative;
@@ -152,7 +167,7 @@ const variants = {
 }
 
 const Home = ({ locale }) => {
-  const { checkLang, t } = Translate.useContainer()
+  const { checkLang, t, lang } = Translate.useContainer()
   const data = useStaticQuery(graphql`
     {
       allSanityTech(filter: {title: {in: ["HTML5", "JavaScript", "CSS3", "JAMStack", "MERN Stack", "MEAN Stack"]}}, sort: {fields: title}) {
@@ -172,14 +187,16 @@ const Home = ({ locale }) => {
   `)
   const { allSanityTech: { nodes } } = data
 
-  useEffect(() => {
-    checkLang('index')
+  useLayoutEffect(() => {
+    if (lang)
+      checkLang('index')
+
     AOS.init()
 
     return () => {
       AOS.refresh()
     }
-  }, [])
+  }, [lang])
 
   const menuItems = {
     id: ['first_s', 'second_s', 'third_s', 'techs'],
@@ -194,9 +211,7 @@ const Home = ({ locale }) => {
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          style={{
-            marginTop: -150
-          }}
+          mt={["-116px", "150px", "150px"]}
           mb={7}
         >
           <YellowTriangleTop top={-116} />
@@ -240,6 +255,7 @@ const Home = ({ locale }) => {
                     animate="visible"
                     initial="initial"
                     variants={variants}
+                    key={i}
                   >
                     <Text as="span"
                       lineHeight={2}
@@ -265,15 +281,9 @@ const Home = ({ locale }) => {
         items={menuItems.id}
         title={menuItems.title}
       />
-      <DescriptionContainer
-        alignItems="center"
-        justifyContent="center"
-        flexDirection="column"
-        width={1}
-        py={5}
-      >
+      <DescriptionContainer> 
         <div></div>
-        <Wrapper mt={5} >
+        <Wrapper mt={5}>
           <PrimaryCard
             flexDirection="column"
             alignItems="center"
@@ -299,6 +309,7 @@ const Home = ({ locale }) => {
                         mb={3}
                         textAlign="left"
                         width={1}
+                        key={i}
                       >
                         {t(`mainContent.contentMain.${i}`)}
                       </Text>
@@ -310,6 +321,7 @@ const Home = ({ locale }) => {
                         flexDirection="column"
                         alignItems="center"
                         justifyContent="space-between"
+                        key={i}
                       >
                         <Flex
                           flexDirection="row-reverse"
@@ -325,6 +337,7 @@ const Home = ({ locale }) => {
                               data-aos-delay={(((i + 1) * 3) * 100)}
                               data-aos-anchor-placement="center-bottom"
                               data-aos-once="true"
+                              key={i}
                             >
                               <Img fluid={logo.asset.fluid} />
                             </ImgContentContainer>
@@ -348,6 +361,7 @@ const Home = ({ locale }) => {
                         alignItems="center"
                         justifyContent="space-between"
                         width={1}
+                        key={i}
                       >
                         <Flex
                           flexDirection="column"
@@ -364,6 +378,7 @@ const Home = ({ locale }) => {
                               data-aos-delay={(((i + 1) * 2.5) * 100)}
                               data-aos-anchor-placement="center-bottom"
                               data-aos-once="true"
+                              key={i}
                             >
                               <Img fluid={logo.asset.fluid} />
                             </ImgContentContainer>
@@ -393,6 +408,7 @@ const Home = ({ locale }) => {
                         textAlign="left"
                         width={1}
                         fontWeight="500"
+                        key={i}
                       >
                         {t(`mainContent.contentMain.${i}`)}
                       </Text>
@@ -405,6 +421,7 @@ const Home = ({ locale }) => {
                         mb={3}
                         textAlign="left"
                         width={1}
+                        key={i}
                       >
                         {t(`mainContent.contentMain.${i}`)}
                       </Text>
@@ -420,6 +437,7 @@ const Home = ({ locale }) => {
                         data-aos-delay={(i * 2) * 100}
                         data-aos-once="true"
                         data-aos-anchor-placement="center-bottom"
+                        key={i}
                       >
                         <Text as="h3">
                           {t(`mainContent.contentMain.${i}`)}
@@ -435,6 +453,7 @@ const Home = ({ locale }) => {
                         textAlign="left"
                         width={1}
                         fontWeight="400"
+                        key={i}
                       >
                         {t(`mainContent.contentMain.${i}`)}
                       </Text>
@@ -486,6 +505,7 @@ const Home = ({ locale }) => {
             </Flex>
             <YellowTriangleBottom bottom={-116} />
           </PrimaryCard>
+
           <SecondaryCard
             flexDirection="column"
             alignItems="center"
@@ -511,6 +531,7 @@ const Home = ({ locale }) => {
                         lineHeight={2}
                         width={1}
                         my={4}
+                        key={i}
                       >
                         {t(`mainContent.contentSub.${i}`)}
                       </Text>
@@ -525,6 +546,7 @@ const Home = ({ locale }) => {
                           justifyContent="space-between"
                           width={1}
                           my={4}
+                          key={i}
                         >
                           <Box width={[1, 1 / 2, 1 / 2]}
                             height={["300px", "400px", "400px"]}
@@ -577,6 +599,7 @@ const Home = ({ locale }) => {
                         lineHeight={2}
                         width={1}
                         my={4}
+                        key={i}
                       >
                         {t(`mainContent.contentSub.${i}`)}
                       </Text>
@@ -590,6 +613,7 @@ const Home = ({ locale }) => {
                         data-aos="fade-up"
                         data-aos-delay={(i * 2) * 100}
                         data-aos-anchor-placement="center-bottom"
+                        key={i}
                       >
                         <Text as="h3">
                           {t(`mainContent.contentSub.${i}`)}

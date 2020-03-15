@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState, useCallback } from 'react'
+import { useReducer, useLayoutEffect, useState, useCallback } from 'react'
 import { createContainer } from 'unstated-next'
 import translateES from 'locales/es.json'
 import translateEN from 'locales/en.json'
@@ -10,7 +10,8 @@ const initState = {
     en: translateEN
   },
   current: null,
-  lang: null
+  lang: null,
+  page: ''
 }
 
 const reducer = (state, action) => {
@@ -24,7 +25,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         current: action.current,
-        lang: action.lang
+        lang: action.lang,
+        page: action.page
       }
     case 'CHANGE_LANG': 
       return {
@@ -42,49 +44,77 @@ const useTranslate = () => {
   const { translations, current, lang, page } = data
   const [win, setWin] = useState(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { language } = navigator
+    const localLang = localStorage.getItem('lang')
+    const navLang = !language.match('es') ? 'en' : 'es'
 
     dispatch({
       type: 'READ_LANG',
-      lang: language.match('es') ? 'es' : 'en'
+      lang: localLang || navLang
     })
+
     setWin(window)
 
     return () => {
       setWin(window)
     }
-  }, [])
+  }, [lang, setWin])
   
   const checkPath = useCallback(locale => {
-    if (win && lang !== locale) {
-      const { location } = win
-      const l = lang !== 'en' && !location.pathname.match('/es/') 
-        ? lang 
-        : ''
-      const to = location.pathname.match('/es/') && lang === 'en' 
-        ? (location.pathname).substr(3) 
-        : location.pathname
-      navigate(
-        `/${l}${to}`
-      )
+    if (lang) {
+      console.log(lang, locale)
+      if (win && lang !== locale) {
+        const { location } = win
+        const l = lang !== 'en' && !location.pathname.match('/es/')
+          ? lang 
+          : ''
+        const to = location.pathname.match('/es/') && lang === 'en' 
+          ? (location.pathname).substr(3) 
+          : location.pathname
+        navigate(
+          `/${l}${to}`
+        )
+      }
     }
   }, [lang, win])
 
+  /**
+   * 
+   * TODO:
+   * 
+   * Necesito verificar el BUG que está ocurriendo cuando un usuario nuevo
+   * visita la página, ya que al parecer no almacena bien el idioma desde
+   * que cree el Dispatch de 'READ_LANG' y está causando problemas de
+   * actualización.
+   * 
+   * Tengo que:
+   *    1. Verificar function changeLang()
+   *    2. Verificar function checkLang()
+   *    3. Arreglar los problemas de actualización de cada function() 
+   * 
+   * Acaso tendré que agregar el dependency de cada useEffect() que 
+   * checkLang() tiene ???
+   * 
+   * 
+   */
+
   const checkLang = useCallback(p => {
-    const localLang = localStorage.getItem('lang');
-    const locale = navigator.language.match('es') ? 'es' : 'en';
-    const newLang = translations[localLang || locale]
-    const newCurrent = newLang[p]
-
-    dispatch({
-      type: 'SET_LANG',
-      current: newCurrent,
-      lang: localLang || locale
-    })
-
-    return checkPath(locale)
-  }, [checkPath, translations])
+    if (lang) {
+      const localLang = localStorage.getItem('lang');
+      const newLang = translations[localLang || lang]
+      const newCurrent = newLang[p]
+  
+      dispatch({
+        type: 'SET_LANG',
+        current: newCurrent,
+        page: p,
+        lang: localLang || lang
+      })
+  
+      return checkPath(lang)
+    }
+  }, [checkPath, translations, lang])
 
   const t = useCallback(t => {
     const tIndex = t.indexOf('.')
