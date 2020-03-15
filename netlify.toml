@@ -1,4 +1,4 @@
 [build]
-  base = "gatsby/"
+  base = "gatsby"
   command = "gatsby build"
-  publish = "gatsby/public/"
+  publish = "public"
