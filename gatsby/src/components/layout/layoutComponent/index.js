@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Translate } from 'store'
 import Header from "components/header"
 import Footer from "components/footer"
@@ -15,12 +15,12 @@ const LayoutContainer = styled(Flex)`
 const LayoutComponent = ({ locale, children }) => {
   const { lang, checkLang, checkPath } = Translate.useContainer()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (lang)
       checkLang('layout')
   }, [lang])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (lang !== locale)
       checkPath(locale)
   }, [lang])

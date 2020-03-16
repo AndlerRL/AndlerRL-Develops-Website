@@ -1,4 +1,4 @@
-import { useReducer, useLayoutEffect, useState, useCallback } from 'react'
+import { useReducer, useEffect, useState, useCallback } from 'react'
 import { createContainer } from 'unstated-next'
 import translateES from 'locales/es.json'
 import translateEN from 'locales/en.json'
@@ -44,7 +44,7 @@ const useTranslate = () => {
   const { translations, current, lang, page } = data
   const [win, setWin] = useState(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const { language } = navigator
     const localLang = localStorage.getItem('lang')
     const navLang = !language.match('es') ? 'en' : 'es'

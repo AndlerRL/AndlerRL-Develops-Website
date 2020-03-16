@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Translate } from 'store'
 import { Text, Flex } from 'rebass'
@@ -59,7 +59,7 @@ const Projects = ({ locale }) => {
       </React.Fragment>
     )
 
-    useLayoutEffect(() => {
+    useEffect(() => {
     if (lang)
       checkLang('projects')
       

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Text, Flex, Box } from "rebass"
 import { motion } from 'framer-motion'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -6,6 +6,11 @@ import Img from 'gatsby-image'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
+import loadable from '@loadable/component'
+import { Wrapper } from "components/UI/wrappers"
+import logo from 'images/new_logo.svg'
+import stationBck from 'images/projects_bg.jpg'
+import styled, { themeGet } from 'util/styles'
 import { 
   PrimaryCard,
   SecondaryCard, 
@@ -13,12 +18,7 @@ import {
   YellowTriangleBottom,
   LightBlueTriangleTop,
   LightBlueTriangleBottom,
-} from "components/UI/cards"
-import HomeHero from "components/UI/codeBackground"
-import { Wrapper } from "components/UI/wrappers"
-import logo from 'images/new_logo.svg'
-import stationBck from 'images/projects_bg.jpg'
-import styled, { themeGet } from 'util/styles'
+} from 'components/UI/cards'
 import { Btn } from 'components/UI/btn'
 import Link from "components/link"
 import Tech from "./techs"
@@ -28,6 +28,8 @@ import Scrollspy from 'components/UI/scrollspy'
 import { Image } from 'components/image'
 import { Icon } from 'components/UI/icons'
 import lorax from 'images/the-lorax.png'
+
+const HomeHero = loadable(() => import("components/UI/codeBackground"))
 
 const Logo = styled.div`
   background: url(${logo}) center center no-repeat;
@@ -187,7 +189,7 @@ const Home = ({ locale }) => {
   `)
   const { allSanityTech: { nodes } } = data
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (lang)
       checkLang('index')
 
@@ -213,7 +215,7 @@ const Home = ({ locale }) => {
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          mt={["-116px", "150px", "150px"]}
+          mt={["-116px", "-150px", "-150px"]}
           mb={7}
         >
           <YellowTriangleTop top={-116} />

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import braketLeft from 'images/intro/braket_left.svg'
 import braketRight from 'images/intro/braket_right.svg'
@@ -180,7 +180,7 @@ const IntroAnim = ({ introEnd, animComplete }) => {
     [setInnerWidth]
   )
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const { innerWidth } = window
 
     setInnerWidth(innerWidth)

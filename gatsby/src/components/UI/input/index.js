@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled, { themeGet } from 'util/styles'
 import { TextField, MenuItem } from '@material-ui/core'
 import { Translate } from 'store'
@@ -59,7 +59,7 @@ const InputComponent = React.memo(({
   let inputElement = null;
   let errorHelperText = null;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (lang)
       checkLang('contact-me')
   }, [lang])

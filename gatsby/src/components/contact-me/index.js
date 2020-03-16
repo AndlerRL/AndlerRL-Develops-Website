@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Translate } from 'store'
 import { Wrapper } from "components/UI/wrappers"
 import { PrimaryCard, SecondaryCard } from 'components/UI/cards'
@@ -12,6 +12,32 @@ import 'aos/dist/aos.css'
 import Maps from 'components/google_maps'
 import { SocialIcons, Icon } from 'components/UI/icons'
 import { motion } from 'framer-motion'
+import shakeHand from 'images/shake_hand.jpeg'
+
+const Background = styled.div`
+  background-image: url(${shakeHand});
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  > div {
+    background: linear-gradient(
+      to top,
+      ${themeGet('colors.blackDepth.300')} 8.333%,
+      ${themeGet('colors.blackDepth.500')}da 33.333%,
+      ${themeGet('colors.blackDepth.500')}d9 91.666%,
+      ${themeGet('colors.blackDepth.500')}d9 100%
+    );
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`
 
 const ContactTitle = styled(Text)`
   color: ${themeGet('colors.primary.A200')};
@@ -146,7 +172,7 @@ const ContactMe = ({ submit, submitting }) => {
     [setInnerWidth]
   )
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (lang)
       checkLang('contact-me')
 
@@ -164,7 +190,7 @@ const ContactMe = ({ submit, submitting }) => {
     }
   }, [checkWidth, lang])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (form.name.label !== t('form.name')) {
       setForm(f => ({
         ...f,
@@ -264,36 +290,60 @@ const ContactMe = ({ submit, submitting }) => {
   )
 
   return (
-    <Wrapper isMain wide mb={8}>
-      <Flex
-        flexDirection={["column-reverse", "column-reverse", "row"]}
-        alignItems="center"
-        justifyContent="space-between"
-        width={1}
-      >
-        <SecondaryCard
-          contact
-          width={[1, 11 / 12, "350px"]}
-          flexDirection="column"
+    <React.Fragment>
+      <Background>
+        <div />
+      </Background>
+      <Wrapper isMain wide mb={8}>
+        <Flex
+          flexDirection={["column-reverse", "column-reverse", "row"]}
           alignItems="center"
-          justifyContent="center"
-          my={5}
-          mx={["auto", "auto", "0px"]}
+          justifyContent="space-between"
+          width={1}
         >
-          <Text as="h1">{t('form.title')}</Text>
-          <Flex as="form"
-            flexDirection={["column", "row", "column"]}
-            width={1}
-            height="100%"
-            onSubmit={(e) => submit(e, form)}
+          <SecondaryCard
+            contact
+            width={[1, 11 / 12, "350px"]}
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            my={5}
+            mx={["auto", "auto", "0px"]}
           >
-            <Box width={1}>
-              {input}
+            <Text as="h1">{t('form.title')}</Text>
+            <Flex as="form"
+              flexDirection={["column", "row", "column"]}
+              width={1}
+              height="100%"
+              onSubmit={(e) => submit(e, form)}
+            >
+              <Box width={1}>
+                {input}
+                <Flex
+                  width={1}
+                  alignItems="center"
+                  justifyContent="flex-start"
+                  style={{ display: innerWidth < 840 && innerWidth > 640 ? 'flex' : 'none' }}
+                >
+                  <Btn type="submit"
+                    backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
+                    size="large"
+                    variant="contained"
+                    project="true"
+                    disabled={!formIsValid}
+                  >
+                    {t('form.submit')}
+                  </Btn>
+                </Flex>
+              </Box>
+              <Box width={1}>
+                {message}
+              </Box>
               <Flex
                 width={1}
                 alignItems="center"
-                justifyContent="flex-start"
-                style={{ display: innerWidth < 840 && innerWidth > 640 ? 'flex' : 'none' }}
+                justifyContent="center"
+                style={{ display: innerWidth < 640 || innerWidth > 840 ? 'flex' : 'none' }}
               >
                 <Btn type="submit"
                   backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
@@ -302,179 +352,160 @@ const ContactMe = ({ submit, submitting }) => {
                   project="true"
                   disabled={!formIsValid}
                 >
-                  {t('form.submit')}
+                  {
+                    submitting 
+                    ? (
+                      <motion.div
+                        animate={{
+                          rotate: 360
+                        }}
+                        transition={{
+                          loop: Infinity,
+                          ease: 'linear',
+                          duration: 2,
+                        }}
+                        style={{
+                          transformOrigin: 'center center'
+                        }}
+                      >
+                        <Icon.load size="16px" />
+                      </motion.div>
+                    )
+                    : t('form.submit')
+                  }
                 </Btn>
               </Flex>
-            </Box>
-            <Box width={1}>
-              {message}
-            </Box>
-            <Flex
-              width={1}
-              alignItems="center"
-              justifyContent="center"
-              style={{ display: innerWidth < 640 || innerWidth > 840 ? 'flex' : 'none' }}
-            >
-              <Btn type="submit"
-                backgroundcolor={['colors.blackDepth.200', 'colors.blackDepth.400']}
-                size="large"
-                variant="contained"
-                project="true"
-                disabled={!formIsValid}
-              >
-                {
-                  submitting 
-                  ? (
-                    <motion.div
-                      animate={{
-                        rotate: 360
-                      }}
-                      transition={{
-                        loop: Infinity,
-                        ease: 'linear',
-                        duration: 2,
-                      }}
-                      style={{
-                        transformOrigin: 'center center'
-                      }}
-                    >
-                      <Icon.load size="16px" />
-                    </motion.div>
-                  )
-                  : t('form.submit')
-                }
-              </Btn>
             </Flex>
-          </Flex>
-        </SecondaryCard>
-        <Box>
-          <ContactTitle as="h1"
-            data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
-            data-aos-offset="0"
-          >
-            {t('title.0')}
-          </ContactTitle>
-          <ContactTitle as="h1" my={6}
-            data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
-            data-aos-delay="1000"
-            data-aos-offset="0"
-          >
-            {t('title.1')}
-          </ContactTitle>
-          <ContactTitle as="h1"
-            data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
-            data-aos-delay="1750"
-            data-aos-offset="0"
-          >
-            {t('title.2')}
-          </ContactTitle>
-          <ContactTitle as="h1"
-            data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
-            data-aos-delay="3000"
-            data-aos-offset="0"
-          >
-            {t('title.3')}
-          </ContactTitle>
-        </Box>
-      </Flex>
-      <PrimaryCard
-        contact
-        flexDirection={["column", "column", "row"]}
-        alignItems="center"
-        justifyContent="space-between"
-        width={[1, 10 / 12, 10 / 12]}
-        mx="auto"
-        height={[700, 650, 400]}
-        p={0}
-        mt={6}
-      >
-        <Flex
-          flexDirection="column"
+          </SecondaryCard>
+          <Box>
+            <ContactTitle as="h1"
+              data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
+              data-aos-offset="0"
+            >
+              {t('title.0')}
+            </ContactTitle>
+            <ContactTitle as="h1" my={6}
+              data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
+              data-aos-delay="1000"
+              data-aos-offset="0"
+            >
+              {t('title.1')}
+            </ContactTitle>
+            <ContactTitle as="h1"
+              data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
+              data-aos-delay="1750"
+              data-aos-offset="0"
+            >
+              {t('title.2')}
+            </ContactTitle>
+            <ContactTitle as="h1"
+              data-aos={innerWidth <= 640 ? 'fade-down' : 'fade-down-left'}
+              data-aos-delay="3000"
+              data-aos-offset="0"
+            >
+              {t('title.3')}
+            </ContactTitle>
+          </Box>
+        </Flex>
+        <PrimaryCard
+          contact
+          flexDirection={["column", "column", "row"]}
           alignItems="center"
           justifyContent="space-between"
-          width={[1, 11 / 12, 7 / 12]}
-          height="100%"
-          p={4}
+          width={[1, 10 / 12, 10 / 12]}
+          mx="auto"
+          height={[700, 650, 400]}
+          p={0}
+          mt={6}
         >
-          <Text as="h1"
-            color={["#f5f5f5", "#212121", "#212121"]}
-          >
-            {t('contact.title')}
-          </Text>
-          <ContactContainer
+          <Flex
             flexDirection="column"
             alignItems="center"
             justifyContent="space-between"
-            width={1}
-            height={["83.333%", "75%", "75%"]}
-            py={3}
-          >
-            <Flex
-              alignItems="center"
-              justifyContent="flex-start"
-              width={1}
-            >
-              <Icon.location size="24px" color="inherit" />
-              <Text as="p" pl={2}>{t('contact.direction')}</Text>
-            </Flex>
-            <Flex
-              alignItems="center"
-              justifyContent="flex-start"
-              width={1}
-            >
-              <Icon.phone size="24px" color="inherit" />
-              <Text as="a"
-                pl={2}
-                href="tel:+50662163355"
-              >
-                {t('contact.phone')}
-              </Text>
-            </Flex>
-            <Flex
-              alignItems="center"
-              justifyContent="flex-start"
-              width={1}
-            >
-              <Icon.whatsapp size="24px" color="inherit" />
-              <Text as="a"
-                pl={2}
-                href="https://api.whatsapp.com/send?phone=50662163355"
-              >
-                {t('contact.phone')}
-              </Text>
-            </Flex>
-            <Flex
-              alignItems="center"
-              justifyContent="flex-start"
-              width={1}
-            >
-              <Icon.at size="24px" color="inherit" />
-              <Text as="a"
-                pl={2}
-                href="mailto:andre.rlucas@outlook.com"
-              >
-                {t('contact.email')}
-              </Text>
-            </Flex>
-          </ContactContainer>
-          <SocialIcons mb={2} />
-        </Flex>
-        <MapContainer
-          alignItems="center"
-          justifyContent="center"
-          style={{ 
-            margin: '0 auto',
-            padding: 0,
-            height: '400px',
-          }}
-        >
-          <Maps 
+            width={[1, 11 / 12, 7 / 12]}
             height="100%"
-            zoom={17}  
-          />
-        </MapContainer>
-      </PrimaryCard>
-    </Wrapper>
+            p={4}
+          >
+            <Text as="h1"
+              color={["#f5f5f5", "#212121", "#212121"]}
+            >
+              {t('contact.title')}
+            </Text>
+            <ContactContainer
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="space-between"
+              width={1}
+              height={["83.333%", "75%", "75%"]}
+              py={3}
+            >
+              <Flex
+                alignItems="center"
+                justifyContent="flex-start"
+                width={1}
+              >
+                <Icon.location size="24px" color="inherit" />
+                <Text as="p" pl={2}>{t('contact.direction')}</Text>
+              </Flex>
+              <Flex
+                alignItems="center"
+                justifyContent="flex-start"
+                width={1}
+              >
+                <Icon.phone size="24px" color="inherit" />
+                <Text as="a"
+                  pl={2}
+                  href="tel:+50662163355"
+                >
+                  {t('contact.phone')}
+                </Text>
+              </Flex>
+              <Flex
+                alignItems="center"
+                justifyContent="flex-start"
+                width={1}
+              >
+                <Icon.whatsapp size="24px" color="inherit" />
+                <Text as="a"
+                  pl={2}
+                  href="https://api.whatsapp.com/send?phone=50662163355"
+                >
+                  {t('contact.phone')}
+                </Text>
+              </Flex>
+              <Flex
+                alignItems="center"
+                justifyContent="flex-start"
+                width={1}
+              >
+                <Icon.at size="24px" color="inherit" />
+                <Text as="a"
+                  pl={2}
+                  href="mailto:andre.rlucas@outlook.com"
+                >
+                  {t('contact.email')}
+                </Text>
+              </Flex>
+            </ContactContainer>
+            <SocialIcons mb={2} />
+          </Flex>
+          <MapContainer
+            alignItems="center"
+            justifyContent="center"
+            style={{ 
+              margin: '0 auto',
+              padding: 0,
+              height: '400px',
+            }}
+          >
+            <Maps 
+              height="100%"
+              zoom={17}  
+            />
+          </MapContainer>
+        </PrimaryCard>
+      </Wrapper>
+    </React.Fragment>
   )
 }
 

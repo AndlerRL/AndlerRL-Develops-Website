@@ -3,6 +3,7 @@ import styled, { themeGet } from 'util/styles'
 import homeHeroMp4 from 'images/home_hero.mp4'
 import homeHeroWebm from 'images/home_hero.webm'
 import homeHeroGif from 'images/home_hero.gif'
+import homeHeroJpg from 'images/home_hero_fb.jpg'
 
 const HomeHeroContainer = styled.div`
   position: absolute;
@@ -36,7 +37,7 @@ const HomeHero = () => (
       style={{ position: 'relative', overflow: 'hidden', height: '66vh', width: '100%' }}
     >
       <HomeHeroContainer />
-      <VideoContainer autoPlay loop muted playsInline poster={homeHeroGif}>
+      <VideoContainer autoPlay loop muted playsInline poster={homeHeroJpg}>
         <source src={homeHeroMp4} type="video/mp4" />
         <source src={homeHeroWebm} type="video/webm" />
         <img src={homeHeroGif} alt="No video supported. Using GIF" />

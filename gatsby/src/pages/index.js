@@ -3,7 +3,9 @@ import React, { useState } from "react"
 import { Translate } from 'store'
 import SEO from "components/seo"
 import IntroAnim from 'components/UI/intro'
-import Home from "components/home"
+import loadable from '@loadable/component'
+
+const Home = loadable(() => import('components/home'))
 
 const IndexPage = React.memo(({ pageContext: { locale }, location  }) => {
   const [intro, setIntro] = useState({

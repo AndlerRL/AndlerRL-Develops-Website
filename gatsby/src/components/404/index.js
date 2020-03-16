@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { Translate } from 'store';
@@ -65,7 +65,7 @@ const EndPosts = styled.div`
 const NoContent = () => {
   const { t, lang, checkLang } = Translate.useContainer();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (lang)
       checkLang('404')
   }, [lang])
