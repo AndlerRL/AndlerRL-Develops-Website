@@ -40,7 +40,7 @@ function SEO({ description, lang, meta, title, pageView, thumbnail }) {
 
   useEffect(() => {
     ReactGA.initialize(site.siteMetadata.googleAnalyticsId, {
-      debug: true,
+      debug: false,
       titleCase: false
     });
     pageView && ReactGA.pageview(pageView);

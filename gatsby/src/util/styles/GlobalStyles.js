@@ -1,4 +1,5 @@
 import { createGlobalStyle, themeGet } from './index';
+import logoDark from 'images/new_logo-dark.svg'
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -8,10 +9,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    min-width: 100%;
     min-height: 100vh;
+    background: ${themeGet('colors.blackDepth.400')} url(${logoDark}) no-repeat;
+    background-size: 300px 300px;
+    background-blend-mode: overlay;
+    background-position: center;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -26,6 +33,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${themeGet('colors.blacksDepth.500')};
     overflow: ${({ intro }) => intro && !intro.end ? 'hidden' : 'auto'};
     scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {

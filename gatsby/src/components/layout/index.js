@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider, theme } from 'util/styles'
 import GlobalStyles from 'util/styles/GlobalStyles'
-import LayoutComponent from './layoutComponent'
+import loadable from '@loadable/component'
 import { Translate } from "store"
+
+const LayoutComponent = loadable(() => import('./layoutComponent'))
 
 const Layout = React.memo(({ children, intro, locale }) => {
   const [navLang, setNavLang] = useState('en')

@@ -15,7 +15,7 @@ const ProjectPage = ({ pageContext: { locale }, location, data: { sanityProject 
         description={`${pBody[0].children[0].text.substr(0, 200)}…`}
         lang={locale}
         pageView={`${locale === 'es' ? '/es/' : '/'}projects/${sanityProject.title[locale]}`}
-        thumbnail={sanityProject.mainImage.asset.fluid.base64}
+        thumbnail={sanityProject.mainImage.asset.fluid.src}
       />
       <Translate.Provider>
         <Project locale={locale} p={sanityProject} />
