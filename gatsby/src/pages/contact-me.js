@@ -59,21 +59,23 @@ const ContactMePage = ({ pageContext: { locale }, location }) => {
     : 'Write me a letter! And so we look forward to meet you and do business. With you.' 
 
   return (
-    <Layout notIntro={true} locale={locale}>
+    <React.Fragment>
       <SEO title="Contact Me" lang={locale} pageView={`${locale === 'es' ? '/es/' : '/'}projects`} description={description} />
-      <Translate.Provider>
-        <ContactMe 
-          locale={locale}
-          submit={submitHandler}
-          submitting={submitting}
-        />
-        <Snackbar
-          open={snackbar.open}
-          message={snackbar.message}
-          onClose={closeSnackbarHandler}
-        />
-      </Translate.Provider>
-    </Layout>
+      <Layout notIntro={true} locale={locale}>
+        <Translate.Provider>
+          <ContactMe 
+            locale={locale}
+            submit={submitHandler}
+            submitting={submitting}
+          />
+          <Snackbar
+            open={snackbar.open}
+            message={snackbar.message}
+            onClose={closeSnackbarHandler}
+          />
+        </Translate.Provider>
+      </Layout>
+    </React.Fragment>
   )
 }
 
