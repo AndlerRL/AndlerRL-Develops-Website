@@ -28,7 +28,8 @@ const IntroAnimContainer = styled(motion.div)`
   background-size: 300px 300px;
   background-blend-mode: overlay;
   overflow: ${({ introEnd }) => !introEnd.end ? 'hidden' : 'auto'};
-  background-position: center;
+  background-position-x: 33.33%;
+  background-position-y: center;
 
   .LogoContainer {
     width: 352.5px;
@@ -39,7 +40,7 @@ const IntroAnimContainer = styled(motion.div)`
     align-items: center;
     justify-content: space-evenly;
     margin-top: 0;
-    margin-left: calc(-50% + 171.75px);
+    margin-left: calc(-50% + 232.65px);
 
     @media screen and (min-width: ${themeGet('breakpoints.2')}) {
       width: 440px;
@@ -51,6 +52,10 @@ const IntroAnimContainer = styled(motion.div)`
       height: 238.66px;
       margin-left: 0;
     }
+  }
+
+  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+    background-position-x: center;
   }
 `
 
@@ -163,7 +168,7 @@ const LogoController = styled.div`
   }
 `
 
-const IntroAnim = ({ introEnd, animComplete }) => {
+const IntroAnim = React.memo(({ introEnd, animComplete }) => {
   const [innerWidth, setInnerWidth] = useState(0)
 
   const checkWidth = useCallback(
@@ -196,7 +201,7 @@ const IntroAnim = ({ introEnd, animComplete }) => {
     hidden: {
       opacity: 0,
       x: 0,
-      scale: 0.25
+      scale: 0
     },
     visible: {
       opacity: 1,
@@ -209,7 +214,7 @@ const IntroAnim = ({ introEnd, animComplete }) => {
     hidden: {
       opacity: 0,
       x: 0,
-      scale: 0.25
+      scale: 0
     },
     visible: {
       opacity: 1,
@@ -318,7 +323,7 @@ const IntroAnim = ({ introEnd, animComplete }) => {
           top: 0,
           left: 0,
           y: innerWidth <= 640 ? '-1.15vw' : '-9.25vh',
-          x: innerWidth <= 640 ? '-6.5vw' : '-9.5vh',
+          x: innerWidth <= 640 ? '-21.5vw' : '-9.5vh',
           position: 'absolute',
           transition: {
             delay: 4.25,
@@ -452,6 +457,6 @@ const IntroAnim = ({ introEnd, animComplete }) => {
       </motion.div>
     </IntroAnimContainer>
   )
-}
+})
 
 export default IntroAnim

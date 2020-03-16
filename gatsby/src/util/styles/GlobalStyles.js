@@ -17,8 +17,13 @@ const GlobalStyles = createGlobalStyle`
     background: ${themeGet('colors.blackDepth.400')} url(${logoDark}) no-repeat;
     background-size: 300px 300px;
     background-blend-mode: overlay;
-    background-position: center;
+    background-position-x: 33.33%;
+    background-position-y: center;
     scroll-behavior: smooth;
+
+    @media screen and (min-width: ${themeGet('breakpoints.0')}) {
+      background-position-x: center;
+    }
   }
 
   body {
@@ -32,7 +37,6 @@ const GlobalStyles = createGlobalStyle`
     font-size: ${themeGet('fontSizes.2')}px;
     background-color: ${themeGet('colors.blacksDepth.500')};
     overflow: ${({ intro }) => intro && !intro.end ? 'hidden' : 'auto'};
-    scroll-snap-type: y proximity;
     scroll-behavior: smooth;
   }
 

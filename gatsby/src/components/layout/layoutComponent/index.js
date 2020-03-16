@@ -33,14 +33,7 @@ const LayoutComponent = ({ locale, children }) => {
         justifyContent="flex-start"
       >
         <Header locale={locale} />
-        <Flex
-          flexDirection="column"
-          justifyContent="flex-start"
-          alignItems="center"
-          width={1}
-        >
-          {children}
-        </Flex>
+        {children}
       </LayoutContainer>
       <Footer locale={locale} />
     </React.Fragment>

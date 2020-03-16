@@ -78,26 +78,6 @@ const useTranslate = () => {
     }
   }, [lang, win])
 
-  /**
-   * 
-   * TODO:
-   * 
-   * Necesito verificar el BUG que está ocurriendo cuando un usuario nuevo
-   * visita la página, ya que al parecer no almacena bien el idioma desde
-   * que cree el Dispatch de 'READ_LANG' y está causando problemas de
-   * actualización.
-   * 
-   * Tengo que:
-   *    1. Verificar function changeLang()
-   *    2. Verificar function checkLang()
-   *    3. Arreglar los problemas de actualización de cada function() 
-   * 
-   * Acaso tendré que agregar el dependency de cada useEffect() que 
-   * checkLang() tiene ???
-   * 
-   * 
-   */
-
   const checkLang = useCallback(p => {
     if (lang) {
       const localLang = localStorage.getItem('lang');

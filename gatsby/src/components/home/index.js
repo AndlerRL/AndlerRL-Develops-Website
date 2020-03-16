@@ -55,7 +55,7 @@ const DescriptionContainer = styled(motion.div)`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  padding: ${themeGet('space.5')}px;
+  padding: 0px;
   background: url(${stationBck}) center no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -85,6 +85,7 @@ const DescriptionContainer = styled(motion.div)`
         ${themeGet('colors.blackDepth.500')}bf 91.666%,
         ${themeGet('colors.blackDepth.500')} 100%
       );
+      padding: ${themeGet('space.5')}px;
     }
   }
 `
@@ -287,13 +288,13 @@ const Home = ({ locale }) => {
       />
       <DescriptionContainer> 
         <div></div>
-        <Wrapper mt={5}>
+        <Wrapper mt={5} p={0}>
           <PrimaryCard
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
           >
-            <YellowTriangleTop top={-116} />
+            <YellowTriangleTop top={-115} />
             <Flex
               flexDirection="column"
               alignItems="center"

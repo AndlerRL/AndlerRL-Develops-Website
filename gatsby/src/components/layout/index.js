@@ -10,7 +10,7 @@ import { Translate } from "store"
 const LayoutComponent = loadable(() => import('./layoutComponent'))
 
 const Layout = React.memo(({ children, intro, locale }) => {
-  const [navLang, setNavLang] = useState('en')
+  const [navLang, setNavLang] = useState(null)
 
   useEffect(() => {
     const { language } = navigator;
@@ -29,10 +29,12 @@ const Layout = React.memo(({ children, intro, locale }) => {
               en: translateEN
             },
             current: null,
-            lang: navLang
+            lang: null
           }}
         >
-          <LayoutComponent locale={locale} children={children} />
+          {
+            navLang && <LayoutComponent locale={locale} children={children} />
+          }
         </Translate.Provider>
       </ThemeProvider>
   )
