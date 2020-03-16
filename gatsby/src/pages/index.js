@@ -8,12 +8,14 @@ const Home = loadable(() => import('components/home'))
 
 const IndexPage = React.memo(({ pageContext: { locale }, location  }) => {
   return (
-    <Layout notIntro={true} locale={locale}>
+    <React.Fragment>
       <SEO title="Home" lang={locale} pageView={`${locale === 'es' ? '/es/' : '/'}`} />
-      <Translate.Provider>
-        <Home locale={locale} />
-      </Translate.Provider>
-    </Layout>
+      <Layout notIntro={true} locale={locale}>
+        <Translate.Provider>
+          <Home locale={locale} />
+        </Translate.Provider>
+      </Layout>
+    </React.Fragment>
   )
 })
 

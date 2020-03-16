@@ -10,12 +10,14 @@ const ProjectsPage = ({ pageContext: { locale }, location  }) => {
     : `Above all that I have been, above all that I have build, lies here. Projects list made by Andler Develops.`
 
   return (
-    <Layout notIntro={true} locale={locale}>
+    <React.Fragment>
       <SEO title="Projects" description={projectsDescription} lang={locale} pageView={`${locale === 'es' ? '/es/' : '/'}projects`} />
-      <Translate.Provider>
-        <Projects locale={locale} />
-      </Translate.Provider>
-    </Layout>
+      <Layout notIntro={true} locale={locale}>
+        <Translate.Provider>
+          <Projects locale={locale} />
+        </Translate.Provider>
+      </Layout>
+    </React.Fragment>
   )
 }
 

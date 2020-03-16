@@ -9,7 +9,7 @@ const ProjectPage = ({ pageContext: { locale }, location, data: { sanityProject 
   const pBody = sanityProject.projectBody[locale]
   
   return (
-    <Layout locale={locale} notIntro={true} >
+    <React.Fragment>
       <SEO 
         title={sanityProject.title[locale]}
         description={`${pBody[0].children[0].text.substr(0, 200)}…`}
@@ -17,10 +17,12 @@ const ProjectPage = ({ pageContext: { locale }, location, data: { sanityProject 
         pageView={`${locale === 'es' ? '/es/' : '/'}projects/${sanityProject.title[locale]}`}
         thumbnail={sanityProject.mainImage.asset.fluid.src}
       />
-      <Translate.Provider>
-        <Project locale={locale} p={sanityProject} />
-      </Translate.Provider>
-    </Layout>
+      <Layout locale={locale} notIntro={true} >
+        <Translate.Provider>
+          <Project locale={locale} p={sanityProject} />
+        </Translate.Provider>
+      </Layout>
+    </React.Fragment>
   )
 }
 
