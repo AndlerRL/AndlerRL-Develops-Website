@@ -1,0 +1,98 @@
+{
+  "index": {
+    "title": {
+      "greet": ["Cheers! My name is Roberto Romero Lucas", "and I'm a full-stack web developer."],
+      "content": [
+        "Also I call myself as Andler Develops, an independent person who has worked the majority of his career as a freelance, getting jobs from Nicaragua to Costa Rica, with local and international clients.",
+        "Andler Develops is made up of a one-person team QA, Back-end, Front-end and Design that can create any type of projects:",
+        "E-Commerce",
+        "Blogs",
+        "Corporative sites",
+        "Application Programming Interface (API)",
+        "As a independent company, I dedicate my life to programming, and with each client that I had, I can tell that the limits are those that one imposes and I, as Andler Develops does not know such a limit."
+      ]
+    },
+    "mainContent": {
+      "titleMain": "What can I do for you?",
+      "contentMain": [
+        "As a developer, I have passion to create interactive websites, attractive to the human eye, that the user knows that since they got in we are serious about what we do and design; creativity is one of my factor skills that invade me and the harmony between algorithms and the art of creating attractive components is something that define me as a human been.",
+        "Andler Develops not only develop websites, also video games created with JavaScript, using prototypes and classes, the last on the market on algorithmic questions–ES2015 to ES2020–the same for websites, using modular, functional and classes methodologies. In web, I'm fanatic of ReactJS, familiarizing me with JAMStack development, something amazingly easy to control, implement and create with GatsbyJS, bootstrapped by ReactJS–Sanity.io–for data management and using GraphQL API.",
+        "These are my main stack development that I use on each website that I build, but always, open to new horizons, like putting this together with TypeScript, Angular 2-7 and also Vue.js, are some of the technologies that on my career path as a web developer I seek to expand.",
+        "The websites that I made are SEO optimized, so you can keep it up to date with the most precise data that those technologies can offer–and dynamic–so you can get a better use experience.",
+        "But, What can I do for you? First:",
+        "Tell me, What is your mind dictating you and tells you what to do in your future business, in your website that still running but want to get it better?",
+        "Tell me, What would you like to improve or where would you like to take your business?",
+        "I want to meet you and also want you to know me, I know that we can do some great business, if you're interested, gime me your price and we shall see what we can do and what would it be your site for the future."
+      ],
+      "titleSub": "Who Am I?",
+      "contentSub": [
+        "First, my name is Meynor Roberto Andrés Romero Lucas (Pretty long, Isn't it?), but I like to be call Roberto Romero Lucas, or just Lucas. I born and have been raise almost a quarter of century in Nicaragua and I'm making a living in Costa Rica, a country that like my native one, it has offered me awful lot of opportunities to know amazing and interesting persons that came along my road that they have made me think, debate and give what to think.",
+        "Since I was a little one, I have the wonderful memory of loving video games, and computers; I remember my first PC, was a Compaq Presario 5460 AMD K6-2, 1999 model:",
+        "I have the memory of my first lines of code, I had only 6 years old and it was from CMD. I wrote commands to execute programs of my interest, and I use to loved the idea of writing in this way rather than execute it from direct access from desktop.",
+        "I remember my first game in PC, it was Age of Empires. I had 6 years old too, loved to be on my computer and play whenever my parents allowed me to; played on easy, that's I assure you.",
+        "Growing up, I kept my love to video games and computers, yes, I'm a PC Gamer–nevertheless, I've had a good number of video game consoles–I have never strayed from my true taste, to be in front on a computer, be browsing, playing or even writing. Was like it until the end of my teen ages, where I truly wanted to listen to my heart and search the truth about me, try to hear from me as much as I can.",
+        "I end up deciding to find a guide, a place where I could start studying  about programing and from there, at the beggining of my 20's, I met Next University an learned about how to create, at first, primitive things so to speak but like always, I have had the desire for personal improvement, something that I feel is a big part of me.",
+        "My father taught me something important and is something that I admire on him, that a good leader is about 'Us' and not about one, the power of one we can say too. As the owner of his own company and having a family of administrators, I have had a lot of advices since I was a child with them and I have been gathering the good values to implement it when it could be necessary.",
+        "Is for that, that I like to help other, challenge people, to see the true value of each one and their potential of each of them that they might have, help them to find themselves and maybe make them questions and make them think, be a coworker, mate, family, couple. Change begins with oneself, Right?"
+      ],
+      "quote": {
+        "content": "Unless someone like you cares a whole awful lot, nothing is going to get better. It's not.",
+        "credits": "Dr. Seuss, The Lorax."
+      }
+    },
+    "menu": {
+      "first": "What I can do",
+      "second": "Testimonies",
+      "third": "Who am I",
+      "tech": "Technologies"
+    },
+    "btn": {
+      "contact": "contact me",
+      "projects": "see projects"
+    },
+    "testimonies": {
+      "title": "TESTIMONIES",
+      "back": "Back",
+      "next": "Next"
+    }
+  },
+  "projects": {
+    "title": ["Above all that I have been", "Above all that I have built", "lies here."],
+    "btn": "See more"
+  },
+  "project": {
+    "test": "Hello World from Project!"
+  },
+  "contact-me": {
+    "form": {
+      "title": "Write me a letter!",
+      "name": "Name",
+      "company": "Company",
+      "email": "E-mail",
+      "message": "Message",
+      "submit": "Submit",
+      "error": ["Please, input the ", " correctly.\n", "Minimun length: "]
+    },
+    "title": ["hope looking forward", "to meet you", "and do business.", "with you"],
+    "contact": {
+      "title": "Where you can find me",
+      "direction": "Hospital Nacional Psiquiátrico 20m sur 10m este",
+      "phone": "+506 6216–3355",
+      "email": "andre.rlucas@outlook.com"
+    }
+  },
+  "layout": {
+    "nav": {
+      "home": "Home",
+      "projects": "Projects",
+      "contact-me": "Contact Me",
+      "lang": "Change to Spanish",
+      "tnc": "Terms and Conditions"
+    },
+    "footer": {
+      "copyright": " All rights reserved.",
+      "backTop": "Back to top"
+    }
+  },
+  "404": ["404 – Page not found, sorry", "Back to Home"]
+}

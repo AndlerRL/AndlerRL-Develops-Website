@@ -1,0 +1,98 @@
+{
+  "index": {
+    "title": {
+      "greet": ["Saludos! Mi nombre es Roberto Romero Lucas", "y soy desarrollador web full-stack."],
+      "content": [
+        "También me autodenomino cómo Andler Develops, una persona independiente que ha trabajado la mayoría de su carrera cómo Freelance, consiguiendo trabajos desde Nicaragua a Costa Rica, con clientes locales e internacionales.",
+        "Andler Develops conforma de un equipo de QA, Back-end, Front-end y Diseño de una sóla persona, que puede realizar cualquier tipo de proyectos:",
+        "E-Commerce",
+        "Blogs",
+        "Páginas Corporativas",
+        "Interfáz de Programación de Aplicaciones (API en inglés)",
+        "Cómo empresa independiente, dedico mi vida a la programación, y con cada cliente que he tenido, puedo decir que límites son los que uno impone y yo, cómo Andler Develops no se conoce tal límite."
+      ]
+    },
+    "mainContent": {
+      "titleMain": "¿Qué puedo hacer por ti?",
+      "contentMain": [
+        "Cómo desarrollador tengo pasión por crear páginas web interactivas, atractivas al ojo humano, que el usuario sepa de que donde entró somos serios en diseño y en lo que hacemos; creatividad es uno de los factores que invaden mis habilidades y la armonía entre los algoritmos y el arte de crear componentes atractivos es algo que me define cómo ser humano.",
+        "Andler Develops no sólo desarrolla páginas webs, si no también vídeo juegos creados con JavaScript, utilizando prototypes y classes, lo último en el mercado en cuestiones algorítmicas–ES2015 al ES2020–así por igual en los sitios web, utilizo metodologías modulares, funcionales y classes. En web, soy fanático de ReactJS, familiarizándome con el JAMStack, algo increíblemente fácil de manejar y crear con GatsbyJS, arrancado por ReactJS–Sanity.io–para manejo de datos y usando API de GraphQL.",
+        "Estos desarrollos de pila son los principales que utilizo en cada página web que realizo, pero siempre, abierto a nuevos horizontes cómo juntar todo esto con TypeScript, Angular 2-7 y también Vue.js, son algunos de las tecnologías que en mi trayectoria profesional cómo desarrollador web busco expandir.",
+        "Los sitios web que realizo están optimizado para SEO, así para que mantengas los datos más precisos que estas tecnologías pueden ofrecer–y dinámicos–para que obtengas una mejor experiencia de usuario.",
+        "Pero, ¿Qué puedo hacer por ti? Primero:",
+        "Dime, ¿Qué es lo que tu mente te dicta y te dice que hacer en tu futuro negocio, en tu página web que aún está en vivo pero quieres mejorarlo?",
+        "Dime, ¿Qué quieres mejorar o a donde quieres llevar tu negocio?",
+        "Quiero conocerte y quiero que también me conozcas, sé que podemos realizar un gran negocio, por si te interesa, dame tu precio y veremos qué podemos hacer y qué será de tu página para el futuro."
+      ],
+      "titleSub": "¿Quien soy yo?",
+      "contentSub": [
+        "Primero, mi nombre es Meynor Roberto Andrés Romero Lucas (Algo largo, ¿No lo creen?), pero me gusta que me llamen Roberto Romero Lucas, o sólo Lucas. Nací y crecí casi un cuarto de siglo en Nicaragua y estoy haciendo vida en Costa Rica, un país que a cómo el mío natal, me ha ofrecido oportunidades de conocer personas increíbles e interesantes que a lo largo del camino me han hecho pensar, debatir y dar qué opinar.",
+        "Desde que era un pequeño, tengo el maravilloso recuerdo de amar los vídeo juegos, y las computadoras; recuerdo mi primera PC, fue una Compaq Presario 5460 AMD K6-2, modelo 1999:",
+        "Tengo el recuerdo de mis primeras líneas de código, tenía tan sólo 6 años y era por CMD. Escribía comandos para poder iniciar programas de mi interés y me encantaba la idea de escribirlo de esa manera en ves del acceso directo en el escritorio.",
+        "Recuerdo mi primer juego en computadora, era Age of Empires. Tenía tan sólo 6 años por igual, me fascinaba estar en mi computadora y jugar cuando mis padres me lo permitían; jugaba en fácil, eso te lo aseguro.",
+        "Al crecer, seguía con mi amor a los vídeos juegos y las computadoras, si, soy PC Gamer–aunque he tenido un buen número de consolas de vídeos juegos–nunca me he apartado de mi verdadero gusto, de estár en frente de una computadora, sea navegando, jugando o escribiendo. Fue así hasta los fines de mi adolescencia, que deseé en verdad escuchar a mi corazón y buscar la verdad en mi y tratar de escuchar de mi lo más que pudiera.",
+        "Terminé decidiéndome de buscar una guía, un lugar en donde pueda comenzar a estudiar sobre programación y he ahí, a mis inicios de mis 20 años que conocí Next University y aprendí cómo crear, al principio, cosas muy primitivas por así decirlo pero cómo siempre, he tenido el deseo de superación personal, algo que siento que es una gran parte de mi.",
+        "Mi padre me enseñó algo muy importante y es algo que admiro en él, que un buen líder se trata de 'Nosotros' y no de uno, el poder de uno podemos también decir. Él cómo dueño de su propia empresa y de familia de administradores, he tenido muchísima asesoría desde que era un pequeño con ellos y los buenos valores los he estado recolectando para implementarlo cuando sea necesario.",
+        "Es por eso, que me gusta ayudar a los demás, desafiar a las personas, a ver el verdadero valor de cada quién y el potencial que cada uno puede tener, ayudarles en encontrarse y quizás hacerle una pregunta y hacerlos pensar, sea se compañero laboral, amigo, familia, pareja. El cambio comienza con uno mismo, ¿No?"
+      ],
+      "quote": {
+        "content": "Al menos que alguien cómo tú se interese de verdad, nada va a mejorar. Jamás.",
+        "credits": "Dr. Seuss, El Lorax."
+      }
+    },
+    "menu": {
+      "first": "Qué hago",
+      "second": "Testimonios",
+      "third": "Quién soy",
+      "tech": "Technologías"
+    },
+    "btn": {
+      "contact": "contácteme",
+      "projects": "ver proyectos"
+    },
+    "testimonies": {
+      "title": "TESTIMONIOS",
+      "back": "Reg.",
+      "next": "Sig."
+    }
+  },
+  "projects": {
+    "title": ["Sobre todo lo que he sido", "Sobre todo lo que he construido", "yace aquí."],
+    "btn": "Ver más"
+  },
+  "project": {
+    "test": "Hola Mundo desde Proyecto!"
+  },
+  "contact-me": {
+    "form": {
+      "title": "Escríbeme una carta!",
+      "name": "Nombre",
+      "company": "Compañía",
+      "email": "Correo Electrónico",
+      "message": "Mensaje",
+      "submit": "Enviar",
+      "error": ["Por favor, introduzca el ", " correctamente.\n", "Longitud mínima: "]
+    },
+    "title": ["espero que en adelante", "pueda conocerte", "y hacer negocios.", "contigo"],
+    "contact": {
+      "title": "En donde me puedes encontrar",
+      "direction": "Hospital Nacional Psiquiátrico 20m sur 10m este",
+      "phone": "+506 6216–3355",
+      "email": "andre.rlucas@outlook.com"
+    }
+  },
+  "layout": {
+    "nav": {
+      "home": "Inicio",
+      "projects": "Proyectos",
+      "contact-me": "Contácteme",
+      "lang": "Cambiar a Inglés",
+      "tnc": "Términos y Condiciones"
+    },
+    "footer": {
+      "copyright": " Todos los derechos reservados.",
+      "backTop": "Retornar a Inicio"
+    }
+  },
+  "404": ["404 – Página no encontrada, lo lamento", "Regresar a Inicio"]
+}
