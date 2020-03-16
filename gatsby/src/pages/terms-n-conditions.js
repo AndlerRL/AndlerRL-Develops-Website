@@ -48,7 +48,7 @@ const TermsConditionsPage = ({ pageContext: { locale }, location }) => {
           items={menuItems.id}
           title={menuItems.title}
         />
-        <Wrapper isMain termCon>
+        <Wrapper isMain termCon mb={7}>
           <PrimaryCard
             flexDirection="column"
             alignItems="center"
@@ -137,8 +137,8 @@ const TermsConditionsPage = ({ pageContext: { locale }, location }) => {
             justifyContent="center"
             flexDirection="column"
             width={1}
-            px={[0, 6, 6]}
-            pb={[0, 6, 6]}
+            px={[4, 6, 6]}
+            pb={[4, 6, 6]}
             id="privacy"
           >
             <LightBlueTriangleTop top={-116} />

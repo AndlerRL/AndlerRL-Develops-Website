@@ -49,11 +49,7 @@ const Logo = styled.div`
   }
 `
 
-const DescriptionContainer = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+const DescriptionContainer = styled(Flex)`
   width: 100%;
   padding: 0px;
   background: url(${stationBck}) center no-repeat;
@@ -165,7 +161,7 @@ const variants = {
   }),
   initial: {
     opacity: 0,
-    x: 100
+    x: 50
   }
 }
 
@@ -286,7 +282,12 @@ const Home = ({ locale }) => {
         items={menuItems.id}
         title={menuItems.title}
       />
-      <DescriptionContainer> 
+      <DescriptionContainer
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        pb={7}
+      > 
         <div></div>
         <Wrapper mt={5} p={0}>
           <PrimaryCard
@@ -552,7 +553,7 @@ const Home = ({ locale }) => {
                           <Box width={[1, 1 / 2, 1 / 2]}
                             height={["300px", "400px", "400px"]}
                             data-aos="fade-up"
-                            my={2}
+                            my={4}
                           >
                             <Image img="first-pc" />
                           </Box>

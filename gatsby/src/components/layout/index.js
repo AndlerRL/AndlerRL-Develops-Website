@@ -6,11 +6,42 @@ import { ThemeProvider, theme } from 'util/styles'
 import GlobalStyles from 'util/styles/GlobalStyles'
 import loadable from '@loadable/component'
 import { Translate } from "store"
+import IntroAnim from 'components/UI/intro'
 
 const LayoutComponent = loadable(() => import('./layoutComponent'))
 
-const Layout = React.memo(({ children, intro, locale }) => {
+const Layout = React.memo(({ children, locale }) => {
   const [navLang, setNavLang] = useState(null)
+  const [intro, setIntro] = useState({
+    cOpc: true,
+    end: false
+  })
+  const [path, setPath] = useState('/')
+
+  const hideIntro = () => {
+    setTimeout(() => {
+      setIntro(i => ({
+        ...i,
+        end: true
+      }))
+    }, 200)
+  }
+
+  const introAnimHandler = () => {
+    setIntro(i => ({
+      ...i,
+      cOpc: false
+    }))
+
+    return hideIntro()
+  }
+
+  useEffect(() => {
+    const { location } = window;
+
+    if (path !== location.pathname)
+      setPath(location.pathname)
+  }, [path, setPath])
 
   useEffect(() => {
     const { language } = navigator;
@@ -22,6 +53,11 @@ const Layout = React.memo(({ children, intro, locale }) => {
   return (
       <ThemeProvider theme={theme}>
         <GlobalStyles intro={intro} />
+        {
+          path === '/' || path === '/es/'
+          ? <IntroAnim animComplete={introAnimHandler} introEnd={intro} />
+          : null
+        }
         <Translate.Provider
           initialState={{
             translations: {

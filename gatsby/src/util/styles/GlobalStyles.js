@@ -17,13 +17,9 @@ const GlobalStyles = createGlobalStyle`
     background: ${themeGet('colors.blackDepth.400')} url(${logoDark}) no-repeat;
     background-size: 300px 300px;
     background-blend-mode: overlay;
-    background-position-x: 33.33%;
-    background-position-y: center;
+    background-position: center;
     scroll-behavior: smooth;
-
-    @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-      background-position-x: center;
-    }
+    animation: beat 0.33s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
   }
 
   body {
@@ -51,6 +47,18 @@ const GlobalStyles = createGlobalStyle`
   @media only screen and (max-width: 480px) {
     html {
       font-size: 100%;
+    }
+  }
+
+  @keyframes beat {
+    0% {
+      background-size: 300px 300px;
+    }
+    50% {
+      background-size: 315px 315px;
+    }
+    100% {
+      background-size: 300px 300px;
     }
   }
 `

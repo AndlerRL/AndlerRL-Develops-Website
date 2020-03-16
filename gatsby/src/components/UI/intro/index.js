@@ -40,7 +40,7 @@ const IntroAnimContainer = styled(motion.div)`
     align-items: center;
     justify-content: space-evenly;
     margin-top: 0;
-    margin-left: calc(-50% + 232.65px);
+    margin-left: auto;
 
     @media screen and (min-width: ${themeGet('breakpoints.2')}) {
       width: 440px;

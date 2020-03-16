@@ -7,8 +7,6 @@ import styled, { themeGet } from 'util/styles'
 import { Flex, Text, Box } from 'rebass'
 import { motion } from 'framer-motion'
 import Tooltip from 'components/UI/tooltip'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 
 const CategoryTitle = styled(Text)`
   font-family: 'Kalam', cursive;
@@ -44,16 +42,6 @@ const TechTitle = styled.div`
 `
 
 const TechComponent = ({ fluid, title, stack }) => {
-  useEffect(() => {
-    AOS.init({
-      once: true
-    })
-
-    return () => {
-      AOS.refresh()
-    }
-  })
-  
   return (
     <Tooltip
       text={title}
@@ -64,8 +52,6 @@ const TechComponent = ({ fluid, title, stack }) => {
           scale: 1.1
         }}
         stack={stack}
-        data-aos="fade-down"
-        data-aos-offset="200"
       >
         <Img fluid={fluid} />
       </TechContainer>
@@ -93,17 +79,6 @@ const Tech = ({ locale }) => {
   `)
   const { allSanityTech: { nodes } } = data
 
-  useEffect(() => {
-    AOS.init({
-      offset: 250,
-      once: true
-    })
-
-    return () => {
-      AOS.refresh()
-    }
-  })
-
   const frontEnd = nodes.filter(({ category }) => category === 'front-end')
   const backEnd = nodes.filter(({ category }) => category === 'back-end')
   const stack = nodes.filter(({ category }) => category === 'stack')
@@ -123,10 +98,7 @@ const Tech = ({ locale }) => {
     > 
       <TechTitle lang={locale}  />
       <Box mt={4} width={1}>
-        <CategoryTitle as="h1"
-          data-aos="zoom-in"
-          data-aos-offset="150"
-        >
+        <CategoryTitle as="h1">
           Front-end
         </CategoryTitle>
         <Flex
@@ -144,10 +116,7 @@ const Tech = ({ locale }) => {
         </Flex>
       </Box>
       <Box mt={5} width={1}>
-        <CategoryTitle as="h1"
-          data-aos="zoom-in"
-          data-aos-offset="150"
-        >
+        <CategoryTitle as="h1">
           CMS
         </CategoryTitle>
         <Flex
@@ -165,10 +134,7 @@ const Tech = ({ locale }) => {
         </Flex>
       </Box>
       <Box mt={5} width={1}>
-        <CategoryTitle as="h1"
-          data-aos="zoom-in"
-          data-aos-offset="150"
-        >
+        <CategoryTitle as="h1">
           Bundlers
         </CategoryTitle>
         <Flex
@@ -186,10 +152,7 @@ const Tech = ({ locale }) => {
         </Flex>
       </Box>
       <Box mt={5} width={1}>
-        <CategoryTitle as="h1"
-          data-aos="zoom-in"
-          data-aos-offset="150"
-        >
+        <CategoryTitle as="h1">
           Back-end
         </CategoryTitle>
         <Flex
@@ -207,10 +170,7 @@ const Tech = ({ locale }) => {
         </Flex>
       </Box>
       <Box mt={5} width={1}>
-        <CategoryTitle as="h1"
-          data-aos="zoom-in"
-          data-aos-offset="150"
-        >
+        <CategoryTitle as="h1">
           SaaS
         </CategoryTitle>
         <Flex
@@ -228,10 +188,7 @@ const Tech = ({ locale }) => {
         </Flex>
       </Box>
       <Box mt={5} width={1}>
-        <CategoryTitle as="h1"
-          data-aos="zoom-in"
-          data-aos-offset="150"
-          color="#f5f5f5"
+        <CategoryTitle as="h1"color="#f5f5f5"
           mt={5}
         >
           Template Engine
@@ -251,10 +208,7 @@ const Tech = ({ locale }) => {
         </Flex>
       </Box>
       <Box mt={5} width={1}>
-        <CategoryTitle as="h1"
-          data-aos="zoom-in"
-          data-aos-offset="150"
-        >
+        <CategoryTitle as="h1">
           Unit Testing
         </CategoryTitle>
         <Flex
@@ -272,10 +226,7 @@ const Tech = ({ locale }) => {
         </Flex>
       </Box>
       <Box mt={5} width={1}>
-        <CategoryTitle as="h1"
-          data-aos="zoom-in"
-          data-aos-offset="150"
-        >
+        <CategoryTitle as="h1">
           Stack Development
         </CategoryTitle>
         <Flex

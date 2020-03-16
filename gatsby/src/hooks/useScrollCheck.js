@@ -5,7 +5,7 @@ const initState = {
     top: 0,
     bottom: 0,
   },
-  subHeadPos: 0,
+  subHeadPos: 64,
   menuPos: null,
   yOffset: 0,
   height: 0

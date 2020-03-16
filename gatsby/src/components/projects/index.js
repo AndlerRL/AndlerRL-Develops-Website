@@ -100,14 +100,14 @@ const Projects = ({ locale }) => {
             <Text as="h1" my={3}
               data-aos="fade-up"
               data-aos-offset="0"
-              data-aos-delay="1500"
+              data-aos-delay="1250"
             >
               {t('title.1')}
             </Text>
             <Text as="h1" mb={4}
               data-aos="fade-up"
               data-aos-offset="0"
-              data-aos-delay="3000"
+              data-aos-delay="2750"
             >
               {t('title.2')}
             </Text>
