@@ -9,7 +9,7 @@ const ProjectPage = ({ pageContext: { locale }, location, data: { sanityProject 
   const pBody = sanityProject.projectBody[locale]
   
   return (
-    <Layout locale={locale} location={location} >
+    <Layout locale={locale} notIntro={true} >
       <SEO 
         title={sanityProject.title[locale]}
         description={`${pBody[0].children[0].text.substr(0, 200)}…`}

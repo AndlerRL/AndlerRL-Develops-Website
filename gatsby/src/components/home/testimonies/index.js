@@ -7,6 +7,7 @@ import { Icon } from 'components/UI/icons'
 import { Btn } from 'components/UI/btn'
 import { Flex, Text } from 'rebass'
 import styled, { themeGet } from 'util/styles'
+import { Translate } from 'store'
 
 const TestimoniesContainer = styled(Flex)`
   border: 3px solid ${themeGet('colors.blackDepth.300')};
@@ -72,8 +73,9 @@ const Stepper = styled(MobileStepper)`
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-export const Testimonies = ({ locale, t }) => {
+const Testimonies = () => {
   const [activeStep, setActiveStep] = useState(0)
+  const { t, lang } = Translate.useContainer()
   const data = useStaticQuery(graphql`
     {
       allSanityTestimony {
@@ -142,7 +144,7 @@ export const Testimonies = ({ locale, t }) => {
               >
                 <Icon.quoteLeft size="32px" style={{ opacity: 0.5, position: 'absolute', top: '8px', left: 0 }} />
                 { Math.abs(activeStep - index) <= 2 
-                  ? node.quote[locale].map(({ _key, children }) => (
+                  ? node.quote[lang].map(({ _key, children }) => (
                     <Text as="p"
                       lineHeight={2}
                       fontWeight="400"
@@ -191,3 +193,5 @@ export const Testimonies = ({ locale, t }) => {
     </TestimoniesContainer>
   )
 }
+
+export default Testimonies

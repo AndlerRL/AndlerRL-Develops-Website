@@ -16,7 +16,7 @@ const ScrollspyContainer = styled(Scrollspy)`
   margin-bottom: -19rem;
   width: 100%;
   max-width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
   background-color: ${({ item }) => item < 65 ? themeGet('colors.blackDepth.500') : 'transparent'};
   opacity: ${({ item }) => item < 65 ? 1 : 0};
   height: calc(${themeGet('space.5')}px - 5px );

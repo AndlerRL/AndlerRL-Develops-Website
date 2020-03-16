@@ -7,6 +7,7 @@ import styled, { themeGet } from 'util/styles'
 import { Flex, Text, Box } from 'rebass'
 import { motion } from 'framer-motion'
 import Tooltip from 'components/UI/tooltip'
+import { Translate } from 'store'
 
 const CategoryTitle = styled(Text)`
   font-family: 'Kalam', cursive;
@@ -59,7 +60,8 @@ const TechComponent = ({ fluid, title, stack }) => {
   )
 }
 
-const Tech = ({ locale }) => {
+const Tech = () => {
+  const { lang } = Translate.useContainer()
   const data = useStaticQuery(graphql`
     query {
       allSanityTech(filter: {title: {nin: ["HTML5", "JavaScript", "CSS3"]}}, sort: {fields: title}) {
@@ -96,7 +98,7 @@ const Tech = ({ locale }) => {
       width={1}
       id="techs"
     > 
-      <TechTitle lang={locale}  />
+      <TechTitle lang={lang}  />
       <Box mt={4} width={1}>
         <CategoryTitle as="h1">
           Front-end
