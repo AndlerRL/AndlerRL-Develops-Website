@@ -17,7 +17,7 @@ const Layout = React.memo(({ children, locale }) => {
     end: false
   })
   const [path, setPath] = useState('/')
-
+  
   const hideIntro = () => {
     setTimeout(() => {
       setIntro(i => ({
@@ -39,9 +39,14 @@ const Layout = React.memo(({ children, locale }) => {
   useEffect(() => {
     const { location } = window;
 
-    if (path !== location.pathname)
+    if (path !== location.pathname) {
+      setIntro(i => ({
+        ...i,
+        end: true
+      }))
       setPath(location.pathname)
-  }, [path, setPath])
+    }
+  }, [path, setPath, setIntro])
 
   useEffect(() => {
     const { language } = navigator;

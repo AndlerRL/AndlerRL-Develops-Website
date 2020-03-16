@@ -28,8 +28,7 @@ const IntroAnimContainer = styled(motion.div)`
   background-size: 300px 300px;
   background-blend-mode: overlay;
   overflow: ${({ introEnd }) => !introEnd.end ? 'hidden' : 'auto'};
-  background-position-x: 33.33%;
-  background-position-y: center;
+  background-position: center;
 
   .LogoContainer {
     width: 352.5px;
@@ -52,10 +51,6 @@ const IntroAnimContainer = styled(motion.div)`
       height: 238.66px;
       margin-left: 0;
     }
-  }
-
-  @media screen and (min-width: ${themeGet('breakpoints.0')}) {
-    background-position-x: center;
   }
 `
 
