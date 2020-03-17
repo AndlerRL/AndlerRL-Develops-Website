@@ -32,7 +32,8 @@ const GlobalStyles = createGlobalStyle`
     font-weight: ${themeGet('fontWeights.medium')};
     font-size: ${themeGet('fontSizes.2')}px;
     background-color: ${themeGet('colors.blacksDepth.500')};
-    overflow: ${({ intro, notIntro }) => intro.end && notIntro ? 'auto' : 'hidden'};
+    overflow: ${({ intro, notIntro }) => intro.end || notIntro ? 'auto' : 'hidden'};
+
     scroll-behavior: smooth;
   }
 

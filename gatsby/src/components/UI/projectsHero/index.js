@@ -34,6 +34,9 @@ const ProjectsHero = () => (
       alt="self-portrait"
     />
   </div>
+  <ProjectsHeroContainer>
+    <div></div>
+  </ProjectsHeroContainer>
 )
 
 export default ProjectsHero
