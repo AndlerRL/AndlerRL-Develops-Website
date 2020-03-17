@@ -15,9 +15,9 @@ const ProjectsHeroContainer = styled.div`
   + span > img {
     height: auto;
     max-height: 100%;
-    width: 177.77777778vh; /* 100 * 16 / 9 */
+    width: 133.333333333vh; /* 100 * 16 / 9 */
     min-width: 100%;
-    max-height: 177.77777778vh; /* 100 * 9 / 16 */
+    max-height: 133.333333333vh; /* 100 * 9 / 16 */
     position: absolute;
     left: 50%; /* % of surrounding element */
     top: 50%;
@@ -34,9 +34,6 @@ const ProjectsHero = () => (
       alt="self-portrait"
     />
   </div>
-  <ProjectsHeroContainer>
-    <div></div>
-  </ProjectsHeroContainer>
 )
 
 export default ProjectsHero
