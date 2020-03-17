@@ -54,7 +54,8 @@ const Projects = ({ locale }) => {
     ? projects.map(({ node }) => (
       <LazyLoadComponent>
         <ProjectCard p={node} locale={locale} key={node.id} />
-      </LazyLoadComponent>)
+      </LazyLoadComponent>
+    ))
     : (
       <React.Fragment>
         <ProjectSkeleton />

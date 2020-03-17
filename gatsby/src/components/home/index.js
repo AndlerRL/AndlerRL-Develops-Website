@@ -206,6 +206,19 @@ const Home = ({ locale }) => {
           </Wrapper>
         </DescriptionContainer>
       </LazyLoadComponent>
+      <DescriptionContainer
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        pb={7}
+      > 
+        <div></div>
+        <Wrapper mt={5} p={0}>
+          <WhatIDo />
+          <WhoAmI />
+          <Tech />
+        </Wrapper>
+      </DescriptionContainer>
     </React.Fragment>
   )
 }
