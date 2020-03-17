@@ -52,9 +52,10 @@ const Projects = ({ locale }) => {
   const projects = data.allSanityProject.edges;
   const projectsData = projects 
     ? projects.map(({ node }) => (
-      <LazyLoadComponent>
-        <ProjectCard p={node} locale={locale} key={node.id} />
-      </LazyLoadComponent>)
+      <LazyLoadComponent key={node.id}>
+        <ProjectCard p={node} locale={locale} />
+      </LazyLoadComponent>
+    ))
     : (
       <React.Fragment>
         <ProjectSkeleton />

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { themeGet } from 'util/styles'
 import portrait from 'images/portrait2.jpg'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const ProjectsHeroContainer = styled.div`
   background: linear-gradient(to top, ${themeGet('colors.blackDepth.500')} 8.333%, ${themeGet('colors.blackDepth.500')}80 50%);
@@ -9,16 +10,18 @@ const ProjectsHeroContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 
-  + img {
-    height: 100%;
+  + span > img {
+    height: auto;
+    max-height: 100%;
     width: 177.77777778vh; /* 100 * 16 / 9 */
     min-width: 100%;
-    min-height: 56.25vw; /* 100 * 9 / 16 */
+    max-height: 177.77777778vh; /* 100 * 9 / 16 */
     position: absolute;
     left: 50%; /* % of surrounding element */
     top: 50%;
-    transform: translate(-50%, -66.66%); /* % of current element */
+    transform: translate(-50%, -50%); /* % of current element */
   }
 `
 
