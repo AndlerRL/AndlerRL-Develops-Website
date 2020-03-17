@@ -105,7 +105,7 @@ const WhoAmI = () => {
                       data-aos="fade-up"
                       my={5}
                     >
-                      <Image img="first-pc" />
+                      <Image img="first-pc" alt="first-pc" />
                     </Box>
                     <Flex
                       flexDirection="column"

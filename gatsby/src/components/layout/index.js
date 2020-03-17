@@ -56,7 +56,7 @@ const Layout = React.memo(({ children, locale, notIntro }) => {
       <ThemeProvider theme={theme}>
         <GlobalStyles intro={intro} notIntro={notIntro} />
         {
-          path === '/' || path === '/es/'
+          (path === '/' || path === '/es/') && navLang
           ? <IntroAnim animComplete={introAnimHandler} introEnd={intro} />
           : null
         }
