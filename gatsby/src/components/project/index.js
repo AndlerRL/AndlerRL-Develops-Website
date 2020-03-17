@@ -14,6 +14,7 @@ import LinkComponent from 'components/link'
 import Tooltip from 'components/UI/tooltip'
 import { Icon } from 'components/UI/icons'
 import { Btn } from 'components/UI/btn'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 
 const ImgMainContainer = styled(Flex)`
   width: 100%;
@@ -109,7 +110,7 @@ const Project = ({ locale, p }) => {
   const body = p.projectBody[locale].map((b, i) => {
     if (b._type === 'block')
       return (
-        <Text as="p" 
+        <Text as="p"
           my={4}
           lineHeight={2}
           width={1}
@@ -203,7 +204,9 @@ const Project = ({ locale, p }) => {
           contact
         >
           <YellowTriangleTop top={-115} project />
-          { body }
+          <LazyLoadComponent>
+            { body }
+          </LazyLoadComponent>
         </PrimaryCard>
         <Box 
           height="6px" 
@@ -247,36 +250,38 @@ const Project = ({ locale, p }) => {
             )
           }
         </Box>
-        <SecondaryCard
-          contact
-          flexDirection="column"
-          alignItems="flex-start"
-          justifyContent="center"
-          pb={4}
-          px={4}
-        >
-          <Flex
-            flexWrap="wrap"
+        <LazyLoadComponent>
+          <SecondaryCard
+            contact
+            flexDirection="column"
+            alignItems="flex-start"
             justifyContent="center"
-            alignItems="center"
-            width={1}
+            pb={4}
+            px={4}
           >
-            {
-              p.techs.map((t, i) => (
-                <Tooltip text={t.title} key={i}>
-                  <TechContainer
-                    whileHover={{
-                      opacity: 1,
-                      filter: 'grayscale(0%)'
-                    }}
-                  >
-                    <Img fluid={t.logo.asset.fluid} />
-                  </TechContainer>
-                </Tooltip>
-              ))
-            }
-          </Flex>
-        </SecondaryCard>
+            <Flex
+              flexWrap="wrap"
+              justifyContent="center"
+              alignItems="center"
+              width={1}
+            >
+              {
+                p.techs.map((t, i) => (
+                  <Tooltip text={t.title} key={i}>
+                    <TechContainer
+                      whileHover={{
+                        opacity: 1,
+                        filter: 'grayscale(0%)'
+                      }}
+                    >
+                      <Img fluid={t.logo.asset.fluid} />
+                    </TechContainer>
+                  </Tooltip>
+                ))
+              }
+            </Flex>
+          </SecondaryCard>
+        </LazyLoadComponent>
         <Box 
           mb={7}
           py={3}

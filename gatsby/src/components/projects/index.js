@@ -10,6 +10,7 @@ import styled from 'util/styles'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { ProjectSkeleton } from 'components/UI/skeletons'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 
 const TitleContainer = styled(Flex)`
   text-transform: lowercase;
@@ -50,7 +51,10 @@ const Projects = ({ locale }) => {
   `)
   const projects = data.allSanityProject.edges;
   const projectsData = projects 
-    ? projects.map(({ node }) => <ProjectCard p={node} locale={locale} key={node.id} />)
+    ? projects.map(({ node }) => (
+      <LazyLoadComponent>
+        <ProjectCard p={node} locale={locale} key={node.id} />
+      </LazyLoadComponent>)
     : (
       <React.Fragment>
         <ProjectSkeleton />
