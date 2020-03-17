@@ -16,6 +16,7 @@ import {
 } from 'components/UI/cards'
 import { Translate } from 'store'
 import Scrollspy from 'components/UI/scrollspy'
+import { LazyLoadComponent } from 'react-lazy-load-image-component'
 
 const HomeHero = loadable(() => import("components/UI/codeBackground"))
 const Tech = loadable(() => import("./techs"))
@@ -190,19 +191,21 @@ const Home = ({ locale }) => {
         items={menuItems.id}
         title={menuItems.title}
       />
-      <DescriptionContainer
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        pb={7}
-      > 
-        <div></div>
-        <Wrapper mt={5} p={0}>
-          <WhatIDo />
-          <WhoAmI />
-          <Tech />
-        </Wrapper>
-      </DescriptionContainer>
+      <LazyLoadComponent>
+        <DescriptionContainer
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          pb={7}
+        > 
+          <div></div>
+          <Wrapper mt={5} p={0}>
+            <WhatIDo />
+            <WhoAmI />
+            <Tech />
+          </Wrapper>
+        </DescriptionContainer>
+      </LazyLoadComponent>
     </React.Fragment>
   )
 }
